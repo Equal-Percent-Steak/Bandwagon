@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "350891051490",
+    "firebase_url": "https://bandwagon-440ec.firebaseio.com",
+    "project_id": "bandwagon-440ec",
+    "storage_bucket": "bandwagon-440ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350891051490:android:0991fd398b4155d23051bb",
+        "android_client_info": {
+          "package_name": "com.equalpercentsteak.bandwagon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350891051490-f88jsoqihhgaa69cgo8dj08s9ageue9g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb2wOEZIEJFbSZXc6kTk_0a9H80ptFj0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350891051490-f88jsoqihhgaa69cgo8dj08s9ageue9g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
