@@ -59,4 +59,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dueDate" />
+
+    <EditText
+        android:id="@+id/enterDetails"
+        android:layout_width="594dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/detailsDescription"
+        android:inputType="textMultiLine"
+        android:text="@string/details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groupChoice"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/done"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterDetails" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,8 +5,11 @@
     <string name="title_notifications">Notifications</string>
     <string name="due">Due: </string>
     <string name="task">Task: </string>
+    <string name="details">Details: </string>
+    <string name="done">DONE</string>
     <string name="taskDescription">Please enter a description of the task</string>
     <string name="dueDescription">Please enter the day the task is due</string>
+    <string name="detailsDescription">Please enter task details</string>
 
     <string-array name="dropdownNames">
         <item>Class One</item>
