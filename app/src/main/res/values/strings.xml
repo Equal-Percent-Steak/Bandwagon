@@ -4,4 +4,14 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="due">Due: </string>
+    <string name="task">Task: </string>
+    <string name="taskDescription">Please enter a description of the task</string>
+    <string name="dueDescription">Please enter the day the task is due</string>
+
+    <string-array name="dropdownNames">
+        <item>Class One</item>
+        <item>Class Two</item>
+        <item>Class Three</item>
+    </string-array>
+
 </resources>

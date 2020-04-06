@@ -8,13 +8,19 @@
 
     <EditText
         android:id="@+id/enterTask"
-        android:layout_width="390dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="585dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:autofillHints=""
         android:ems="10"
+        android:hint="@string/taskDescription"
         android:inputType="textPersonName"
-        android:text="Task:"
+        android:text="@string/task"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,8 +31,32 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
         android:text="@string/due"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.016"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterTask" />
+
+    <EditText
+        android:id="@+id/dueDate"
+        android:layout_width="312dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/dueDescription"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toEndOf="@+id/due"
+        app:layout_constraintTop_toBottomOf="@+id/enterTask" />
+
+    <Spinner
+        android:id="@+id/groupChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dueDate" />
 </androidx.constraintlayout.widget.ConstraintLayout>
