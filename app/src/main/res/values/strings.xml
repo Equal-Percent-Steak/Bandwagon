@@ -29,6 +29,16 @@
     <string name="appSettings">App Settings</string>
     <string name="completedOption">See how many have completed</string>
     <string name="timeOption">See time remaining</string>
+    <string name="changePassword">Change Password</string>
+    <string name="passwordReset">Password Reset</string>
+    <string name="oldPassword">Old Password: </string>
+    <string name="newPassword">New Password: </string>
+    <string name="confirmNewPassword">Confirm New Password: </string>
+    <string name="or">Or</string>
+    <string name="emailNewPassword">Email me a new password</string>
+    <string name="oldPasswordHint">Please enter your old password</string>
+    <string name="newPasswordHint">Please enter your new password</string>
+    <string name="confirmNewPasswordHint">Please confirm your new password</string>
 
 
     <string-array name="dropdownNames">
