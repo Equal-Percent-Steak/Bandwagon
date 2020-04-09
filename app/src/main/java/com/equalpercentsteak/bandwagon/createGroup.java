@@ -1,4 +1,4 @@
-package com.equalpercentsteak.bandwagon.ui;
+package com.equalpercentsteak.bandwagon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
