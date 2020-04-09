@@ -10,7 +10,9 @@
         android:id="@+id/groupName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="50dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/enterGroupName"
@@ -24,8 +26,8 @@
         android:id="@+id/closeGroupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/groupName"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_dialog" />
@@ -33,37 +35,58 @@
     <EditText
         android:id="@+id/groupDescription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200sp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="45dp"
+        android:layout_marginEnd="50dp"
         android:ems="10"
+        android:gravity="clip_vertical"
         android:hint="@string/groupDescription"
         android:inputType="textPersonName"
+        android:scrollbarStyle="insideInset"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@+id/groupName"
-        tools:layout_editor_absoluteX="2dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groupName" />
 
     <EditText
         android:id="@+id/groupMembers"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200sp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="45dp"
+        android:layout_marginEnd="50dp"
         android:ems="10"
+        android:gravity="clip_vertical"
         android:hint="@string/addMembers"
         android:inputType="textPersonName"
+        android:scrollbarStyle="insideInset"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@+id/groupDescription"
-        tools:layout_editor_absoluteX="2dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groupDescription" />
 
     <Button
         android:id="@+id/doneGroupButton"
-        android:layout_width="87dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="165dp"
-        android:layout_marginBottom="371dp"
+        android:layout_width="160dp"
+        android:layout_height="70dp"
         android:text="@string/done"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/groupMembers" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/createGroup"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

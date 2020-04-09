@@ -4,16 +4,32 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="due">Due: </string>
-    <string name="task">Task: </string>
+    <string name="task">Task Name: </string>
     <string name="details">Details: </string>
-    <string name="done">DONE</string>
+    <string name="done">Done</string>
     <string name="taskDescription">Please enter a description of the task</string>
     <string name="dueDescription">Please enter the day the task is due</string>
     <string name="detailsDescription">Please enter task details</string>
     <string name="enterGroupName">Group Name: </string>
+    <string name="createGroup">Create New Group</string>
+    <string name="group">Group: </string>
+    <string name="createTask">Create New Task</string>
     <string name="groupDescription">Please enter a description of the group</string>
-    <string name="addMembers">Please enter email addresses of members to invite</string>
+    <string name="addMembers">Please enter the emails of members to invite</string>
     <string name="alternateInviteMembers">Or you can invite members using this code: </string>
+    <string name="settings">Settings</string>
+    <string name="accountSettings">Account Settings</string>
+    <string name="displayName">Display Name: </string>
+    <string name="displayNameShown">xxxxxxxxxxx</string>
+    <string name="profilePhotoText">Profile Photo: </string>
+    <string name="email">Email: </string>
+    <string name="exampleEmail">example@example.com</string>
+    <string name="password">Password: </string>
+    <string name="examplePassword">**********</string>
+    <string name="appSettings">App Settings</string>
+    <string name="completedOption">See how many have completed</string>
+    <string name="timeOption">See time remaining</string>
+
 
     <string-array name="dropdownNames">
         <item>Class One</item>

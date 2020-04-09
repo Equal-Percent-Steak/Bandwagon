@@ -10,17 +10,17 @@
         android:id="@+id/enterTask"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="50dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/taskDescription"
         android:inputType="textPersonName"
         android:text="@string/task"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,64 +28,70 @@
         android:id="@+id/due"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
         android:text="@string/due"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.016"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterTask" />
 
     <EditText
         android:id="@+id/dueDate"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_marginTop="44dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="50dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/dueDescription"
         android:inputType="date"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toEndOf="@+id/due"
-        app:layout_constraintTop_toBottomOf="@+id/enterTask" />
+        app:layout_constraintTop_toBottomOf="@+id/due" />
 
     <Spinner
         android:id="@+id/groupChoice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dueDate" />
+        app:layout_constraintTop_toBottomOf="@+id/groupText" />
 
     <EditText
         android:id="@+id/enterDetails"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_height="200sp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="start|top"
-        android:hint="@string/detailsDescription"
+        android:hint="@string/taskDescription"
         android:inputType="textMultiLine"
-        android:text="@string/details"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/groupChoice" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_width="160sp"
+        android:layout_height="70sp"
         android:onClick="addTaskToFB"
         android:text="@string/done"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterDetails" />
 
@@ -93,7 +99,32 @@
         android:id="@+id/exitTaskButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_dialog" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/createTask"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/groupText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/group"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dueDate" />
 </androidx.constraintlayout.widget.ConstraintLayout>
