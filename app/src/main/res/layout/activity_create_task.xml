@@ -8,7 +8,7 @@
 
     <EditText
         android:id="@+id/enterTask"
-        android:layout_width="585dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
@@ -39,15 +39,15 @@
 
     <EditText
         android:id="@+id/dueDate"
-        android:layout_width="312dp"
+        android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="44dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/dueDescription"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/due"
         app:layout_constraintTop_toBottomOf="@+id/enterTask" />
 
@@ -62,9 +62,10 @@
 
     <EditText
         android:id="@+id/enterDetails"
-        android:layout_width="594dp"
-        android:layout_height="133dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
+        android:autofillHints=""
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/detailsDescription"
@@ -72,8 +73,7 @@
         android:text="@string/details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupChoice"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/groupChoice" />
 
     <Button
         android:id="@+id/button"
@@ -84,4 +84,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterDetails" />
+
+    <ImageButton
+        android:id="@+id/exitTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_dialog" />
 </androidx.constraintlayout.widget.ConstraintLayout>

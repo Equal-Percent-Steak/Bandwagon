@@ -10,6 +10,10 @@
     <string name="taskDescription">Please enter a description of the task</string>
     <string name="dueDescription">Please enter the day the task is due</string>
     <string name="detailsDescription">Please enter task details</string>
+    <string name="enterGroupName">Group Name: </string>
+    <string name="groupDescription">Please enter a description of the group</string>
+    <string name="addMembers">Please enter email addresses of members to invite</string>
+    <string name="alternateInviteMembers">Or you can invite members using this code: </string>
 
     <string-array name="dropdownNames">
         <item>Class One</item>
