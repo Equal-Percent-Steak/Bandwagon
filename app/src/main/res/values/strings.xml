@@ -39,6 +39,9 @@
     <string name="oldPasswordHint">Please enter your old password</string>
     <string name="newPasswordHint">Please enter your new password</string>
     <string name="confirmNewPasswordHint">Please confirm your new password</string>
+    <string name="createNewGroup">Create a New Group</string>
+    <string name="plus">+</string>
+    <string name="addTask">Add a New Task</string>
 
 
     <string-array name="dropdownNames">
