@@ -11,11 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/exampleEmail"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/profilePhoto" />
+        app:layout_constraintTop_toBottomOf="@+id/displayNameShown" />
 
     <TextView
         android:id="@+id/passwordExample"
@@ -33,11 +33,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:text="@string/email"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePhotoText" />
+        app:layout_constraintTop_toBottomOf="@+id/displayName" />
 
     <TextView
         android:id="@+id/password"
@@ -138,17 +138,6 @@
         app:layout_constraintTop_toBottomOf="@+id/accountSettings" />
 
     <TextView
-        android:id="@+id/profilePhotoText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/profilePhotoText"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/displayName" />
-
-    <TextView
         android:id="@+id/displayNameShown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -158,16 +147,6 @@
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/displayName"
         app:layout_constraintTop_toBottomOf="@+id/accountSettings" />
-
-    <ImageView
-        android:id="@+id/profilePhoto"
-        android:layout_width="82dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toEndOf="@+id/profilePhotoText"
-        app:layout_constraintTop_toBottomOf="@+id/displayNameShown"
-        app:srcCompat="@drawable/fui_idp_button_background_apple" />
 
     <Switch
         android:id="@+id/completedSwitch"
@@ -206,6 +185,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="15dp"
+        android:onClick="performChangePassword"
         android:text="@string/changePassword"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
