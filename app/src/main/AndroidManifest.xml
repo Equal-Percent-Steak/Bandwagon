@@ -10,7 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".createTask"></activity>
+        <activity android:name=".AddUser">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".createTask" />
         <activity android:name=".classMembers" />
         <activity android:name=".createNewTaskOrGroupMenu" />
         <activity android:name=".changePassword" />
