@@ -23,7 +23,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private FirebaseFirestore db;
+    RecyclerView mRecyclerView;
+    MyAdapter myAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
 //        myRef.setValue("Hello, World!");
 
         db = FirebaseFirestore.getInstance();
+
+        setContentView(R.layout.fragment_dashboard);
+
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        myAdapter = new MyAdapter(this, getMyList());
+        mRecyclerView.setAdapter(myAdapter);
+
 
     }
 
@@ -95,6 +111,37 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private ArrayList<Assignment> getMyList() {
+        ArrayList<Assignment> assignments = new ArrayList<>();
+
+        Assignment m = new Assignment();
+        m.setTitle("News Feed");
+        m.setDescription("This is a newsfeed Description");
+        m.setImg(R.drawable.ic_android_black_24dp);
+        assignments.add(m);
+
+        Assignment s = new Assignment();
+        s.setTitle("Food");
+        s.setDescription("This is a different Description");
+        s.setImg(R.drawable.ic_android_black_24dp);
+        assignments.add(s);
+
+        Assignment t = new Assignment();
+        t.setTitle("ASSIGNMENT TITLE");
+        t.setDescription("This is a description (Add Date here?)");
+        t.setImg(R.drawable.ic_android_black_24dp);
+        assignments.add(t);
+
+        Assignment q = new Assignment();
+        q.setTitle("Another Example Title");
+        q.setDescription("This is another Description");
+        q.setImg(R.drawable.ic_android_black_24dp);
+        assignments.add(q);
+
+        return assignments;
+
     }
 
 
