@@ -22,7 +22,13 @@
         <activity android:name=".createNewTaskOrGroupMenu" />
         <activity android:name=".changePassword" />
         <activity android:name=".accountSettings" />
-        <activity android:name=".createGroup" />
+        <activity android:name=".CreateGroup">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".classSettings" />
         <activity
             android:name=".MainActivity"

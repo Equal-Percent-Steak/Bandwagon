@@ -20,7 +20,7 @@ public class createNewTaskOrGroupMenu extends AppCompatActivity {
     }
 
     public void performCreateNewGroup(View v){
-        Intent intent = new Intent(this,createGroup.class);
+        Intent intent = new Intent(this,CreateGroup.class);
         startActivity(intent);
     }
 }

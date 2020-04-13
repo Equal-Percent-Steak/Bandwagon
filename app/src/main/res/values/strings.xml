@@ -13,8 +13,8 @@
     <string name="createGroup">Create New Group</string>
     <string name="group">Group: </string>
     <string name="createTask">Create New Task</string>
-    <string name="groupDescription">Please enter a description of the group</string>
-    <string name="addMembers">Please enter the emails of members to invite</string>
+    <string name="groupDescription">Description</string>
+    <string name="addMembers">Invite By Username</string>
     <string name="alternateInviteMembers">Or you can invite members using this code: </string>
     <string name="settings">Settings</string>
     <string name="accountSettings">Account Settings</string>

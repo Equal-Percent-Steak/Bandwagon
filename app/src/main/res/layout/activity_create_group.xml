@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".createGroup">
+    tools:context=".CreateGroup">
 
     <EditText
         android:id="@+id/groupName"
@@ -14,8 +14,8 @@
         android:layout_marginTop="150dp"
         android:layout_marginEnd="50dp"
         android:ems="10"
+        android:hint="@string/enterGroupName"
         android:inputType="textPersonName"
-        android:text="@string/enterGroupName"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="200sp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="50dp"
         android:ems="10"
         android:gravity="clip_vertical"
@@ -50,44 +50,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/groupName" />
 
-    <EditText
-        android:id="@+id/groupMembers"
-        android:layout_width="match_parent"
-        android:layout_height="200sp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="50dp"
-        android:ems="10"
-        android:gravity="clip_vertical"
-        android:hint="@string/addMembers"
-        android:inputType="textPersonName"
-        android:scrollbarStyle="insideInset"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupDescription" />
-
     <Button
         android:id="@+id/doneGroupButton"
         android:layout_width="160dp"
         android:layout_height="70dp"
+        android:layout_marginTop="10dp"
         android:text="@string/done"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupMembers" />
+        app:layout_constraintTop_toBottomOf="@+id/groupDescription" />
 
     <TextView
         android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/createGroup"
         android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
