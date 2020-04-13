@@ -15,7 +15,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -23,6 +25,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class createTask extends AppCompatActivity {
+
+    FirebaseFirestore db;
+    final String TAG = "createTask";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +41,31 @@ public class createTask extends AppCompatActivity {
                 R.array.dropdownNames));
         groupMenuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         groupMenu.setAdapter(groupMenuAdapter);
+        initFirestore();
+    }
+
+    private void initFirestore(){
+        db = FirebaseFirestore.getInstance();
+        DocumentReference dr = db.collection("groups").document("0KouSLYueZjr8L5lzyaA");
+        dr.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
     }
 
     public void addTaskToFB(View v) {
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
         EditText taskName = findViewById(R.id.enterTask);
         EditText dueDate = findViewById(R.id.dueDate);
         Spinner groupChoice = findViewById(R.id.groupChoice);
