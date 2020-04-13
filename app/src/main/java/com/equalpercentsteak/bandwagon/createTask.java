@@ -3,6 +3,7 @@ package com.equalpercentsteak.bandwagon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -78,5 +79,10 @@ public class createTask extends AppCompatActivity {
         task.put("description",description.getText().toString());
 
         db.collection("groups").add(task);
+    }
+
+    public void performExitCreateNewTask(View v){
+        Intent intent = new Intent(this,createNewTaskOrGroupMenu.class);
+        startActivity(intent);
     }
 }

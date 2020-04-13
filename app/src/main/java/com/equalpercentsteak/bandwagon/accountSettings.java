@@ -2,7 +2,9 @@ package com.equalpercentsteak.bandwagon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class accountSettings extends AppCompatActivity {
 
@@ -10,5 +12,10 @@ public class accountSettings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_settings);
+    }
+
+    public void performChangePassword(View v){
+        Intent intent = new Intent(this,changePassword.class);
+        startActivity(intent);
     }
 }
