@@ -10,7 +10,6 @@ public class Group {
     public Group(){
         ArrayList<User> users;
         ArrayList<Assignment> assignments;
-
     }
 
     //TODO: Andrew Firebase integration for adding user and assignments
