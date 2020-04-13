@@ -82,6 +82,7 @@
         android:layout_marginTop="150dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/appSettings"
+        android:textColor="#00B488"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -94,6 +95,7 @@
         android:layout_marginTop="50dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/settings"
+        android:textColor="#009688"
         android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -116,6 +118,7 @@
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/accountSettings"
+        android:textColor="#00B488"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
