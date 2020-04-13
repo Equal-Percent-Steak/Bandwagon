@@ -110,8 +110,8 @@
 
     <TextView
         android:id="@+id/accountSettings"
-        android:layout_width="406dp"
-        android:layout_height="54dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-condensed-medium"

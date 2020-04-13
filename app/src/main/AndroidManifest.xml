@@ -10,14 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".classMembers"></activity>
+        <activity android:name=".createTask"></activity>
+        <activity android:name=".classMembers" />
         <activity android:name=".createNewTaskOrGroupMenu" />
         <activity android:name=".changePassword" />
         <activity android:name=".accountSettings" />
         <activity android:name=".createGroup" />
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".createTask"
+            android:name=".classSettings"
             android:label="@string/app_name"
             tools:ignore="DuplicateActivity">
             <intent-filter>

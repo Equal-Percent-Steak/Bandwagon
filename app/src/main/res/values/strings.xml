@@ -42,7 +42,13 @@
     <string name="createNewGroup">Create a New Group</string>
     <string name="plus">+</string>
     <string name="addTask">Add a New Task</string>
-
+    <string name="className">Class Name</string>
+    <string name="muteClass">Mute Class</string>
+    <string name="leaveClass">Leave Class</string>
+    <string name="inviteMembers">Invite Members</string>
+    <string name="adminOnly">Admin Only</string>
+    <string name="closeClass">Close Class</string>
+    <string name="changeClassName">Change Class Name</string>
 
     <string-array name="dropdownNames">
         <item>Class One</item>
