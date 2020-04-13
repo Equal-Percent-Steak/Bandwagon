@@ -157,6 +157,18 @@ public class MainActivity extends AppCompatActivity {
         q.setImg(R.drawable.ic_android_black_24dp);
         assignments.add(q);
 
+        Assignment a = new Assignment();
+        a.setTitle("Another Example Title");
+        a.setDescription("This is another Description");
+        a.setImg(R.drawable.ic_android_black_24dp);
+        assignments.add(a);
+
+        Assignment b = new Assignment();
+        b.setTitle("Another Example Title");
+        b.setDescription("This is another Description");
+        b.setImg(R.drawable.ic_android_black_24dp);
+        assignments.add(b);
+
         return assignments;
 
     }
