@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item
+        android:id="@+id/sign_out_menu"
+        android:title="@string/sign_out"
+        app:showAsAction="never"/>
+
     <item android:id="@+id/item2"
         android:title="item 2"
         app:showAsAction="never" />
@@ -10,6 +15,8 @@
         android:title="item 3"
         app:showAsAction="never">
         <menu>
+
+
             <item android:id="@+id/subitem1"
                 android:title="Sub Item 1"/>
 

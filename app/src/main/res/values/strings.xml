@@ -51,6 +51,7 @@
     <string name="username">Username</string>
     <string name="firstName">First Name</string>
     <string name="done">Done</string>
+    <string name="sign_out">Sign Out</string>
 
     <string-array name="dropdownNames">
         <item>Class One</item>

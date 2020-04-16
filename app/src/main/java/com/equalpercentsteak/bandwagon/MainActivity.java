@@ -1,16 +1,24 @@
 package com.equalpercentsteak.bandwagon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.IdpResponse;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,6 +27,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -26,16 +37,20 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
-
-
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mFirebaseAuthListener;
+    private String mUsername;
+    public static final int RC_SIGN_IN = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Toolbar toolbar = findViewById(R.id.toolbar);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        //Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+
 //        BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -57,9 +72,27 @@ public class MainActivity extends AppCompatActivity {
         myAdapter = new MyAdapter(this, getMyList());
         mRecyclerView.setAdapter(myAdapter);
 
-
-
-//        db = FirebaseFirestore.getInstance();
+        mFirebaseAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null){
+                    onSignedInInitialize(user.getDisplayName());
+                } else{
+                    //not signed in
+                    onSignedOutCleanup();
+                    List<AuthUI.IdpConfig> providers = Arrays.asList(
+                            new AuthUI.IdpConfig.EmailBuilder().build());
+                    startActivityForResult(
+                            AuthUI.getInstance()
+                                    .createSignInIntentBuilder()
+                                    .setIsSmartLockEnabled(false)
+                                    .setAvailableProviders(providers)
+                                    .build(),
+                            RC_SIGN_IN);
+                }
+            }
+        };
 
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
@@ -80,53 +113,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+
+            if (resultCode == RESULT_OK) {
+                // Successfully signed in
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                // ...
+            } else{
+                // Sign in failed. If response is null the user canceled the
+                // sign-in flow using the back button. Otherwise check
+                // response.getError().getErrorCode() and handle the error.
+                // ...
+            }
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.example_menu, menu);
         return true;
     }
 
-    public void addUser(View v){
-//        // Access a Cloud Firestore instance from your Activity
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//
-//        // Create a new user with a first and last name
-//        Map<String, Object> user = new HashMap<>();
-//        user.put("first", "Ada");
-//        user.put("born", 1815);
-//
-//        // Add a new document with a generated ID
-//        db.collection("users")
-//                .add(user)
-//                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                    @Override
-//                    public void onSuccess(DocumentReference documentReference) {
-//                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w(TAG, "Error adding document", e);
-//                    }
-//                });
-//
-//        db.collection("users")
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                Log.d(TAG, document.getId() + " => " + document.getData());
-//                            }
-//                        } else {
-//                            Log.w(TAG, "Error getting documents.", task.getException());
-//                        }
-//                    }
-//                });
-}
 
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.sign_out_menu:
+                AuthUI.getInstance().signOut(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     private ArrayList<Assignment> getMyList(){
         ArrayList<Assignment> assignments = new ArrayList<>();
 
@@ -171,6 +194,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
+    }
+
+    private void onSignedInInitialize(String username){
+        mUsername = username;
+    }
+
+    private void onSignedOutCleanup(){
+        mUsername = "";
+    }
 }
 
 
