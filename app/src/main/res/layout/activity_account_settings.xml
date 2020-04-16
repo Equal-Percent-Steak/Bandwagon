@@ -18,29 +18,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
         android:text="@string/exampleEmail"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/email"
         app:layout_constraintStart_toEndOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/displayNameShown" />
+        app:layout_constraintTop_toTopOf="@+id/email" />
 
     <TextView
         android:id="@+id/passwordExample"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
         android:text="@string/examplePassword"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/password"
         app:layout_constraintStart_toEndOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/emailExample" />
+        app:layout_constraintTop_toTopOf="@+id/password" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:text="@string/email"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:text="@string/password"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,12 +61,12 @@
         android:id="@+id/completedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif"
         android:text="@string/timeOption"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/settingsDoneButton"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/completedText2" />
 
@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/appSettings"
         android:textColor="#00B488"
@@ -99,12 +99,14 @@
         android:id="@+id/Settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="75dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/settings"
+        android:textAlignment="center"
         android:textColor="#009688"
         android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -113,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/accountSettings"
         android:textColor="#00B488"
@@ -128,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif"
         android:text="@string/displayName"
         android:textSize="24sp"
@@ -140,49 +142,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
         android:text="@string/displayNameShown"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/displayName"
         app:layout_constraintStart_toEndOf="@+id/displayName"
-        app:layout_constraintTop_toBottomOf="@+id/accountSettings" />
+        app:layout_constraintTop_toTopOf="@+id/displayName" />
 
     <Switch
         android:id="@+id/completedSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/completedText2"
         app:layout_constraintStart_toEndOf="@+id/completedText2"
-        app:layout_constraintTop_toBottomOf="@+id/appSettings" />
+        app:layout_constraintTop_toTopOf="@+id/completedText2" />
 
     <Switch
         android:id="@+id/timeSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/completedText"
         app:layout_constraintStart_toEndOf="@+id/completedText"
-        app:layout_constraintTop_toBottomOf="@+id/completedText2" />
+        app:layout_constraintTop_toTopOf="@+id/completedText" />
 
     <Button
         android:id="@+id/settingsDoneButton"
         android:layout_width="160dp"
         android:layout_height="70dp"
+        android:layout_marginBottom="50dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/done"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeSwitch" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/changePasswordButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:onClick="performChangePassword"
         android:text="@string/changePassword"
         android:textSize="18sp"

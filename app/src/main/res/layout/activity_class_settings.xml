@@ -15,7 +15,7 @@
         android:layout_marginEnd="50dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/className"
-        android:textSize="48sp"
+        android:textSize="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,23 +26,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="150dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/settings"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/classTitle" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/muteClass"
-        android:textSize="24sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings" />
@@ -56,7 +55,7 @@
         android:layout_marginEnd="50dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/leaveClass"
-        android:textSize="24sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
@@ -70,7 +69,7 @@
         android:layout_marginEnd="50dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/inviteMembers"
-        android:textSize="24sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leaveClassButton" />
@@ -80,10 +79,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/adminOnly"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inviteMembersButton" />
 
@@ -92,11 +90,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/closeClass"
-        android:textSize="24sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adminOnlyText" />
@@ -110,7 +108,7 @@
         android:layout_marginEnd="50dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/changeClassName"
-        android:textSize="24sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/closeClassButton" />
