@@ -53,6 +53,7 @@
     <string name="done">Done</string>
     <string name="sign_out">Sign Out</string>
     <string name="createNew">Create New</string>
+    <string name="taskWord">Task</string>
     <string-array name="dropdownNames">
         <item>Class One</item>
         <item>Class Two</item>

@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/groupChoice" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/doneButton"
         android:layout_width="160sp"
         android:layout_height="70sp"
         android:layout_marginBottom="50dp"

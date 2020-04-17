@@ -251,7 +251,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    public void performReturnHome(MenuItem item) {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
 }
 
 

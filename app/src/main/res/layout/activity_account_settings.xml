@@ -165,6 +165,7 @@
         android:layout_height="70dp"
         android:layout_marginBottom="50dp"
         android:fontFamily="sans-serif-medium"
+        android:onClick="performReturnHome"
         android:text="@string/done"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"

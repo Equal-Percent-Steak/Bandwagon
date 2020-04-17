@@ -24,4 +24,9 @@ public class accountSettings extends AppCompatActivity {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+
+    public void performReturnHome(View v) {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
 }

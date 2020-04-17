@@ -4,6 +4,11 @@
 
 
     <item
+        android:id="@+id/homeMenu"
+        android:onClick="performReturnHome"
+        android:title="@string/title_home"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/settingsMenu"
         android:onClick="performEnterSettings"
         android:title="@string/settings"
@@ -20,12 +25,10 @@
         android:title="@string/createNew"
         app:showAsAction="never">
         <menu>
-
-
             <item
                 android:id="@+id/taskMenu"
                 android:onClick="performEnterNewTask"
-                android:title="@string/task" />
+                android:title="@string/taskWord" />
 
             <item
                 android:id="@+id/groupMenu"
