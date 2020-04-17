@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -135,21 +134,45 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.example_menu, menu);
+        inflater.inflate(R.menu.home_menu, menu);
         return true;
     }
 
-
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.settingsMenu:
+                Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
+                return true;
             case R.id.sign_out_menu:
-                AuthUI.getInstance().signOut(this);
+                Toast.makeText(this, "Sign out selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.createNewMenu:
+                Toast.makeText(this, "Create New selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.groupMenu:
+                Toast.makeText(this, "Create New Group selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.taskMenu:
+                Toast.makeText(this, "Create New Task selected", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+
         }
+
     }
+
+
+//    public boolean onOptionsItemSelected(MenuItem item){
+//        switch (item.getItemId()){
+//            case R.id.sign_out_menu:
+//                AuthUI.getInstance().signOut(this);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
     private ArrayList<Assignment> getMyList(){
         ArrayList<Assignment> assignments = new ArrayList<>();
 
@@ -213,6 +236,22 @@ public class MainActivity extends AppCompatActivity {
     private void onSignedOutCleanup(){
         mUsername = "";
     }
+
+    public void performEnterSettings(MenuItem item){
+        Intent intent = new Intent(this,accountSettings.class);
+        startActivity(intent);
+    }
+
+    public void performEnterNewTask(MenuItem item){
+        Intent intent = new Intent(this,createTask.class);
+        startActivity(intent);
+    }
+    public void performEnterNewGroup(MenuItem item){
+        Intent intent = new Intent(this,CreateGroup.class);
+        startActivity(intent);
+    }
+
+
 }
 
 

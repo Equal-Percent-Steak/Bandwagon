@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 public class accountSettings extends AppCompatActivity {
@@ -16,6 +17,11 @@ public class accountSettings extends AppCompatActivity {
 
     public void performChangePassword(View v){
         Intent intent = new Intent(this,changePassword.class);
+        startActivity(intent);
+    }
+
+    public void performEnterNewGroup(View v){
+        Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 }
