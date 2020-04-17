@@ -79,6 +79,7 @@
         android:fontFamily="sans-serif-black"
         android:text="@string/createGroup"
         android:textAlignment="center"
+        android:textColor="#009688"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

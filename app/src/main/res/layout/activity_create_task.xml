@@ -103,6 +103,7 @@
         android:fontFamily="sans-serif-black"
         android:text="@string/createTask"
         android:textAlignment="center"
+        android:textColor="#009688"
         app:autoSizeMaxTextSize="48sp"
         app:autoSizeMinTextSize="30sp"
         app:autoSizeStepGranularity="2sp"
