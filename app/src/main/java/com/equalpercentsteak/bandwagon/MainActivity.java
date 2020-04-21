@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mFirebaseAuthListener;
     private String mUsername;
     public static final int RC_SIGN_IN = 1;
+    public ArrayList<Assignment> assignments = new ArrayList<>();
     private DatabaseReference mDatabase;
     private User user;
 
@@ -119,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart(){
+        super.onStart();
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(myAdapter);
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -180,8 +188,7 @@ public class MainActivity extends AppCompatActivity {
 //                return super.onOptionsItemSelected(item);
 //        }
 //    }
-    private ArrayList<Assignment> getMyList(){
-        ArrayList<Assignment> assignments = new ArrayList<>();
+    public ArrayList<Assignment> getMyList(){
 
         Assignment m = new Assignment();
         m.setTitle("News Feed");
@@ -189,11 +196,11 @@ public class MainActivity extends AppCompatActivity {
         m.setImg(R.drawable.ic_android_black_24dp);
         assignments.add(m);
 
-        Assignment s = new Assignment();
-        s.setTitle("Food");
-        s.setDescription("This is a different Description");
-        s.setImg(R.drawable.ic_android_black_24dp);
-        assignments.add(s);
+//        Assignment s = new Assignment();
+//        s.setTitle("Food");
+//        s.setDescription("This is a different Description");
+//        s.setImg(R.drawable.ic_android_black_24dp);
+//        assignments.add(s);
 
         Assignment t = new Assignment();
         t.setTitle("ASSIGNMENT TITLE");

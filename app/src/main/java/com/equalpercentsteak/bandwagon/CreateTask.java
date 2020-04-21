@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CreateTask extends AppCompatActivity {
+public class CreateTask extends MainActivity {
 
     FirebaseFirestore db;
     final String TAG = "CreateTask";
@@ -74,6 +74,15 @@ public class CreateTask extends AppCompatActivity {
         task.put("description",description.getText().toString());
 
         db.collection("groups").add(task);
+
+        Assignment a = new Assignment();
+        a.setTitle(taskName.getText().toString());
+        a.setDescription(description.getText().toString());
+        a.setImg(R.drawable.ic_android_black_24dp);
+        assignments.add(a);
+
+        int itemCount = myAdapter.getItemCount();
+        myAdapter.notifyItemInserted(itemCount);
 
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
