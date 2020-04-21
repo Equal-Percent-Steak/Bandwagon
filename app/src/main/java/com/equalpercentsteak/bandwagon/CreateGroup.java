@@ -12,6 +12,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class CreateGroup extends AppCompatActivity {
 
+    private Group group;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,8 @@ public class CreateGroup extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference groups = database.getReference("groups");
+
+        group = new Group(groupName.getText().toString());
 
         groups.child(groupName.getText().toString()).child("group_name").setValue(groupName.getText().toString());
         groups.child(groupName.getText().toString()).child("first_name").setValue(description.getText().toString());

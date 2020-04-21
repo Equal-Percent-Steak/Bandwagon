@@ -6,10 +6,11 @@ public class Group {
 
     private ArrayList<User> users;
     private ArrayList<Assignment> assignments;
+    private String name;
 
-    public Group(){
-        ArrayList<User> users;
-        ArrayList<Assignment> assignments;
+    public Group(String name){
+        users = new ArrayList<>();
+        assignments = new ArrayList<>();
     }
 
     //TODO: Andrew Firebase integration for adding user and assignments

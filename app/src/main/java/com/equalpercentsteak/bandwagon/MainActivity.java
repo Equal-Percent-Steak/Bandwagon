@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mFirebaseAuthListener;
     private String mUsername;
     public static final int RC_SIGN_IN = 1;
+    private DatabaseReference mDatabase;
+    private User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,15 +74,17 @@ public class MainActivity extends AppCompatActivity {
         myAdapter = new MyAdapter(this, getMyList());
         mRecyclerView.setAdapter(myAdapter);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference("users");
+
         mFirebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                FirebaseUser userFB = firebaseAuth.getCurrentUser();
                 if (user != null){
-                    onSignedInInitialize(user.getDisplayName());
+//                    onSignedInInitialize(userFB.getDisplayName());
                 } else{
                     //not signed in
-                    onSignedOutCleanup();
+//                    onSignedOutCleanup();
                     List<AuthUI.IdpConfig> providers = Arrays.asList(
                             new AuthUI.IdpConfig.EmailBuilder().build());
                     startActivityForResult(
@@ -89,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
                                     .setAvailableProviders(providers)
                                     .build(),
                             RC_SIGN_IN);
+                    user = new User(userFB.getEmail());
+                    addUserToDB(userFB);
                 }
             }
         };
@@ -229,21 +236,26 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
     }
 
-    private void onSignedInInitialize(String username){
-        mUsername = username;
+    private void addUserToDB(FirebaseUser currentUser){
+        String keyId = currentUser.getUid();
+        mDatabase.child(keyId).setValue(user);
     }
 
-    private void onSignedOutCleanup(){
-        mUsername = "";
-    }
+//    private void onSignedInInitialize(String username){
+//        mUsername = username;
+//    }
+
+//    private void onSignedOutCleanup(){
+//        mUsername = "";
+//    }
 
     public void performEnterSettings(MenuItem item){
-        Intent intent = new Intent(this,accountSettings.class);
+        Intent intent = new Intent(this,AccountSettings.class);
         startActivity(intent);
     }
 
     public void performEnterNewTask(MenuItem item){
-        Intent intent = new Intent(this,createTask.class);
+        Intent intent = new Intent(this,CreateTask.class);
         startActivity(intent);
     }
     public void performEnterNewGroup(MenuItem item){

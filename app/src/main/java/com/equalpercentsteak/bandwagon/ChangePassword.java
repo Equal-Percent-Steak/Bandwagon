@@ -14,7 +14,7 @@ public class ChangePassword extends AppCompatActivity {
         setContentView(R.layout.activity_change_password);
     }
     public void performReturnSettings(View v) {
-        Intent intent = new Intent(this,accountSettings.class);
+        Intent intent = new Intent(this,AccountSettings.class);
         startActivity(intent);
     }
 }
