@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <TextView
         android:id="@+id/due"
@@ -33,23 +33,6 @@
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterTask" />
-
-    <EditText
-        android:id="@+id/dueDate"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="50dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/dueDescription"
-        android:inputType="date"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toEndOf="@+id/due"
-        app:layout_constraintTop_toBottomOf="@+id/due" />
 
     <Spinner
         android:id="@+id/groupChoice"
@@ -117,10 +100,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:text="@string/group"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
+
+    <Button
+        android:id="@+id/timePicker"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:onClick="showTimePickerDialog"
+
+        android:text="@string/pickTime"
+        app:layout_constraintStart_toStartOf="@+id/due"
+        app:layout_constraintTop_toBottomOf="@+id/due" />
+
+    <Button
+        android:id="@+id/datePicker"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:onClick="showDatePickerDialog"
+        android:text="@string/pickDate"
+        app:layout_constraintEnd_toEndOf="@+id/enterTask"
+        app:layout_constraintTop_toTopOf="@+id/timePicker" />
+
+    <TextView
+        android:id="@+id/dueDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/datePicker"
+        app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+
+
         app:layout_constraintTop_toBottomOf="@+id/dueDate" />
 
     <TextView

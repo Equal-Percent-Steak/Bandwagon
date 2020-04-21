@@ -2,14 +2,17 @@ package com.equalpercentsteak.bandwagon;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +28,7 @@ public class CreateTask extends AppCompatActivity {
     FirebaseFirestore db;
     final String TAG = "CreateTask";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,8 @@ public class CreateTask extends AppCompatActivity {
         groupMenuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         groupMenu.setAdapter(groupMenuAdapter);
         initFirestore();
+
+
     }
 
     private void initFirestore(){
@@ -63,13 +69,13 @@ public class CreateTask extends AppCompatActivity {
 
     public void addTaskToFB(View v) {
         EditText taskName = findViewById(R.id.enterTask);
-        EditText dueDate = findViewById(R.id.dueDate);
+        //EditText dueDate = findViewById(R.id.datePicker);
         Spinner groupChoice = findViewById(R.id.groupChoice);
         EditText description = findViewById(R.id.enterDetails);
 
         Map<String, Object> task = new HashMap<>();
         task.put("task_name",taskName.getText().toString());
-        task.put("due_date",dueDate.getText().toString());
+        //task.put("due_date",dueDate.getText().toString());
         task.put("group",groupChoice.getSelectedItem().toString());
         task.put("description",description.getText().toString());
 
@@ -88,4 +94,14 @@ public class CreateTask extends AppCompatActivity {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
 }
