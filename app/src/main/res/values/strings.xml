@@ -54,6 +54,8 @@
     <string name="sign_out">Sign Out</string>
     <string name="createNew">Create New</string>
     <string name="taskWord">Task</string>
+    <string name="pickTime">Due Time: </string>
+    <string name="pickDate">Due Date: </string>
     <string name="taskName">Task Name: </string>
     <string name="taskNameHint">Please enter the name of the task</string>
     <string-array name="dropdownNames">
