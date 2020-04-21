@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.equalpercentsteak.bandwagon.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -31,7 +30,7 @@ public class CreateGroup extends AppCompatActivity {
     }
 
     public void performExitCreateNewGroup(View v){
-        Intent intent = new Intent(this,createNewTaskOrGroupMenu.class);
+        Intent intent = new Intent(this, CreateNewTaskOrGroupMenu.class);
         startActivity(intent);
     }
 }

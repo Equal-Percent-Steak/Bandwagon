@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class createNewTaskOrGroupMenu extends AppCompatActivity {
+public class CreateNewTaskOrGroupMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +15,7 @@ public class createNewTaskOrGroupMenu extends AppCompatActivity {
     }
 
     public void performCreateNewTask(View v){
-        Intent intent = new Intent(this,createTask.class);
+        Intent intent = new Intent(this, CreateTask.class);
         startActivity(intent);
     }
 
