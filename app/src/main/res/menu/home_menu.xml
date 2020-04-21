@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/homeMenu"
+        android:onClick="performReturnHome"
+        android:title="@string/title_home"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/settingsMenu"
+        android:onClick="performEnterSettings"
+        android:title="@string/settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sign_out_menu"
+        android:title="@string/sign_out"
+        app:showAsAction="never"/>
+
+
+    <item
+        android:id="@+id/createNewMenu"
+        android:title="@string/createNew"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/taskMenu"
+                android:onClick="performEnterNewTask"
+                android:title="@string/taskWord" />
+
+            <item
+                android:id="@+id/groupMenu"
+                android:onClick="performEnterNewGroup"
+                android:title="@string/group" />
+        </menu>
+    </item>
+
+</menu>

@@ -22,17 +22,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header" />
 
-    <ImageButton
-        android:id="@+id/closeGroupButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:onClick="performExitCreateNewGroup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_dialog" />
-
     <EditText
         android:id="@+id/groupDescription"
         android:layout_width="match_parent"
@@ -71,15 +60,14 @@
         android:id="@+id/doneGroupButton"
         android:layout_width="160dp"
         android:layout_height="70dp"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="50dp"
+        android:onClick="performReturnHome"
         android:text="@string/done"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/header"
@@ -91,6 +79,7 @@
         android:fontFamily="sans-serif-black"
         android:text="@string/createGroup"
         android:textAlignment="center"
+        android:textColor="#009688"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

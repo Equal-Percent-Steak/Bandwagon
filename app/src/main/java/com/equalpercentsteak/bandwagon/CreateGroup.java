@@ -33,4 +33,9 @@ public class CreateGroup extends AppCompatActivity {
         Intent intent = new Intent(this, CreateNewTaskOrGroupMenu.class);
         startActivity(intent);
     }
+
+    public void performReturnHome(View v) {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
 }

@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/groupChoice" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/doneButton"
         android:layout_width="160sp"
         android:layout_height="70sp"
         android:layout_marginBottom="50dp"
@@ -95,17 +95,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterDetails" />
 
-    <ImageButton
-        android:id="@+id/exitTaskButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="50dp"
-        android:onClick="performExitCreateNewTask"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_dialog" />
-
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -114,6 +103,7 @@
         android:fontFamily="sans-serif-black"
         android:text="@string/createTask"
         android:textAlignment="center"
+        android:textColor="#009688"
         app:autoSizeMaxTextSize="48sp"
         app:autoSizeMinTextSize="30sp"
         app:autoSizeStepGranularity="2sp"

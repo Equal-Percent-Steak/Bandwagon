@@ -74,10 +74,18 @@ public class CreateTask extends AppCompatActivity {
         task.put("description",description.getText().toString());
 
         db.collection("groups").add(task);
+
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 
     public void performExitCreateNewTask(View v){
         Intent intent = new Intent(this, CreateNewTaskOrGroupMenu.class);
+        startActivity(intent);
+    }
+
+    public void performReturnHome(View v) {
+        Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 }
