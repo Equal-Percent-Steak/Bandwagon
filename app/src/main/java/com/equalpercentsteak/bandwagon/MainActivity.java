@@ -80,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser userFB = firebaseAuth.getCurrentUser();
-                if (user != null){
+                if (userFB != null){
 //                    onSignedInInitialize(userFB.getDisplayName());
-                } else{
+                } else if (userFB == null){
                     //not signed in
-//                    onSignedOutCleanup();
+////                    onSignedOutCleanup();
                     List<AuthUI.IdpConfig> providers = Arrays.asList(
                             new AuthUI.IdpConfig.EmailBuilder().build());
                     startActivityForResult(
@@ -226,15 +226,21 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        super.onResume();
-        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
+       super.onResume();
+       mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
-    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
+//    }
 
     private void addUserToDB(FirebaseUser currentUser){
         String keyId = currentUser.getUid();
@@ -251,20 +257,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void performEnterSettings(MenuItem item){
         Intent intent = new Intent(this,AccountSettings.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         startActivity(intent);
     }
 
     public void performEnterNewTask(MenuItem item){
         Intent intent = new Intent(this,CreateTask.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         startActivity(intent);
     }
     public void performEnterNewGroup(MenuItem item){
         Intent intent = new Intent(this,CreateGroup.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         startActivity(intent);
     }
 
     public void performReturnHome(MenuItem item) {
         Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         startActivity(intent);
     }
 }
