@@ -119,12 +119,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart(){
-        super.onStart();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(myAdapter);
-    }
+//    @Override
+//    protected void onStart(){
+//        super.onStart();
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        mRecyclerView.setAdapter(myAdapter);
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
