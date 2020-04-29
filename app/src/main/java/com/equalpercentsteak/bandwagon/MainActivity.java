@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int RC_SIGN_IN = 1;
     public ArrayList<Assignment> assignments = new ArrayList<>();
     private DatabaseReference mDatabase;
-    private User user;
+    public static User user;
 
 
     @Override
@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser userFB = firebaseAuth.getCurrentUser();
                 if (userFB != null){
 //                    onSignedInInitialize(userFB.getDisplayName());
+                    user = new User(userFB.getEmail());
                 } else if (userFB == null){
                     //not signed in
 ////                    onSignedOutCleanup();

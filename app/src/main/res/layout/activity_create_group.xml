@@ -25,7 +25,7 @@
     <EditText
         android:id="@+id/groupDescription"
         android:layout_width="match_parent"
-        android:layout_height="100sp"
+        android:layout_height="200sp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="50dp"
@@ -35,33 +35,17 @@
         android:inputType="textPersonName"
         android:scrollbarStyle="insideInset"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/doneGroupButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/groupName" />
-
-    <EditText
-        android:id="@+id/groupMembers"
-        android:layout_width="match_parent"
-        android:layout_height="200sp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="50dp"
-        android:ems="10"
-        android:gravity="clip_vertical"
-        android:hint="@string/addMembers"
-        android:inputType="textPersonName"
-        android:scrollbarStyle="insideInset"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupDescription" />
 
     <Button
         android:id="@+id/doneGroupButton"
         android:layout_width="160dp"
         android:layout_height="70dp"
         android:layout_marginBottom="50dp"
-        android:onClick="performReturnHome"
+        android:onClick="onClick"
         android:text="@string/done"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

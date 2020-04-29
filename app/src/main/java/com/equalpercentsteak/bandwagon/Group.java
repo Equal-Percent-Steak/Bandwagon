@@ -8,8 +8,9 @@ public class Group {
     private ArrayList<Assignment> assignments;
     private String name;
 
-    public Group(String name){
+    public Group(String name, User user){
         users = new ArrayList<>();
+        users.add(user);
         assignments = new ArrayList<>();
     }
 

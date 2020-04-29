@@ -21,14 +21,10 @@ public class AddUser extends AppCompatActivity {
 
     public void onClick(View v){
         EditText usernameInput = (EditText) findViewById(R.id.username);
-        EditText firstName = (EditText) findViewById(R.id.firstName);
-        EditText lastName = (EditText) findViewById(R.id.lastName);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference users = database.getReference("users");
-//TODO:Check for duplicate users
+//TODO:Add members to the correct group
         users.child(usernameInput.getText().toString()).child("username").setValue(usernameInput.getText().toString());
-        users.child(usernameInput.getText().toString()).child("first_name").setValue(firstName.getText().toString());
-        users.child(usernameInput.getText().toString()).child("last_name").setValue(lastName.getText().toString());
     }
 }

@@ -29,10 +29,12 @@ public class CreateGroup extends MainActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference groups = database.getReference("groups");
 
-        group = new Group(groupName.getText().toString());
+        group = new Group(groupName.getText().toString(), MainActivity.user);
 
         groups.child(groupName.getText().toString()).child("group_name").setValue(groupName.getText().toString());
-        groups.child(groupName.getText().toString()).child("first_name").setValue(description.getText().toString());
+        groups.child(groupName.getText().toString()).child("description").setValue(description.getText().toString());
+        groups.child(groupName.getText().toString()).child("members").setValue(group.getUsers());
+        performReturnHome();
     }
 
     public void performExitCreateNewGroup(View v){
@@ -40,7 +42,7 @@ public class CreateGroup extends MainActivity {
         startActivity(intent);
     }
 
-    public void performReturnHome(View v) {
+    public void performReturnHome() {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }

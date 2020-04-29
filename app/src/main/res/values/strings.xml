@@ -75,6 +75,7 @@
     <string name="edit">Edit</string>
     <string name="pieDescription">An example Pie diagram</string>
     <string name="clockDescription">A clock with a random time</string>
+    <string name="addUser">Add User</string>
     <string-array name="dropdownNames">
         <item>Class One</item>
         <item>Class Two</item>
