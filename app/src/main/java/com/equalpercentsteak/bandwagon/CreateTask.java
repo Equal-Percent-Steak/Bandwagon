@@ -87,9 +87,8 @@ public class CreateTask extends MainActivity {
         a.setTitle(taskName.getText().toString());
         a.setDescription(description.getText().toString());
         a.setImg(R.drawable.ic_android_black_24dp);
-        assignments.add(a);
-
         int itemCount = myAdapter.getItemCount();
+        assignments.add(a);
         myAdapter.notifyItemInserted(itemCount);
 
         Intent intent = new Intent(this,MainActivity.class);
