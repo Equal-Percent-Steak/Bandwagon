@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     Context c;
     ArrayList<Assignment> assignments;
+
 
     public MyAdapter(Context c, ArrayList<Assignment> assignments) {
         this.c = c;
@@ -43,4 +45,5 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     public int getItemCount() {
         return assignments.size();
     }
+
 }
