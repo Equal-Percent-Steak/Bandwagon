@@ -12,6 +12,7 @@
     <string name="enterGroupName">Group Name: </string>
     <string name="createGroup">Create New Group</string>
     <string name="group">Group: </string>
+    <string name="groupText">Group </string>
     <string name="createTask">Create New Task</string>
     <string name="groupDescription">Description</string>
     <string name="addMembers">Invite By Username</string>
@@ -55,7 +56,9 @@
     <string name="createNew">Create New</string>
     <string name="taskWord">Task</string>
     <string name="pickTime">Due Time: </string>
+    <string name="enterPickTime">Please click to select Due Time </string>
     <string name="pickDate">Due Date: </string>
+    <string name="enterPickDate">Please click to select Due Date</string>
     <string name="taskName">Task Name: </string>
     <string name="taskNameHint">Please enter the name of the task</string>
     <string name="that_is_in">That is in</string>

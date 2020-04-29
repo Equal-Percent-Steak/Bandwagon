@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="50dp"
         android:autofillHints=""
         android:ems="10"
@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/due"
@@ -108,35 +108,28 @@
 
     <Button
         android:id="@+id/timePicker"
-        android:layout_width="130dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:onClick="showTimePickerDialog"
 
-        android:text="@string/pickTime"
+        android:text="@string/enterPickTime"
         app:layout_constraintStart_toStartOf="@+id/due"
         app:layout_constraintTop_toBottomOf="@+id/due" />
 
     <Button
         android:id="@+id/datePicker"
-        android:layout_width="130dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:onClick="showDatePickerDialog"
-        android:text="@string/pickDate"
+        android:text="@string/enterPickDate"
         app:layout_constraintEnd_toEndOf="@+id/enterTask"
-        app:layout_constraintTop_toTopOf="@+id/timePicker" />
-
-    <TextView
-        android:id="@+id/dueDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/datePicker"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+        app:layout_constraintTop_toTopOf="@+id/timePicker" /><![CDATA[
 
 
         app:layout_constraintTop_toBottomOf="@+id/dueDate" />
+
+    ]]>
 
     <TextView
         android:id="@+id/textView"

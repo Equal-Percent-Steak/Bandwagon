@@ -33,7 +33,7 @@
             <item
                 android:id="@+id/groupMenu"
                 android:onClick="performEnterNewGroup"
-                android:title="@string/group" />
+                android:title="@string/groupText" />
         </menu>
     </item>
 
