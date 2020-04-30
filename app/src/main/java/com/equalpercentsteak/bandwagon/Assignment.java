@@ -2,16 +2,28 @@ package com.equalpercentsteak.bandwagon;
 
 public class Assignment {
 
-    private String title, description, date, group;
-    private int img;
+    private String title, description, date;
+    private Group group;
 
+    public Assignment(){
 
+    }
+
+    public Assignment(String title, String description, String date, Group group){
+        this.title= title;
+        this.description = description;
+        this.date = date;
+        this.group = group;
+
+    }
     public String getDate() {
         return date;
     }
-    public String getGroup(){
+
+    public Group getGroup(){
         return group;
     }
+
     public String getTitle() {
         return title;
     }
@@ -28,19 +40,11 @@ public class Assignment {
         this.description = description;
     }
 
-    public int getImg() {
-        return img;
-    }
-
-    public void setImg(int imm) {
-        this.img = imm;
-    }
-
     public void setDate(String date){
         this.date = date;
     }
 
-    public void setGroup(String group){
+    public void setGroup(Group group){
         this.group = group;
     }
 }

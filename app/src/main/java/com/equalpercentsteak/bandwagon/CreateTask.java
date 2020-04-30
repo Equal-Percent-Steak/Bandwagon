@@ -43,10 +43,9 @@ public class CreateTask extends MainActivity {
                 R.array.dropdownNames));
         groupMenuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         groupMenu.setAdapter(groupMenuAdapter);
-        initFirestore();
-
-
+//        initFirestore();
     }
+
 
     private void initFirestore(){
         db = FirebaseFirestore.getInstance();
@@ -62,7 +61,7 @@ public class CreateTask extends MainActivity {
                         Log.d(TAG, "No such document");
                     }
                 } else {
-                    Log.d(TAG, "get failed with ", task.getException());
+                    Log.d(TAG, "Get failed with ", task.getException());
                 }
             }
         });
@@ -75,18 +74,18 @@ public class CreateTask extends MainActivity {
         Spinner groupChoice = findViewById(R.id.groupChoice);
         EditText description = findViewById(R.id.enterDetails);
 
-        Map<String, Object> task = new HashMap<>();
-        task.put("task_name",taskName.getText().toString());
-        //task.put("due_date",dueDate.getText().toString());
-        task.put("group",groupChoice.getSelectedItem().toString());
-        task.put("description",description.getText().toString());
+//        Map<String, Object> task = new HashMap<>();
+//        task.put("task_name",taskName.getText().toString());
+//        //task.put("due_date",dueDate.getText().toString());
+//        task.put("group",groupChoice.getSelectedItem().toString());
+//        task.put("description",description.getText().toString());
 
-        db.collection("groups").add(task);
+//        db.collection("groups").add(task);
 
         Assignment a = new Assignment();
         a.setTitle(taskName.getText().toString());
         a.setDescription(description.getText().toString());
-        a.setImg(R.drawable.ic_android_black_24dp);
+//        a.setImg(R.drawable.ic_android_black_24dp);
         int itemCount = myAdapter.getItemCount();
         assignments.add(a);
         myAdapter.notifyItemInserted(itemCount);

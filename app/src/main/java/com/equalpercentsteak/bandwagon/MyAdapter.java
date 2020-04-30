@@ -37,8 +37,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
         myHolder.mTitle.setText(assignments.get(i).getTitle());
         myHolder.mDes.setText(assignments.get(i).getDescription());
-        myHolder.mImageView.setImageResource(assignments.get(i).getImg());
-
     }
 
     @Override

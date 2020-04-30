@@ -1,5 +1,8 @@
 package com.equalpercentsteak.bandwagon;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class Group {
@@ -9,6 +12,7 @@ public class Group {
     private String name;
 
     public Group(String name, User user){
+        this.name = name;
         users = new ArrayList<>();
         users.add(user);
         assignments = new ArrayList<>();
@@ -29,5 +33,17 @@ public class Group {
 
     public ArrayList<Assignment> getAssignments(){
         return assignments;
+    }
+
+    public void updateAssignments(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference groups = database.getReference("groups").child(name);
+        groups.child("assignments").setValue(getAssignments());
+    }
+
+    public void updateUsers(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference groups = database.getReference("groups").child(name);
+        groups.child("members").setValue(getUsers());
     }
 }

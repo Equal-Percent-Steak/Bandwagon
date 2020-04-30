@@ -29,7 +29,7 @@ public class CreateGroup extends MainActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference groups = database.getReference("groups");
 
-        group = new Group(groupName.getText().toString(), MainActivity.user);
+        group = new Group(groupName.getText().toString(), MainActivity.getUser());
 
         groups.child(groupName.getText().toString()).child("group_name").setValue(groupName.getText().toString());
         groups.child(groupName.getText().toString()).child("description").setValue(description.getText().toString());

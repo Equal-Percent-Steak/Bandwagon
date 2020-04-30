@@ -23,23 +23,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/due"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/due"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterTask" />
-
     <Spinner
         android:id="@+id/groupChoice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -51,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:autofillHints=""
         android:ems="10"
@@ -68,7 +57,7 @@
         android:id="@+id/doneButton"
         android:layout_width="160sp"
         android:layout_height="70sp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:onClick="addTaskToFB"
         android:text="@string/done"
         android:textSize="24sp"
@@ -82,7 +71,7 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/createTask"
         android:textAlignment="center"
@@ -100,22 +89,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="15dp"
         android:text="@string/group"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
+        app:layout_constraintTop_toBottomOf="@+id/datePicker" /><![CDATA[
+
+
+
+
+
+
+        app:layout_constraintTop_toBottomOf="@+id/dueDate" />
+
+
+
+
+
+    ]]>
 
     <Button
         android:id="@+id/timePicker"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:onClick="showTimePickerDialog"
 
         android:text="@string/enterPickTime"
-        app:layout_constraintStart_toStartOf="@+id/due"
-        app:layout_constraintTop_toBottomOf="@+id/due" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterTask" />
 
     <Button
         android:id="@+id/datePicker"
@@ -123,13 +124,9 @@
         android:layout_height="wrap_content"
         android:onClick="showDatePickerDialog"
         android:text="@string/enterPickDate"
-        app:layout_constraintEnd_toEndOf="@+id/enterTask"
-        app:layout_constraintTop_toTopOf="@+id/timePicker" /><![CDATA[
-
-
-        app:layout_constraintTop_toBottomOf="@+id/dueDate" />
-
-    ]]>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
 
     <TextView
         android:id="@+id/textView"

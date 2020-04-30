@@ -56,11 +56,11 @@
     <string name="createNew">Create New</string>
     <string name="taskWord">Task</string>
     <string name="pickTime">Due Time: </string>
-    <string name="enterPickTime">Please click to select Due Time </string>
+    <string name="enterPickTime">Select Due Time </string>
     <string name="pickDate">Due Date: </string>
-    <string name="enterPickDate">Please click to select Due Date</string>
+    <string name="enterPickDate">Select Due Date</string>
     <string name="taskName">Task Name: </string>
-    <string name="taskNameHint">Please enter the name of the task</string>
+    <string name="taskNameHint">Name of Task</string>
     <string name="that_is_in">That is in</string>
     <string name="exampleNumber">xx</string>
     <string name="taskname">Task Name</string>

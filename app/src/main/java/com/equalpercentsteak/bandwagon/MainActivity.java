@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int RC_SIGN_IN = 1;
     public ArrayList<Assignment> assignments = new ArrayList<>();
     private DatabaseReference mDatabase;
-    public static User user;
+    private static User user;
 
 
 
@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
         Assignment m = new Assignment();
         m.setTitle("News Feed");
         m.setDescription("This is a newsfeed Description");
-        m.setImg(R.drawable.ic_android_black_24dp);
+//        m.setImg(R.drawable.ic_android_black_24dp);
         assignments.add(m);
 
 //        Assignment s = new Assignment();
@@ -211,25 +211,25 @@ public class MainActivity extends AppCompatActivity {
         Assignment t = new Assignment();
         t.setTitle("ASSIGNMENT TITLE");
         t.setDescription("This is a description (Add Date here?)");
-        t.setImg(R.drawable.ic_android_black_24dp);
+//        t.setImg(R.drawable.ic_android_black_24dp);
         assignments.add(t);
 
         Assignment q = new Assignment();
         q.setTitle("Another Example Title");
         q.setDescription("This is another Description");
-        q.setImg(R.drawable.ic_android_black_24dp);
+//        q.setImg(R.drawable.ic_android_black_24dp);
         assignments.add(q);
 
         Assignment a = new Assignment();
         a.setTitle("Another Example Title");
         a.setDescription("This is another Description");
-        a.setImg(R.drawable.ic_android_black_24dp);
+//        a.setImg(R.drawable.ic_android_black_24dp);
         assignments.add(a);
 
         Assignment b = new Assignment();
         b.setTitle("Another Example Title");
         b.setDescription("This is another Description");
-        b.setImg(R.drawable.ic_android_black_24dp);
+//        b.setImg(R.drawable.ic_android_black_24dp);
         assignments.add(b);
 
         return assignments;
@@ -291,6 +291,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public static User getUser(){
+        return user;
+    }
 
 }
 
