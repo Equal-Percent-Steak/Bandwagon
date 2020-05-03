@@ -44,4 +44,5 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         return assignments.size();
     }
 
+
 }
