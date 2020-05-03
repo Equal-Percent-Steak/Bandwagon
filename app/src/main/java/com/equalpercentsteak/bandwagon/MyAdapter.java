@@ -15,11 +15,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     Context c;
     ArrayList<Assignment> assignments;
+    private MyHolder.OnAssignmentListener onAssignmentListener;
 
 
-    public MyAdapter(Context c, ArrayList<Assignment> assignments) {
+    public MyAdapter(Context c, ArrayList<Assignment> assignments, MyHolder.OnAssignmentListener onAssignmentListener) {
         this.c = c;
         this.assignments = assignments;
+        this.onAssignmentListener=onAssignmentListener;
+    }
+
+    public MyAdapter(ArrayList<Assignment> assignments) {
+        this.assignments=assignments;
     }
 
     @NonNull
@@ -29,7 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row, null);
 
 
-        return new MyHolder(view);
+        return new MyHolder(view, onAssignmentListener);
     }
 
     @Override
@@ -43,6 +49,5 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     public int getItemCount() {
         return assignments.size();
     }
-
 
 }

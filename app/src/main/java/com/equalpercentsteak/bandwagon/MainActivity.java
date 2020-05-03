@@ -31,7 +31,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyHolder.OnAssignmentListener {
     private static final String TAG = "MainActivity";
 
     private FirebaseFirestore db;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        myAdapter = new MyAdapter(this, getMyList());
+        myAdapter = new MyAdapter(this, getMyList(), this);
         mRecyclerView.setAdapter(myAdapter);
 
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
@@ -295,6 +295,15 @@ public class MainActivity extends AppCompatActivity {
         return user;
     }
 
+    @Override
+    public void onAssignmentClick(int position) {
+        Log.d(TAG, "onAssignmentClick: clicked" + position);
+
+        Intent intent = new Intent(this, AssignmentDetailsActivity.class);
+        intent.putExtra("assignment", assignments.get(position).getTitle());
+        intent.putExtra("details", assignments.get(position).getDescription());
+        startActivity(intent);
+    }
 }
 
 

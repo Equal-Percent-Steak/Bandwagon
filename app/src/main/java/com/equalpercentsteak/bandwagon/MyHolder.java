@@ -11,22 +11,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.snackbar.Snackbar;
 
 
-public class MyHolder extends RecyclerView.ViewHolder {
+public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     ImageView mImageView;
     TextView mTitle, mDes;
+    OnAssignmentListener onAssignmentListener;
 
-    public MyHolder(@NonNull View itemView) {
+    public MyHolder(@NonNull View itemView, OnAssignmentListener onAssignmentListener) {
         super(itemView);
 
         this.mTitle = itemView.findViewById(R.id.titleTv);
         this.mDes = itemView.findViewById(R.id.descriptionTv);
+        this.onAssignmentListener=onAssignmentListener;
 
-        itemView.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v){
-            int position = getAdapterPosition();
-            Snackbar.make(v, "Click detected on item " + position, Snackbar.LENGTH_LONG).setAction("Action", null).show();
-            v.getContext().startActivity(new Intent(v.getContext(), AssignmentDetailsActivity.class));
-        }
-        });
+        itemView.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        onAssignmentListener.onAssignmentClick((getAdapterPosition()));
+    }
+
+    public interface OnAssignmentListener{
+        void onAssignmentClick(int position);
     }
 }
