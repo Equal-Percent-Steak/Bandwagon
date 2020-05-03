@@ -6,12 +6,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     private FirebaseAuth.AuthStateListener mFirebaseAuthListener;
     private String mUsername;
     public static final int RC_SIGN_IN = 1;
-    public ArrayList<Assignment> assignments = new ArrayList<>();
+    public ArrayList<Assignment> assignmentsList = new ArrayList<>();
     private DatabaseReference mDatabase;
     private static User user;
 
@@ -200,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         m.setTitle("News Feed");
         m.setDescription("This is a newsfeed Description");
 //        m.setImg(R.drawable.ic_android_black_24dp);
-        assignments.add(m);
+        assignmentsList.add(m);
 
 //        Assignment s = new Assignment();
 //        s.setTitle("Food");
@@ -212,27 +210,27 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         t.setTitle("ASSIGNMENT TITLE");
         t.setDescription("This is a description (Add Date here?)");
 //        t.setImg(R.drawable.ic_android_black_24dp);
-        assignments.add(t);
+        assignmentsList.add(t);
 
         Assignment q = new Assignment();
         q.setTitle("Another Example Title");
         q.setDescription("This is another Description");
 //        q.setImg(R.drawable.ic_android_black_24dp);
-        assignments.add(q);
+        assignmentsList.add(q);
 
         Assignment a = new Assignment();
         a.setTitle("Another Example Title");
         a.setDescription("This is another Description");
 //        a.setImg(R.drawable.ic_android_black_24dp);
-        assignments.add(a);
+        assignmentsList.add(a);
 
         Assignment b = new Assignment();
         b.setTitle("Another Example Title");
         b.setDescription("This is another Description");
 //        b.setImg(R.drawable.ic_android_black_24dp);
-        assignments.add(b);
+        assignmentsList.add(b);
 
-        return assignments;
+        return assignmentsList;
 
     }
 
@@ -300,8 +298,8 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         Log.d(TAG, "onAssignmentClick: clicked" + position);
 
         Intent intent = new Intent(this, AssignmentDetailsActivity.class);
-        intent.putExtra("assignment", assignments.get(position).getTitle());
-        intent.putExtra("details", assignments.get(position).getDescription());
+        intent.putExtra("assignment", assignmentsList.get(position).getTitle());
+        intent.putExtra("details", assignmentsList.get(position).getDescription());
         startActivity(intent);
     }
 }

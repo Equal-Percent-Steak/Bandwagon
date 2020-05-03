@@ -33,7 +33,10 @@ public class CreateGroup extends MainActivity {
 
         groups.child(groupName.getText().toString()).child("group_name").setValue(groupName.getText().toString());
         groups.child(groupName.getText().toString()).child("description").setValue(description.getText().toString());
-        groups.child(groupName.getText().toString()).child("members").setValue(group.getUsers());
+        for (User u : group.getUsers()){
+            groups.child(groupName.getText().toString()).child("members").child(u.getUsername()).setValue(u);
+        }
+        groups.child(groupName.getText().toString()).child("assignments").setValue(group.getAssignments());
         performReturnHome();
     }
 
