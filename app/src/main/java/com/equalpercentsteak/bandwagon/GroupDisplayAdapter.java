@@ -23,25 +23,26 @@ public class GroupDisplayAdapter extends
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.groupdisplay, parent, false);
+        View itemView = inflater.inflate(R.layout.groupdisplay, parent, false);
 
         // Return a new holder instance
-
-//        ViewHolder viewHolder = new ViewHolder(itemView);
-//        return viewHolder;
-        //remove when fixed:
-        return null;
+        ViewHolder viewHolder = new ViewHolder(itemView);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //To-do
+    public void onBindViewHolder(GroupDisplayAdapter.ViewHolder viewHolder, int position) {
+        // Get the data model based on position
+        Group group = mGroups.get(position);
+
+        // Set item views based on your views and data model
+        TextView textView = viewHolder.groupNameTextView;
+        textView.setText(group.getName());
     }
 
     @Override
     public int getItemCount() {
-        //To-do
-        return 0;
+        return mGroups.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
