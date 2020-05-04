@@ -1,8 +1,6 @@
 package com.equalpercentsteak.bandwagon;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -10,26 +8,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 public class CreateTask extends MainActivity {
 
@@ -39,6 +35,8 @@ public class CreateTask extends MainActivity {
     private TimePickerDialog timePicker;
     private EditText dateButton;
     private EditText timeButton;
+    private String time;
+    private String date;
 
 
     @Override
@@ -54,7 +52,8 @@ public class CreateTask extends MainActivity {
         groupMenuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         groupMenu.setAdapter(groupMenuAdapter);
         initFirestore();
-
+        final String[] dateArr = new String[1];
+        final String[] timeArr = new String[1];
         dateButton = findViewById(R.id.datePicker);
         dateButton.setInputType(InputType.TYPE_NULL);
         dateButton.setOnClickListener(new View.OnClickListener() {
@@ -69,11 +68,14 @@ public class CreateTask extends MainActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         dateButton.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+
                     }
                 }, year, month, day);
                 datePicker.show();
+                dateArr[0] ="" + day + month + year;
             }
         });
+        date = dateArr[0];
 //        initFirestore();
         timeButton = findViewById(R.id.timePicker);
         timeButton.setInputType(InputType.TYPE_NULL);
@@ -92,9 +94,10 @@ public class CreateTask extends MainActivity {
                             }
                         }, hour, minutes, true);
                 timePicker.show();
+                timeArr[0] = "" + hour + minutes;
             }
         });
-
+        time = timeArr[0];
     }
 
 
@@ -126,21 +129,17 @@ public class CreateTask extends MainActivity {
         Spinner groupChoice = findViewById(R.id.groupChoice);
         EditText description = findViewById(R.id.enterDetails);
 
-//        Map<String, Object> task = new HashMap<>();
-//        task.put("task_name",taskName.getText().toString());
-//        //task.put("due_date",dueDate.getText().toString());
-//        task.put("group",groupChoice.getSelectedItem().toString());
-//        task.put("description",description.getText().toString());
-
-//        db.collection("groups").add(task);
 
         Assignment a = new Assignment();
         a.setTitle(taskName.getText().toString());
         a.setDescription(description.getText().toString());
 //        a.setImg(R.drawable.ic_android_black_24dp);
         int itemCount = myAdapter.getItemCount();
-        assignments.add(a);
         myAdapter.notifyItemInserted(itemCount);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference groups = database.getReference("groups");
+        groups.child(groupChoice.getSelectedItem().toString()).child("assignments").child(taskName.getText().toString()).setValue(a);
 
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);

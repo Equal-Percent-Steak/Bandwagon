@@ -1,9 +1,15 @@
 package com.equalpercentsteak.bandwagon;
 
+import java.util.ArrayList;
+
 public class Assignment {
 
     private String title, description, date;
     private Group group;
+    private ArrayList<User> completedStudents;
+    private int completedStudentsCount;
+    private int totalStudentsCount;
+
 
     public Assignment(){
 
@@ -13,9 +19,14 @@ public class Assignment {
         this.title= title;
         this.description = description;
         this.date = date;
-        this.group = group;
-
+        completedStudents = new ArrayList<>();
+        completedStudentsCount = 0;
     }
+
+    public void setTotalStudentsCount(int totalStudentsCount){
+        this.totalStudentsCount = totalStudentsCount;
+    }
+
     public String getDate() {
         return date;
     }
@@ -46,5 +57,17 @@ public class Assignment {
 
     public void setGroup(Group group){
         this.group = group;
+    }
+
+    public ArrayList<User> getCompletedStudents() {
+        return completedStudents;
+    }
+
+    public void addCompletedStudents(User student){
+        completedStudents.add(student);
+    }
+
+    public void setCompletedStudents(ArrayList<User> completedStudents) {
+        this.completedStudents = completedStudents;
     }
 }

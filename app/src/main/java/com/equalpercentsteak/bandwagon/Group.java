@@ -11,6 +11,12 @@ public class Group {
     private ArrayList<Assignment> assignments;
     private String name;
 
+    public Group(){
+        this.name = "";
+        users = new ArrayList<>();
+        assignments = new ArrayList<>();
+    }
+
     public Group(String name, User user){
         this.name = name;
         users = new ArrayList<>();
