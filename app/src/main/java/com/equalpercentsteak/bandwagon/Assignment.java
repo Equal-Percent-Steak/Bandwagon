@@ -28,6 +28,11 @@ public class Assignment {
         completedStudentsCount = 0;
     }
 
+    public Assignment(String title, String description){
+        this.title= title;
+        this.description = description;
+    }
+
     public void setTotalStudentsCount(int totalStudentsCount){
         this.totalStudentsCount = totalStudentsCount;
     }
@@ -82,5 +87,13 @@ public class Assignment {
 
     public void setTime(String time){
         this.time = time;
+    }
+
+    public static ArrayList<Assignment> createAssignmentList() {
+        ArrayList<Assignment> assignments = new ArrayList<Assignment>();
+        assignments.add(new Assignment("Exeter page 58", "Questions 1-9"));
+        assignments.add(new Assignment("PCMI", "Day 3 #1-30"));
+        assignments.add(new Assignment("Polynomials", "#1-8"));
+        return assignments;
     }
 }
