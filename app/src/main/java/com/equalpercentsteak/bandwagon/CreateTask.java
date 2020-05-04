@@ -37,6 +37,8 @@ public class CreateTask extends MainActivity {
     private EditText timeButton;
     private String time;
     private String date;
+    final String[] dateArr = new String[1];
+    final String[] timeArr = new String[1];
 
 
     @Override
@@ -51,9 +53,6 @@ public class CreateTask extends MainActivity {
                 R.array.dropdownNames));
         groupMenuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         groupMenu.setAdapter(groupMenuAdapter);
-        initFirestore();
-        final String[] dateArr = new String[1];
-        final String[] timeArr = new String[1];
         dateButton = findViewById(R.id.datePicker);
         dateButton.setInputType(InputType.TYPE_NULL);
         dateButton.setOnClickListener(new View.OnClickListener() {
@@ -66,17 +65,31 @@ public class CreateTask extends MainActivity {
 
                 datePicker = new DatePickerDialog(CreateTask.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        dateButton.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                    public void onDateSet(DatePicker view, int yr, int monthOfYear, int dayOfMonth) {
+                        String day = dayOfMonth + "";
+                        String month = monthOfYear + 1 + "";
+                        String year = yr + "";
 
+                        if (day.length() == 1){
+                            day = "0" + day;
+                        }
+
+                        if (month.length() == 1){
+                            month = "0" + month;
+                        }
+
+                        if (year.length() == 3){
+                            year = "0" + year;
+                        }
+                        dateArr[0] = "" + year + month + day;
+                        dateButton.setText(year + "/" + month + "/" + day);
                     }
                 }, year, month, day);
                 datePicker.show();
-                dateArr[0] ="" + day + month + year;
             }
         });
-        date = dateArr[0];
-//        initFirestore();
+
+
         timeButton = findViewById(R.id.timePicker);
         timeButton.setInputType(InputType.TYPE_NULL);
         timeButton.setOnClickListener(new View.OnClickListener() {
@@ -90,34 +103,20 @@ public class CreateTask extends MainActivity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                timeButton.setText(sHour + ":" + sMinute);
+                                String hour = sHour + "";
+                                String minute = sMinute + "";
+                                if (hour.length() == 1){
+                                    hour = "0" + hour;
+                                }
+
+                                if (minute.length() == 1){
+                                    minute = "0" + minute;
+                                }
+                                timeArr[0] = "" + hour + minute;
+                                timeButton.setText(hour + ":" + minute);
                             }
                         }, hour, minutes, true);
                 timePicker.show();
-                timeArr[0] = "" + hour + minutes;
-            }
-        });
-        time = timeArr[0];
-    }
-
-
-
-    private void initFirestore(){
-        db = FirebaseFirestore.getInstance();
-        DocumentReference dr = db.collection("groups").document("0KouSLYueZjr8L5lzyaA");
-        dr.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "Get failed with ", task.getException());
-                }
             }
         });
 
@@ -129,11 +128,15 @@ public class CreateTask extends MainActivity {
         Spinner groupChoice = findViewById(R.id.groupChoice);
         EditText description = findViewById(R.id.enterDetails);
 
+        date = dateArr[0];
+        time = timeArr[0];
 
         Assignment a = new Assignment();
         a.setTitle(taskName.getText().toString());
         a.setDescription(description.getText().toString());
-//        a.setImg(R.drawable.ic_android_black_24dp);
+        a.setDate(date);
+        a.setTime(time);
+
         int itemCount = myAdapter.getItemCount();
         myAdapter.notifyItemInserted(itemCount);
 

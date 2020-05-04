@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     MyAdapter myAdapter;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mFirebaseAuthListener;
-    private String mUsername;
+//    private String mUsername;
     public static final int RC_SIGN_IN = 1;
     public ArrayList<Assignment> assignmentsList = new ArrayList<>();
     private DatabaseReference mDatabase;
@@ -197,37 +197,26 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         Assignment m = new Assignment();
         m.setTitle("News Feed");
         m.setDescription("This is a newsfeed Description");
-//        m.setImg(R.drawable.ic_android_black_24dp);
         assignmentsList.add(m);
-
-//        Assignment s = new Assignment();
-//        s.setTitle("Food");
-//        s.setDescription("This is a different Description");
-//        s.setImg(R.drawable.ic_android_black_24dp);
-//        assignments.add(s);
 
         Assignment t = new Assignment();
         t.setTitle("ASSIGNMENT TITLE");
         t.setDescription("This is a description (Add Date here?)");
-//        t.setImg(R.drawable.ic_android_black_24dp);
         assignmentsList.add(t);
 
         Assignment q = new Assignment();
         q.setTitle("Another Example Title");
         q.setDescription("This is another Description");
-//        q.setImg(R.drawable.ic_android_black_24dp);
         assignmentsList.add(q);
 
         Assignment a = new Assignment();
         a.setTitle("Another Example Title");
         a.setDescription("This is another Description");
-//        a.setImg(R.drawable.ic_android_black_24dp);
         assignmentsList.add(a);
 
         Assignment b = new Assignment();
         b.setTitle("Another Example Title");
         b.setDescription("This is another Description");
-//        b.setImg(R.drawable.ic_android_black_24dp);
         assignmentsList.add(b);
 
         return assignmentsList;
@@ -240,31 +229,11 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
        super.onResume();
        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
     }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
-//    }
 
     private void addUserToDB(FirebaseUser currentUser){
         String keyId = currentUser.getUid();
         mDatabase.child(keyId).setValue(user);
     }
-
-//    private void onSignedInInitialize(String username){
-//        mUsername = username;
-//    }
-
-//    private void onSignedOutCleanup(){
-//        mUsername = "";
-//    }
 
     public void performEnterSettings(MenuItem item){
         Intent intent = new Intent(this,AccountSettings.class);

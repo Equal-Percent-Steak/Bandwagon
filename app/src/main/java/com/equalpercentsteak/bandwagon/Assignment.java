@@ -4,7 +4,12 @@ import java.util.ArrayList;
 
 public class Assignment {
 
-    private String title, description, date;
+    private String title;
+    private String description;
+    private String date;
+
+
+    private String time;
     private Group group;
     private ArrayList<User> completedStudents;
     private int completedStudentsCount;
@@ -69,5 +74,13 @@ public class Assignment {
 
     public void setCompletedStudents(ArrayList<User> completedStudents) {
         this.completedStudents = completedStudents;
+    }
+
+    public String getTime(){
+        return time;
+    }
+
+    public void setTime(String time){
+        this.time = time;
     }
 }
