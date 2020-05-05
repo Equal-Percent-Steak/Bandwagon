@@ -36,16 +36,16 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".GroupDisplayScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".ClassMembers">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name=".CreateTask" />
         <activity android:name=".CreateGroup" />
-        <activity android:name=".ClassMembers" />
+        <activity android:name=".GroupDisplayScreen" />
         <activity android:name=".CreateNewTaskOrGroupMenu" />
         <activity android:name=".ChangePassword" />
         <activity android:name=".AccountSettings" />

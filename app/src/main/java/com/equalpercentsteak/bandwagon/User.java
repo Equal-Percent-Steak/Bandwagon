@@ -37,4 +37,12 @@ public class User {
     public void display(){
         System.out.println(username);
     }
+
+    public static ArrayList<User> createUserList() {
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(new User("kayla"));
+        users.add(new User("andrew"));
+        users.add(new User("hazelyn"));
+        return users;
+    }
 }

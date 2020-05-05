@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     private FirebaseAuth.AuthStateListener mFirebaseAuthListener;
 //    private String mUsername;
     public static final int RC_SIGN_IN = 1;
-    public ArrayList<Assignment> assignmentsList = new ArrayList<>();
     private DatabaseReference mDatabase;
     private static User user;
+    public ArrayList<Assignment> assignments = Assignment.getMyList();
 
 
 
@@ -71,8 +71,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        myAdapter = new MyAdapter(this, getMyList(), this);
+        myAdapter = new MyAdapter(this, assignments, this);
         mRecyclerView.setAdapter(myAdapter);
 
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
@@ -192,36 +191,6 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
 //                return super.onOptionsItemSelected(item);
 //        }
 //    }
-    public ArrayList<Assignment> getMyList(){
-
-        Assignment m = new Assignment();
-        m.setTitle("News Feed");
-        m.setDescription("This is a newsfeed Description");
-        assignmentsList.add(m);
-
-        Assignment t = new Assignment();
-        t.setTitle("ASSIGNMENT TITLE");
-        t.setDescription("This is a description (Add Date here?)");
-        assignmentsList.add(t);
-
-        Assignment q = new Assignment();
-        q.setTitle("Another Example Title");
-        q.setDescription("This is another Description");
-        assignmentsList.add(q);
-
-        Assignment a = new Assignment();
-        a.setTitle("Another Example Title");
-        a.setDescription("This is another Description");
-        assignmentsList.add(a);
-
-        Assignment b = new Assignment();
-        b.setTitle("Another Example Title");
-        b.setDescription("This is another Description");
-        assignmentsList.add(b);
-
-        return assignmentsList;
-
-    }
 
 
     @Override
@@ -267,8 +236,8 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         Log.d(TAG, "onAssignmentClick: clicked" + position);
 
         Intent intent = new Intent(this, AssignmentDetailsActivity.class);
-        intent.putExtra("assignment", assignmentsList.get(position).getTitle());
-        intent.putExtra("details", assignmentsList.get(position).getDescription());
+        intent.putExtra("assignment", assignments.get(position).getTitle());
+        intent.putExtra("details", assignments.get(position).getDescription());
         startActivity(intent);
     }
 }

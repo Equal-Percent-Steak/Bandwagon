@@ -20,7 +20,7 @@ public class GroupDisplayScreen extends AppCompatActivity {
         RecyclerView rvGroups = (RecyclerView) findViewById(R.id.rvGroups);
 
         // Initialize contacts
-       groups = Group.createGroupsList();
+        groups = Group.createGroupsList();
         // Create adapter passing in the sample user data
         GroupDisplayAdapter adapter = new GroupDisplayAdapter(groups);
         // Attach the adapter to the recyclerview to populate items

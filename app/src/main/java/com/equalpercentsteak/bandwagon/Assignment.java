@@ -96,4 +96,36 @@ public class Assignment {
         assignments.add(new Assignment("Polynomials", "#1-8"));
         return assignments;
     }
+
+    public static ArrayList<Assignment> getMyList(){
+
+        ArrayList<Assignment> assignmentsList = new ArrayList<>();
+        Assignment m = new Assignment();
+        m.setTitle("News Feed");
+        m.setDescription("This is a newsfeed Description");
+        assignmentsList.add(m);
+
+        Assignment t = new Assignment();
+        t.setTitle("ASSIGNMENT TITLE");
+        t.setDescription("This is a description (Add Date here?)");
+        assignmentsList.add(t);
+
+        Assignment q = new Assignment();
+        q.setTitle("Another Example Title");
+        q.setDescription("This is another Description");
+        assignmentsList.add(q);
+
+        Assignment a = new Assignment();
+        a.setTitle("Another Example Title");
+        a.setDescription("This is another Description");
+        assignmentsList.add(a);
+
+        Assignment b = new Assignment();
+        b.setTitle("Another Example Title");
+        b.setDescription("This is another Description");
+        assignmentsList.add(b);
+
+        return assignmentsList;
+
+    }
 }

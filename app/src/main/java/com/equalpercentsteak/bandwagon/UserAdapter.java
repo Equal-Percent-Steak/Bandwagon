@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class GroupDisplayAdapter extends
-        RecyclerView.Adapter<GroupDisplayAdapter.ViewHolder> {
+public class UserAdapter extends
+        RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @NonNull
     @Override
@@ -21,7 +21,7 @@ public class GroupDisplayAdapter extends
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View itemView = inflater.inflate(R.layout.groupdisplay, parent, false);
+        View itemView = inflater.inflate(R.layout.userdisplay, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(itemView);
@@ -29,33 +29,33 @@ public class GroupDisplayAdapter extends
     }
 
     @Override
-    public void onBindViewHolder(GroupDisplayAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(UserAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        Group group = mGroups.get(position);
+        User user = mUsers.get(position);
 
         // Set item views based on your views and data model
-        TextView textView = viewHolder.groupNameTextView;
-        textView.setText(group.getName());
+        TextView textView = viewHolder.UserTextView;
+        textView.setText(user.getUsername());
     }
 
     @Override
     public int getItemCount() {
-        return mGroups.size();
+        return mUsers.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView groupNameTextView;
+        public TextView UserTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            groupNameTextView = (TextView) itemView.findViewById(R.id.group_name);
+            UserTextView = (TextView)itemView.findViewById(R.id.user_name);
         }
     }
 
-    private List<Group> mGroups;
+    private List<User> mUsers;
 
-    public GroupDisplayAdapter(List<Group> groups){
-        mGroups = groups;
+    public UserAdapter(List<User> users){
+        mUsers = users;
     }
 
 }
