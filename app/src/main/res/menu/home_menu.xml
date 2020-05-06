@@ -16,16 +16,15 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/sign_out_menu"
-        android:title="@string/sign_out"
-        app:showAsAction="never"/>
-
-    <item
         android:id="@+id/groups_menu"
         android:onClick="performEnterGroups"
         android:title="@string/groups"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/sign_out_menu"
+        android:title="@string/sign_out"
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/createNewMenu"
@@ -41,6 +40,11 @@
                 android:id="@+id/groupMenu"
                 android:onClick="performEnterNewGroup"
                 android:title="@string/groupText" />
+
+            <item
+                android:id="@+id/userMenu"
+                android:onClick="performEnterNewUser"
+                android:title="@string/user" />
         </menu>
     </item>
 
