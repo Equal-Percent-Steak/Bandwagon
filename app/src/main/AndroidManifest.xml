@@ -45,19 +45,17 @@
         </activity>
         <activity android:name=".CreateTask" />
         <activity android:name=".CreateGroup" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".CreateNewTaskOrGroupMenu" />
         <activity android:name=".ChangePassword" />
         <activity android:name=".AccountSettings" />
-        <activity android:name=".ClassSettings" /> <!-- <activity -->
-        <!-- android:name=".MainActivity" -->
-        <!-- android:label="@string/app_name" -->
-        <!-- tools:ignore="DuplicateActivity"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
-        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
+        <activity android:name=".ClassSettings" />
         <activity android:name=".AssignmentDetailsActivity" /> <!-- <activity -->
         <!-- android:name=".MainActivity" -->
         <!-- android:label="@string/app_name" -->

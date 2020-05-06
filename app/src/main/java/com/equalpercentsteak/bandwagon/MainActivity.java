@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     private DatabaseReference mDatabase;
     private static User user;
     public ArrayList<Assignment> assignments = Assignment.getMyList();
+    public static String keyId;
 
 
 
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                 if (userFB != null){
 //                    onSignedInInitialize(userFB.getDisplayName());
                     user = new User(userFB.getEmail());
+                    keyId = userFB.getUid();
                 } else if (userFB == null){
                     //not signed in
 ////                    onSignedOutCleanup();
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                                     .build(),
                             RC_SIGN_IN);
                     user = new User(userFB.getEmail());
+                    keyId = userFB.getUid();
                     addUserToDB(userFB);
                 }
             }
@@ -200,7 +203,6 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     }
 
     private void addUserToDB(FirebaseUser currentUser){
-        String keyId = currentUser.getUid();
         mDatabase.child(keyId).setValue(user);
     }
 

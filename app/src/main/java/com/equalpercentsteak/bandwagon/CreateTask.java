@@ -142,6 +142,7 @@ public class CreateTask extends MainActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference groups = database.getReference("groups");
+
         groups.child(groupChoice.getSelectedItem().toString()).child("assignments").child(taskName.getText().toString()).setValue(a);
 
         Intent intent = new Intent(this,MainActivity.class);

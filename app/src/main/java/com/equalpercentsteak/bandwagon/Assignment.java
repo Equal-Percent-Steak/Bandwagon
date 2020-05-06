@@ -17,15 +17,23 @@ public class Assignment {
 
 
     public Assignment(){
-
+        this.title= "";
+        this.description = "";
+        this.date = "";
+        this.time = "";
+        completedStudents = new ArrayList<>();
+        completedStudentsCount = 0;
+        totalStudentsCount = 0;
     }
 
-    public Assignment(String title, String description, String date, Group group){
+    public Assignment(String title, String description, String date, String time){
         this.title= title;
         this.description = description;
         this.date = date;
+        this.time = time;
         completedStudents = new ArrayList<>();
         completedStudentsCount = 0;
+        totalStudentsCount = 0;
     }
 
     public Assignment(String title, String description){
