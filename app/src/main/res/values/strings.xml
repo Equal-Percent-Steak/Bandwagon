@@ -79,6 +79,7 @@
     <string name="assignments">Assignments</string>
     <string name="viewGroupMembers">View Group Members</string>
     <string name="groupMembers">Group Members</string>
+    <string name="groups">Groups</string>
     <string name="backToGroupAssignments">Back to Group Assignments</string>
     <string-array name="dropdownNames">
         <item>Class One</item>

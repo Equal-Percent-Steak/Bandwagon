@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 
-public class IndividualGroupPage extends AppCompatActivity {
+public class IndividualGroupPage extends MainActivity {
 
     ArrayList<Assignment> groupAssignments;
 
@@ -28,6 +30,12 @@ public class IndividualGroupPage extends AppCompatActivity {
         rvGroupAssignments.setAdapter(adapter);
         // Set layout manager to position the items
         rvGroupAssignments.setLayoutManager(new LinearLayoutManager(this));
-        // That's all!
     }
+
+    public void performViewGroupMembers(View v) {
+        Intent intent = new Intent(this,ClassMembers.class);
+        startActivity(intent);
+    }
+
+
 }

@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class GroupDisplayScreen extends AppCompatActivity {
+public class GroupDisplayScreen extends MainActivity {
 
     ArrayList<Group> groups;
 

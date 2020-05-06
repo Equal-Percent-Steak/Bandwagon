@@ -221,6 +221,12 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         startActivity(intent);
     }
 
+    public void performEnterGroups(MenuItem item){
+        Intent intent = new Intent(this,GroupDisplayScreen.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+        startActivity(intent);
+    }
+
     public void performReturnHome(MenuItem item) {
         Intent intent = new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);

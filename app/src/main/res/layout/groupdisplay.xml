@@ -6,7 +6,9 @@
     android:layout_width="300sp"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
-    android:layout_marginTop="75dp"
+    android:orientation="horizontal"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="20dp"
     app:cardCornerRadius="3dp"
     app:cardElevation="3dp"
     app:cardUseCompatPadding="true">
@@ -15,13 +17,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp">
 
         <TextView
             android:id="@+id/group_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="false"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-medium"
             android:textColor="#009688"

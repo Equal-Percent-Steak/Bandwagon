@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -32,4 +34,8 @@ public class ClassMembers extends MainActivity {
         rvUsers.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    public void performViewClassAssignments(View v) {
+        Intent intent = new Intent(this,IndividualGroupPage.class);
+        startActivity(intent);
+    }
 }
