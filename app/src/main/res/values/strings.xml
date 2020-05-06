@@ -53,7 +53,7 @@
     <string name="firstName">First Name</string>
     <string name="done">Done</string>
     <string name="sign_out">Sign Out</string>
-    <string name="createNew">Create New</string>
+    <string name="createNew">Add New</string>
     <string name="taskWord">Task</string>
     <string name="pickTime">Due Time: </string>
     <string name="enterPickTime">Select Due Time </string>
@@ -80,6 +80,7 @@
     <string name="viewGroupMembers">View Group Members</string>
     <string name="groupMembers">Group Members</string>
     <string name="groups">Groups</string>
+    <string name="user">User</string>
     <string name="backToGroupAssignments">Back to Group Assignments</string>
     <string-array name="dropdownNames">
         <item>Class One</item>
