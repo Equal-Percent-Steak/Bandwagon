@@ -45,4 +45,13 @@ public class User {
         users.add(new User("hazelyn"));
         return users;
     }
+
+    public static ArrayList<Group> generateGroupList(){
+        ArrayList<Group> groups = new ArrayList<>();
+        groups.add(new Group("Math"));
+        groups.add(new Group("Science"));
+        groups.add(new Group("CS"));
+
+        return groups;
+    }
 }

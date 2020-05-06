@@ -48,7 +48,7 @@ public class GroupDisplayAdapter extends
 
         public ViewHolder(View itemView) {
             super(itemView);
-            groupNameTextView = (TextView) itemView.findViewById(R.id.group_name);
+            groupNameTextView = itemView.findViewById(R.id.group_name);
         }
     }
 

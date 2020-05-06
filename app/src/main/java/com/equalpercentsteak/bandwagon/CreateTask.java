@@ -1,6 +1,7 @@
 package com.equalpercentsteak.bandwagon;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -9,11 +10,13 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,6 +42,7 @@ public class CreateTask extends MainActivity {
     private String date;
     final String[] dateArr = new String[1];
     final String[] timeArr = new String[1];
+    private AppCompatTextView tvPicker;
 
 
     @Override
@@ -157,5 +161,21 @@ public class CreateTask extends MainActivity {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+
+//    private void showGroupMenu(){
+//        final GroupDropdownMenu menu = new GroupDropdownMenu(this);
+//        menu.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+//        menu.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
+//        menu.setOutsideTouchable(true);
+//        menu.setFocusable(true);
+//        menu.showAsDropDown(tvPicker);
+//        menu.setGroupSelectedListener(new GroupDropdownAdapter.GroupSelectedListener() {
+//            @Override
+//            public void onGroupSelected(int position, Group group) {
+//                menu.dismiss();
+//                Toast.makeText(CreateTask.this, "Group selected is: " + group.getName(), Toast.LENGTH_LONG).show();
+//            }
+//        });
+//    }
 
 }

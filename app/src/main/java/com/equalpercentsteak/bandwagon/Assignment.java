@@ -17,7 +17,8 @@ public class Assignment {
 
 
     public Assignment(){
-
+        title="Untitled";
+        description="";
     }
 
     public Assignment(String title, String description, String date, Group group){
