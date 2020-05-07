@@ -13,6 +13,8 @@ import android.widget.Spinner;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class AddUser extends MainActivity {
 
     @Override
@@ -21,10 +23,14 @@ public class AddUser extends MainActivity {
         setContentView(R.layout.activity_add_user);
 
         Spinner groupMenu = (Spinner) findViewById(R.id.groupChoice);
-
+        ArrayList<Group> groups = Group.createGroupsList();
+        ArrayList<String> groupNames= new ArrayList<String>();
+        for(int i = 0; i <groups.size(); i++){
+            String group = groups.get(i).getName();
+            groupNames.add(group);
+        }
         ArrayAdapter<String> groupMenuAdapter = new ArrayAdapter<String>(AddUser.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(
-                R.array.dropdownNames));
+                android.R.layout.simple_list_item_1, groupNames);
         groupMenuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         groupMenu.setAdapter(groupMenuAdapter);
     }
