@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     private static User user;
     public ArrayList<Assignment> assignments = Assignment.getMyList();
     public static String keyId;
+    private DatabaseReference mGroups;
+    private ArrayList<Assignment> list;
+
+
 
 
 
@@ -66,13 +70,13 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
 //        NavigationUI.setupWithNavController(navView, navController);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+//        DatabaseReference myRef = database.getReference("message");
 
 //        setContentView(R.layout.fragment_dashboard);
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myAdapter = new MyAdapter(this, assignments, this);
+//        myAdapter = new MyAdapter(this, assignments, this);
         mRecyclerView.setAdapter(myAdapter);
 
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
@@ -105,24 +109,45 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         };
 
         // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                String value = dataSnapshot.getValue(String.class);
+//                Log.d(TAG, "Value is: " + value);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//                Log.w(TAG, "Failed to read value.", error.toException());
+//            }
+//        });
+
+
+        mGroups = FirebaseDatabase.getInstance().getReference().child("groups");
+        mGroups.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d(TAG, "Value is: " + value);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list = new ArrayList<Assignment>();
+                for(DataSnapshot groups: dataSnapshot.getChildren())
+                {
+                    DataSnapshot individualAssignments = groups.child("assignments");
+                    for(DataSnapshot assignments: individualAssignments.getChildren()){
+                        Assignment a = assignments.getValue(Assignment.class);
+                        list.add(a);
+                    }
+                }
+                myAdapter = new MyAdapter(MainActivity.this,list);
+                mRecyclerView.setAdapter(myAdapter);
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this, "Something is wrong", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
     }
 
 //    @Override

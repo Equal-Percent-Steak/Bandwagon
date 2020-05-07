@@ -28,28 +28,28 @@ public class CreateGroup extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_group);
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("groups");
-        ref.addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        ArrayList<String> groupList = new ArrayList<>();
-
-                        //Get map of users in datasnapshot
-                        for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                            groupList.add(dsp.getKey()); //add result into array list
-
-                        }
-//TODO: FIX
-                        System.out.println(groupList.toString());
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        //handle databaseError
-                    }
-                });
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("groups");
+//        ref.addListenerForSingleValueEvent(
+//                new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        ArrayList<String> groupList = new ArrayList<>();
+//
+//                        //Get map of users in datasnapshot
+//                        for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+//                            groupList.add(dsp.getKey()); //add result into array list
+//
+//                        }
+////TODO: FIX
+//                        System.out.println(groupList.toString());
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//                        //handle databaseError
+//                    }
+//                });
     }
 
     public void onClick(View v){
@@ -66,7 +66,7 @@ public class CreateGroup extends MainActivity {
         groups.child(groupName.getText().toString()).child("members").child(MainActivity.keyId).setValue(MainActivity.getUser());
         groups.child(groupName.getText().toString()).child("assignments").setValue(group.getAssignments());
 
-        System.out.println(getListOfGroups());
+//        System.out.println(getListOfGroups());
         performReturnHome();
     }
 
@@ -80,25 +80,25 @@ public class CreateGroup extends MainActivity {
         startActivity(intent);
     }
 
-    public ArrayList<String> getListOfGroups(){
-        final ArrayList<String> groupList = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("groups");
-        ref.addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        //Get map of users in datasnapshot
-                        for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                            groupList.add(dsp.getKey()); //add result into array list
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        //handle databaseError
-                    }
-                });
-        return groupList;
-    }
+//    public ArrayList<String> getListOfGroups(){
+//        final ArrayList<String> groupList = new ArrayList<>();
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("groups");
+//        ref.addListenerForSingleValueEvent(
+//                new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        //Get map of users in datasnapshot
+//                        for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+//                            groupList.add(dsp.getKey()); //add result into array list
+//
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//                        //handle databaseError
+//                    }
+//                });
+//        return groupList;
+//    }
 }
