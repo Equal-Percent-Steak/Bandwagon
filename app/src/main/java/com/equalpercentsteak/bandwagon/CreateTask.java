@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -50,11 +51,18 @@ public class CreateTask extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
 
+        //Read users groups to spinner from Group class
         Spinner groupMenu = (Spinner) findViewById(R.id.groupChoice);
-
+        ArrayList<Group> groups = Group.createGroupsList();
+        ArrayList<String> groupNames= new ArrayList<String>();
+        for(int i = 0; i <groups.size(); i++){
+            String group = groups.get(i).getName();
+            groupNames.add(group);
+        }
         ArrayAdapter<String> groupMenuAdapter = new ArrayAdapter<String>(CreateTask.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(
-                R.array.dropdownNames));
+                android.R.layout.simple_list_item_1, groupNames);
+
+
         groupMenuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         groupMenu.setAdapter(groupMenuAdapter);
         dateButton = findViewById(R.id.datePicker);
@@ -162,6 +170,7 @@ public class CreateTask extends MainActivity {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+
 
 //    private void showGroupMenu(){
 //        final GroupDropdownMenu menu = new GroupDropdownMenu(this);
