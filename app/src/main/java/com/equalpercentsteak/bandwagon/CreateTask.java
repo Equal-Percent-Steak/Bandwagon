@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -44,7 +46,8 @@ public class CreateTask extends MainActivity {
     final String[] dateArr = new String[1];
     final String[] timeArr = new String[1];
     private AppCompatTextView tvPicker;
-
+    private ArrayList<String> list;
+    private DatabaseReference mGroups;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,19 +55,30 @@ public class CreateTask extends MainActivity {
         setContentView(R.layout.activity_create_task);
 
         //Read users groups to spinner from Group class
-        Spinner groupMenu = (Spinner) findViewById(R.id.groupChoice);
-        ArrayList<Group> groups = Group.createGroupsList();
-        ArrayList<String> groupNames= new ArrayList<String>();
-        for(int i = 0; i <groups.size(); i++){
-            String group = groups.get(i).getName();
-            groupNames.add(group);
-        }
-        ArrayAdapter<String> groupMenuAdapter = new ArrayAdapter<String>(CreateTask.this,
-                android.R.layout.simple_list_item_1, groupNames);
+        final Spinner groupMenu = (Spinner) findViewById(R.id.groupChoice);
 
+        mGroups = FirebaseDatabase.getInstance().getReference().child("groups");
+        mGroups.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list = new ArrayList<String>();
+                for(DataSnapshot groups: dataSnapshot.getChildren())
+                {
+                    String g = groups.child("group_name").getValue().toString();
+                    list.add(g);
+                }
+                ArrayAdapter<String> groupMenuAdapter = new ArrayAdapter<String>(CreateTask.this,
+                        android.R.layout.simple_list_item_1, list);
+                groupMenuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                groupMenu.setAdapter(groupMenuAdapter);
+            }
 
-        groupMenuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        groupMenu.setAdapter(groupMenuAdapter);
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(CreateTask.this, "Something is wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         dateButton = findViewById(R.id.datePicker);
         dateButton.setInputType(InputType.TYPE_NULL);
         dateButton.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +169,7 @@ public class CreateTask extends MainActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference groups = database.getReference("groups");
 
+        //TODO: Make sure no field is empty
         groups.child(groupChoice.getSelectedItem().toString()).child("assignments").child(taskName.getText().toString()).setValue(a);
 
         Intent intent = new Intent(this,MainActivity.class);
