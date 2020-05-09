@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        myAdapter = new MyAdapter(this, assignments, this);
-        mRecyclerView.setAdapter(myAdapter);
+//        mRecyclerView.setAdapter(myAdapter);
 
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
 

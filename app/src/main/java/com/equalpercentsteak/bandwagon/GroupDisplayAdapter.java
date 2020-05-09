@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GroupDisplayAdapter extends
@@ -16,13 +17,18 @@ public class GroupDisplayAdapter extends
 
     private OnGroupListener mOnGroupListener;
 
-    private List<Group> mGroups;
+    private ArrayList<Group> mGroups;
+    private ArrayList<String> mGroupNames;
 
-    public GroupDisplayAdapter(List<Group> groups, OnGroupListener onGroupListener){
+    public GroupDisplayAdapter(ArrayList<Group> groups, OnGroupListener onGroupListener){
         mGroups = groups;
         mOnGroupListener = onGroupListener;
     }
 
+    public GroupDisplayAdapter(ArrayList<String> groupNames, OnGroupListener onGroupListener, String unused){
+        mGroupNames = groupNames;
+        mOnGroupListener = onGroupListener;
+    }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,17 +46,17 @@ public class GroupDisplayAdapter extends
     @Override
     public void onBindViewHolder(GroupDisplayAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        Group group = mGroups.get(position);
+        String group = mGroupNames.get(position);
 
         // Set item views based on your views and data model
         TextView textView = viewHolder.groupNameTextView;
-        textView.setText(group.getName());
+        textView.setText(group);
 
     }
 
     @Override
     public int getItemCount() {
-        return mGroups.size();
+        return mGroupNames.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

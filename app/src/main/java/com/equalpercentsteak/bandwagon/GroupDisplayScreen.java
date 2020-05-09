@@ -23,13 +23,15 @@ public class GroupDisplayScreen extends MainActivity implements GroupDisplayAdap
     private ArrayList<Group> groups;
     private DatabaseReference mGroups;
     private ArrayList<String> list;
+    private RecyclerView rvGroups;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_display_screen);
         // Lookup the recyclerview in activity layout
-        final RecyclerView rvGroups = (RecyclerView) findViewById(R.id.rvGroups);
+        rvGroups = findViewById(R.id.rvGroups);
+        rvGroups.setLayoutManager(new LinearLayoutManager(this));
 
         mGroups = FirebaseDatabase.getInstance().getReference().child("groups");
         mGroups.addValueEventListener(new ValueEventListener() {
@@ -41,8 +43,8 @@ public class GroupDisplayScreen extends MainActivity implements GroupDisplayAdap
                     String g = groups.child("group_name").getValue().toString();
                     list.add(g);
                 }
-                myAdapter = new MyAdapter(GroupDisplayScreen.this,list,GroupDisplayScreen.this,"");
-                rvGroups.setAdapter(myAdapter);
+                GroupDisplayAdapter groupDisplayAdapter = new GroupDisplayAdapter(list,GroupDisplayScreen.this, "");
+                rvGroups.setAdapter(groupDisplayAdapter);
             }
 
             @Override
@@ -50,6 +52,7 @@ public class GroupDisplayScreen extends MainActivity implements GroupDisplayAdap
                 Toast.makeText(GroupDisplayScreen.this, "Something is wrong", Toast.LENGTH_SHORT).show();
             }
         });
+
         // Initialize contacts
 //        groups = Group.createGroupsList();
 //        // Create adapter passing in the sample user data
@@ -62,9 +65,9 @@ public class GroupDisplayScreen extends MainActivity implements GroupDisplayAdap
 
     @Override
     public void onGroupClick(int position) {
-        groups.get(position);
+        list.get(position);
         Intent intent = new Intent(this, IndividualGroupPage.class);
-        intent.putExtra("name", groups.get(position).getName());
+        intent.putExtra("name", list.get(position));
         startActivity(intent);
     }
 }

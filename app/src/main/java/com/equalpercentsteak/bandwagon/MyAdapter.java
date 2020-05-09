@@ -48,14 +48,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder myHolder, int i) {
-
         myHolder.mTitle.setText(assignments.get(i).getTitle());
         myHolder.mDes.setText(assignments.get(i).getDescription());
+
+
     }
 
     @Override
     public int getItemCount() {
         return assignments.size();
     }
-
 }

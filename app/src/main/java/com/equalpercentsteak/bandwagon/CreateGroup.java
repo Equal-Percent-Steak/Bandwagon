@@ -60,7 +60,7 @@ public class CreateGroup extends MainActivity {
         DatabaseReference groups = database.getReference("groups");
 
         group = new Group(groupName.getText().toString(), MainActivity.getUser());
-
+//TODO: this is not modeled correctly oops
         groups.child(groupName.getText().toString()).child("group_name").setValue(groupName.getText().toString());
         groups.child(groupName.getText().toString()).child("description").setValue(description.getText().toString());
         groups.child(groupName.getText().toString()).child("members").child(MainActivity.keyId).setValue(MainActivity.getUser());
