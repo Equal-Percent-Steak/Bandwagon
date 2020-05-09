@@ -16,6 +16,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     Context c;
     ArrayList<Assignment> assignments;
     ArrayList<Group> groups;
+    ArrayList<String> groupNames;
     private MyHolder.OnAssignmentListener onAssignmentListener;
 
 
@@ -25,10 +26,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         this.onAssignmentListener=onAssignmentListener;
     }
 
-    public MyAdapter(Context c , ArrayList<Assignment> a)
-    {
+    public MyAdapter(Context c, ArrayList<String> groupNames, MyHolder.OnAssignmentListener onAssignmentListener, String unused) {
         this.c = c;
-        assignments = a;
+        this.groupNames = groupNames;
+        this.onAssignmentListener=onAssignmentListener;
     }
 
     public MyAdapter(ArrayList<Assignment> assignments) {

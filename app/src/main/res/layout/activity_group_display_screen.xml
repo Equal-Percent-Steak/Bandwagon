@@ -10,7 +10,7 @@
         android:id="@+id/GroupsScreenText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/groups"
         android:textColor="#009688"

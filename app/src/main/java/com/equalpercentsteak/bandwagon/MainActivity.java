@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                         list.add(a);
                     }
                 }
-                myAdapter = new MyAdapter(MainActivity.this,list);
+                myAdapter = new MyAdapter(MainActivity.this,list,MainActivity.this);
                 mRecyclerView.setAdapter(myAdapter);
             }
 
