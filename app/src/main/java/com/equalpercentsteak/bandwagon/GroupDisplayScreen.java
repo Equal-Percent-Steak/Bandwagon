@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -17,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class GroupDisplayScreen extends MainActivity {
+public class GroupDisplayScreen extends MainActivity implements GroupDisplayAdapter.OnGroupListener {
 
     private ArrayList<Group> groups;
     private DatabaseReference mGroups;
@@ -57,5 +58,13 @@ public class GroupDisplayScreen extends MainActivity {
 //        rvGroups.setAdapter(adapter);
 //        // Set layout manager to position the items
 //        rvGroups.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public void onGroupClick(int position) {
+        groups.get(position);
+        Intent intent = new Intent(this, IndividualGroupPage.class);
+        intent.putExtra("name", groups.get(position).getName());
+        startActivity(intent);
     }
 }

@@ -275,8 +275,8 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         Log.d(TAG, "onAssignmentClick: clicked" + position);
 
         Intent intent = new Intent(this, AssignmentDetailsActivity.class);
-        intent.putExtra("assignment", assignments.get(position).getTitle());
-        intent.putExtra("details", assignments.get(position).getDescription());
+        intent.putExtra("assignment", list.get(position).getTitle());
+        intent.putExtra("details", list.get(position).getDescription());
         startActivity(intent);
     }
 }

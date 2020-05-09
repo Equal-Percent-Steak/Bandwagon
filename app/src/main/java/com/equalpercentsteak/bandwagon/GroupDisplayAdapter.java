@@ -14,6 +14,15 @@ import java.util.List;
 public class GroupDisplayAdapter extends
         RecyclerView.Adapter<GroupDisplayAdapter.ViewHolder> {
 
+    private OnGroupListener mOnGroupListener;
+
+    private List<Group> mGroups;
+
+    public GroupDisplayAdapter(List<Group> groups, OnGroupListener onGroupListener){
+        mGroups = groups;
+        mOnGroupListener = onGroupListener;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -24,7 +33,7 @@ public class GroupDisplayAdapter extends
         View itemView = inflater.inflate(R.layout.groupdisplay, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(itemView);
+        ViewHolder viewHolder = new ViewHolder(itemView, mOnGroupListener);
         return viewHolder;
     }
 
@@ -36,6 +45,7 @@ public class GroupDisplayAdapter extends
         // Set item views based on your views and data model
         TextView textView = viewHolder.groupNameTextView;
         textView.setText(group.getName());
+
     }
 
     @Override
@@ -43,19 +53,27 @@ public class GroupDisplayAdapter extends
         return mGroups.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView groupNameTextView;
+        OnGroupListener onGroupListener;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, OnGroupListener onGroupListener) {
             super(itemView);
             groupNameTextView = itemView.findViewById(R.id.group_name);
+            this.onGroupListener=onGroupListener;
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onGroupListener.onGroupClick(getAdapterPosition());
         }
     }
 
-    private List<Group> mGroups;
-
-    public GroupDisplayAdapter(List<Group> groups){
-        mGroups = groups;
+    public interface OnGroupListener{
+        void onGroupClick(int position);
     }
+
 
 }

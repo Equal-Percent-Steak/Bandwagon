@@ -1,5 +1,6 @@
 package com.equalpercentsteak.bandwagon;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Assignment {
