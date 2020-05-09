@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -149,31 +150,41 @@ public class CreateTask extends MainActivity {
     }
 
     public void addTaskToFB(View v) {
-        EditText taskName = findViewById(R.id.enterTask);
-        //EditText dueDate = findViewById(R.id.datePicker);
+
+        EditText enterTask = findViewById(R.id.enterTask);
+        EditText enterDetails = findViewById(R.id.enterDetails);
         Spinner groupChoice = findViewById(R.id.groupChoice);
-        EditText description = findViewById(R.id.enterDetails);
+        if( TextUtils.isEmpty(enterTask.getText())||TextUtils.isEmpty(enterDetails.getText())
+                ||groupChoice.getSelectedItem()==null||dateArr[0]==null||timeArr[0]==null){
+            Toast.makeText(this, "Fill in all fields", Toast.LENGTH_SHORT).show();
+            enterTask.setError( "All fields must be filled in" );
+        }
+        else {
 
-        date = dateArr[0];
-        time = timeArr[0];
+            EditText taskName = findViewById(R.id.enterTask);
+            //EditText dueDate = findViewById(R.id.datePicker);
+            EditText description = findViewById(R.id.enterDetails);
 
-        Assignment a = new Assignment();
-        a.setTitle(taskName.getText().toString());
-        a.setDescription(description.getText().toString());
-        a.setDate(date);
-        a.setTime(time);
+            date = dateArr[0];
+            time = timeArr[0];
 
-        int itemCount = myAdapter.getItemCount();
-        myAdapter.notifyItemInserted(itemCount);
+            Assignment a = new Assignment();
+            a.setTitle(taskName.getText().toString());
+            a.setDescription(description.getText().toString());
+            a.setDate(date);
+            a.setTime(time);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference groups = database.getReference("groups");
+            int itemCount = myAdapter.getItemCount();
+            myAdapter.notifyItemInserted(itemCount);
 
-        //TODO: Make sure no field is empty
-        groups.child(groupChoice.getSelectedItem().toString()).child("assignments").child(taskName.getText().toString()).setValue(a);
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference groups = database.getReference("groups");
 
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
+            groups.child(groupChoice.getSelectedItem().toString()).child("assignments").child(taskName.getText().toString()).setValue(a);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+
     }
 
     public void performExitCreateNewTask(View v){
