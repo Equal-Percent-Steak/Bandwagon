@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -53,21 +56,29 @@ public class CreateGroup extends MainActivity {
     }
 
     public void onClick(View v){
-        EditText groupName = (EditText) findViewById(R.id.groupName);
-        EditText description = (EditText) findViewById(R.id.groupDescription);
+        EditText enterGroup = findViewById(R.id.groupName);
+        EditText enterDetails = findViewById(R.id.groupDescription);
+        if( TextUtils.isEmpty(enterGroup.getText())||TextUtils.isEmpty(enterDetails.getText())){
+            Toast.makeText(this, "Fill in all fields", Toast.LENGTH_SHORT).show();
+            enterGroup.setError( "All fields must be filled in" );
+        }
+        else {
+            EditText groupName = (EditText) findViewById(R.id.groupName);
+            EditText description = (EditText) findViewById(R.id.groupDescription);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference groups = database.getReference("groups");
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference groups = database.getReference("groups");
 
-        group = new Group(groupName.getText().toString(), MainActivity.getUser());
+            group = new Group(groupName.getText().toString(), MainActivity.getUser());
 
-        groups.child(groupName.getText().toString()).child("group_name").setValue(groupName.getText().toString());
-        groups.child(groupName.getText().toString()).child("description").setValue(description.getText().toString());
-        groups.child(groupName.getText().toString()).child("members").child(MainActivity.keyId).setValue(MainActivity.getUser());
-        groups.child(groupName.getText().toString()).child("assignments").setValue(group.getAssignments());
+            groups.child(groupName.getText().toString()).child("group_name").setValue(groupName.getText().toString());
+            groups.child(groupName.getText().toString()).child("description").setValue(description.getText().toString());
+            groups.child(groupName.getText().toString()).child("members").child(MainActivity.keyId).setValue(MainActivity.getUser());
+            groups.child(groupName.getText().toString()).child("assignments").setValue(group.getAssignments());
 
 //        System.out.println(getListOfGroups());
-        performReturnHome();
+            performReturnHome();
+        }
     }
 
     public void performExitCreateNewGroup(View v){

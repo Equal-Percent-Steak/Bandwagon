@@ -3,7 +3,9 @@ package com.equalpercentsteak.bandwagon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -57,11 +59,22 @@ public class AddUser extends MainActivity {
     }
 
     public void onClick(View v){
-        EditText usernameInput = (EditText) findViewById(R.id.username);
+        EditText username = findViewById(R.id.username);
+        Spinner groupChoice = findViewById(R.id.groupChoice);
+        if( TextUtils.isEmpty(username.getText())
+                ||groupChoice.getSelectedItem()==null){
+            Toast.makeText(this, "Fill in all fields", Toast.LENGTH_SHORT).show();
+            username.setError( "All fields must be filled in" );
+        }
+        else {
+            EditText usernameInput = (EditText) findViewById(R.id.username);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference users = database.getReference("users");
-//TODO:Add members to the correct group
-        users.child(usernameInput.getText().toString()).child("username").setValue(usernameInput.getText().toString());
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference users = database.getReference("users");
+            //TODO:Add members to the correct group
+            users.child(usernameInput.getText().toString()).child("username").setValue(usernameInput.getText().toString());
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 }
