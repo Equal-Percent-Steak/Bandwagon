@@ -65,7 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     /**
      * Updates the contents of the recycler view to display the task Description
      * @param myHolder the ViewHolder
-     * @param i
+     * @param i the position of the adapter
      */
     @Override
     public void onBindViewHolder(@NonNull MyHolder myHolder, int i) {
