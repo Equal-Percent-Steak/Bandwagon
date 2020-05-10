@@ -1,5 +1,6 @@
 package com.equalpercentsteak.bandwagon;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,13 +9,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class IndividualGroupPage extends MainActivity {
 
-    ArrayList<Assignment> groupAssignments;
-    TextView groupName;
+    private ArrayList<Assignment> groupAssignments;
+    private TextView groupName;
+    private DatabaseReference mGroups;
+    private ArrayList<Assignment> list;
+    private RecyclerView rvGroupAssignments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,19 +33,35 @@ public class IndividualGroupPage extends MainActivity {
         setContentView(R.layout.activity_individual_group_page);
 
         // Lookup the recyclerview in activity layout
-        RecyclerView rvGroupAssignments = (RecyclerView) findViewById(R.id.rvGroupAssignments);
-
-        // Initialize contacts
-        groupAssignments = Assignment.createAssignmentList();
-        // Create adapter passing in the sample user data
-        GroupAssignmentsAdapter adapter = new GroupAssignmentsAdapter(groupAssignments);
-        // Attach the adapter to the recyclerview to po pulate items
-        rvGroupAssignments.setAdapter(adapter);
+        rvGroupAssignments = (RecyclerView) findViewById(R.id.rvGroupAssignments);
         // Set layout manager to position the items
         rvGroupAssignments.setLayoutManager(new LinearLayoutManager(this));
 
+
         groupName = findViewById(R.id.groupName);
         groupName.setText(getIntent().getStringExtra("name"));
+
+        mGroups = FirebaseDatabase.getInstance().getReference().child("groups").child(getIntent().getStringExtra("name")).child("assignments");
+        mGroups.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list = new ArrayList<Assignment>();
+                for(DataSnapshot assignments: dataSnapshot.getChildren())
+                {
+                    Assignment a = assignments.getValue(Assignment.class);
+                    list.add(a);
+                }
+                // Create adapter passing in the data retrieved from Firebase
+                MyAdapter myAdapter = new MyAdapter(IndividualGroupPage.this,list,IndividualGroupPage.this);
+                // Attach the adapter to the recyclerview to populate items
+                rvGroupAssignments.setAdapter(myAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(IndividualGroupPage.this, "Something is wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void performViewGroupMembers(View v) {
