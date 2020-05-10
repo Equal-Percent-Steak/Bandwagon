@@ -71,6 +71,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     public void onBindViewHolder(@NonNull MyHolder myHolder, int i) {
         myHolder.mTitle.setText(assignments.get(i).getTitle());
         myHolder.mDes.setText(assignments.get(i).getDescription());
+        myHolder.mGroup = assignments.get(i).getGroup();
 //        if(check variable){
 //            CheckAssignment.setChecked(true);
 //        }

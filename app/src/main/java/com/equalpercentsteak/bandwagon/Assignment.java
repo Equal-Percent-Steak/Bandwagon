@@ -8,8 +8,6 @@ public class Assignment {
     private String title;
     private String description;
     private String date;
-
-
     private String time;
     private Group group;
     private ArrayList<User> completedStudents;
