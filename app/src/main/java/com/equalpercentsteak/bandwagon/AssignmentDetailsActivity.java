@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class AssignmentDetailsActivity extends AppCompatActivity {
 
-    TextView title, details;
+    TextView title, details, dueDetails;
     private static final String TAG = "AssignmentDetailsActivi";
 
     @Override
@@ -26,9 +26,43 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
         details = findViewById(R.id.details);
         String assignmentDetails = getIntent().getStringExtra("details");
         details.setText(assignmentDetails);
+
+        dueDetails = findViewById(R.id.dueDate);
+        String date = getIntent().getStringExtra("date");
+        String year = date.substring(0, 4);
+        String day = date.substring(6, 8);
+        String month = "";
+        String monthNum = date.substring(4, 6);
+            if(monthNum.equals("01"))
+                month = "January";
+            else if(monthNum.equals("02"))
+                month = "February";
+            else if(monthNum.equals("03"))
+                month = "March";
+            else if(monthNum.equals("04"))
+                month = "April";
+            else if(monthNum.equals("05"))
+                month = "May";
+            else if(monthNum.equals("06"))
+                month = "June";
+            else if(monthNum.equals("07"))
+                month = "July";
+            else if(monthNum.equals("08"))
+                month = "August";
+            else if(monthNum.equals("09"))
+                month = "September";
+            else if(monthNum.equals("10"))
+                month = "October";
+            else if(monthNum.equals("11"))
+                month = "November";
+            else if(monthNum.equals("12"))
+                month = "December";
+        dueDetails.setText(month + " " + day + ", " + year );
+
     }
     public void performReturnSettings(View v) {
         Intent intent = new Intent(this,AccountSettings.class);
         startActivity(intent);
     }
+
 }

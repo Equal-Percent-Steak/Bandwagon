@@ -277,6 +277,8 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         Intent intent = new Intent(this, AssignmentDetailsActivity.class);
         intent.putExtra("assignment", list.get(position).getTitle());
         intent.putExtra("details", list.get(position).getDescription());
+        intent.putExtra("date", list.get(position).getDate());
+        intent.putExtra("time", list.get(position).getTime());
         startActivity(intent);
     }
 }

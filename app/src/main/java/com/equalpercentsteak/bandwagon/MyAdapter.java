@@ -19,19 +19,35 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     ArrayList<String> groupNames;
     private MyHolder.OnAssignmentListener onAssignmentListener;
 
-
+    /**
+     * Constructs an adapter with an ArrayList of Assignments
+     * @param c the context that forms the adapter
+     * @param assignments  the assignments with which to populate the adapter
+     * @param onAssignmentListener the onAssignmentListener for the adapter
+     */
     public MyAdapter(Context c, ArrayList<Assignment> assignments, MyHolder.OnAssignmentListener onAssignmentListener) {
         this.c = c;
         this.assignments = assignments;
         this.onAssignmentListener=onAssignmentListener;
     }
 
+    /**
+     * Constructs an adapter with an ArrayList of groups
+     * @param c the context that forms the adapter
+     * @param groupNames the groups with which to populate the adapter
+     * @param onAssignmentListener the onAssignmentListener for the adapter
+     * @param unused makes this a different constructor
+     */
     public MyAdapter(Context c, ArrayList<String> groupNames, MyHolder.OnAssignmentListener onAssignmentListener, String unused) {
         this.c = c;
         this.groupNames = groupNames;
         this.onAssignmentListener=onAssignmentListener;
     }
 
+    /**
+     * Constructs an adapter with an ArrayList of assignments
+     * @param assignments the assignments to populate the adapter
+     */
     public MyAdapter(ArrayList<Assignment> assignments) {
         this.assignments=assignments;
     }
@@ -54,6 +70,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     }
 
+    /**
+     * Get the number of items in the adapter
+     * @return the number of items in the adapter
+     */
     @Override
     public int getItemCount() {
         return assignments.size();
