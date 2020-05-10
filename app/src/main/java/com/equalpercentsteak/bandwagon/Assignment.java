@@ -13,8 +13,6 @@ public class Assignment {
     private String time;
     private Group group;
     private ArrayList<User> completedStudents;
-    private int completedStudentsCount;
-    private int totalStudentsCount;
 
 
     public Assignment(){
@@ -23,8 +21,6 @@ public class Assignment {
         this.date = "";
         this.time = "";
         completedStudents = new ArrayList<>();
-        completedStudentsCount = 0;
-        totalStudentsCount = 0;
     }
 
     public Assignment(String title, String description, String date, String time){
@@ -33,8 +29,6 @@ public class Assignment {
         this.date = date;
         this.time = time;
         completedStudents = new ArrayList<>();
-        completedStudentsCount = 0;
-        totalStudentsCount = 0;
     }
 
     public Assignment(String title, String description){
@@ -42,42 +36,66 @@ public class Assignment {
         this.description = description;
     }
 
-    public void setTotalStudentsCount(int totalStudentsCount){
-        this.totalStudentsCount = totalStudentsCount;
-    }
-
+    /**
+     * @return due date of assignment
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     * @return group that the assignment belongs to
+     */
     public Group getGroup(){
         return group;
     }
 
+    /**
+     * @return the title of the assignment
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Sets the title of the assignment
+     * @param title title of the assignment
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * @return the description of the assignment
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Sets the description of the assignment
+     * @param description description of the assignment
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Sets the due date of the assignment
+     * @param date due date of the assignment
+     */
     public void setDate(String date){
         this.date = date;
     }
 
+    /**
+     * Sets the group of the assignment
+     * @param group group of the assignment
+     */
     public void setGroup(Group group){
         this.group = group;
     }
-
+    
     public ArrayList<User> getCompletedStudents() {
         return completedStudents;
     }
@@ -88,6 +106,10 @@ public class Assignment {
 
     public void setCompletedStudents(ArrayList<User> completedStudents) {
         this.completedStudents = completedStudents;
+    }
+
+    public int getCompletedStudentsSize(){
+        return completedStudents.size();
     }
 
     public String getTime(){

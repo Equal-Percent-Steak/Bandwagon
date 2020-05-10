@@ -24,7 +24,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +33,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements MyHolder.OnAssignmentListener {
     private static final String TAG = "MainActivity";
 
-    private FirebaseFirestore db;
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
     private FirebaseAuth mFirebaseAuth;
@@ -43,46 +41,30 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     public static final int RC_SIGN_IN = 1;
     private DatabaseReference mDatabase;
     private static User user;
-    public ArrayList<Assignment> assignments = Assignment.getMyList();
     public static String keyId;
     private DatabaseReference mGroups;
     private ArrayList<Assignment> list;
 
 
-
-
-
+    /**
+     * This method is called when the activity is started.
+     * It checks if the user is logged in and also lists all of the assignments the user has on one screen.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initializes FirebaseAuth
         mFirebaseAuth = FirebaseAuth.getInstance();
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
-//        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-//                .build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(navView, navController);
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-
-//        setContentView(R.layout.fragment_dashboard);
-
+        // Initializes recycler view
         mRecyclerView = findViewById(R.id.recyclerView);
+        // Initializes linear layout
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        myAdapter = new MyAdapter(this, assignments, this);
-//        mRecyclerView.setAdapter(myAdapter);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("users");
-
+        // The listener checks if the user is logged in, and if the user is not, it forces the user to sign in
         mFirebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -93,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                     keyId = userFB.getUid();
                 } else if (userFB == null){
                     //not signed in
-////                    onSignedOutCleanup();
+//                    onSignedOutCleanup();
                     List<AuthUI.IdpConfig> providers = Arrays.asList(
                             new AuthUI.IdpConfig.EmailBuilder().build());
                     startActivityForResult(
@@ -110,24 +92,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
             }
         };
 
-        // Read from the database
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                String value = dataSnapshot.getValue(String.class);
-//                Log.d(TAG, "Value is: " + value);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//                Log.w(TAG, "Failed to read value.", error.toException());
-//            }
-//        });
-
-
+        // Populates the recycler view with the list of all of the tasks from Firebase
         mGroups = FirebaseDatabase.getInstance().getReference().child("groups");
         mGroups.addValueEventListener(new ValueEventListener() {
             @Override
@@ -152,39 +117,13 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         });
     }
 
-//    @Override
-//    protected void onStart(){
-//        super.onStart();
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        mRecyclerView.setAdapter(myAdapter);
-//    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RC_SIGN_IN) {
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-
-            if (resultCode == RESULT_OK) {
-                // Successfully signed in
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                // ...
-            } else{
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
-            }
-        }
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.home_menu, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -206,22 +145,9 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-
         }
 
     }
-
-
-//    public boolean onOptionsItemSelected(MenuItem item){
-//        switch (item.getItemId()){
-//            case R.id.sign_out_menu:
-//                AuthUI.getInstance().signOut(this);
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
-
 
     @Override
     protected void onResume() {
@@ -268,10 +194,18 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         startActivity(intent);
     }
 
+    /**
+     * @return the current user
+     */
     public static User getUser(){
         return user;
     }
 
+    /**
+     * After the assignment is clicked, this method is called, and it passes along the data of the
+     * assignment to the individual activity page.
+     * @param position the position on the Adapter
+     */
     @Override
     public void onAssignmentClick(int position) {
         Log.d(TAG, "onAssignmentClick: clicked" + position);

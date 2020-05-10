@@ -14,7 +14,6 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    ImageView mImageView;
     TextView mTitle, mDes;
     CheckBox checkAssignments;
     OnAssignmentListener onAssignmentListener;
