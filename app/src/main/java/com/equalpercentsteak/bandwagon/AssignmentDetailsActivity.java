@@ -28,6 +28,11 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
         details.setText(assignmentDetails);
 
         dueDetails = findViewById(R.id.dueDate);
+
+        String time = getIntent().getStringExtra("time");
+        String hour = time.substring(0, 2);
+        String minute = time.substring(2, 4);
+
         String date = getIntent().getStringExtra("date");
         String year = date.substring(0, 4);
         String day = date.substring(6, 8);
@@ -57,7 +62,7 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
                 month = "November";
             else if(monthNum.equals("12"))
                 month = "December";
-        dueDetails.setText(month + " " + day + ", " + year );
+        dueDetails.setText(month + " " + day + ", " + year + " at " + hour + ":" + minute);
 
     }
     public void performReturnSettings(View v) {
