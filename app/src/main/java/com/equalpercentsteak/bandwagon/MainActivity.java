@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -280,6 +282,13 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         intent.putExtra("date", list.get(position).getDate());
         intent.putExtra("time", list.get(position).getTime());
         startActivity(intent);
+    }
+
+    public void Check(View v){
+        CheckBox completedCheck = (CheckBox)findViewById(R.id.checkBox);
+        if(completedCheck.isChecked()){
+            //Change boolean for specific user
+        }
     }
 }
 

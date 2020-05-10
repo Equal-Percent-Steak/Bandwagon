@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,6 +68,13 @@ public class IndividualGroupPage extends MainActivity {
     public void performViewGroupMembers(View v) {
         Intent intent = new Intent(this,ClassMembers.class);
         startActivity(intent);
+    }
+
+    public void Check(View v){
+        CheckBox completedCheck = (CheckBox)findViewById(R.id.checkBox);
+        if(completedCheck.isChecked()){
+            //Change boolean for specific user
+        }
     }
 
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,9 @@ public class GroupAssignmentsAdapter extends
         titleTextView.setText(assignment.getTitle());
         TextView descriptionTextView = viewHolder.DescriptionTextView;
         descriptionTextView.setText(assignment.getDescription());
+//        if(check variable){
+//            CheckAssignment.setChecked(true);
+//        }
     }
 
     @Override
@@ -50,11 +54,13 @@ public class GroupAssignmentsAdapter extends
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView TitleTextView;
         public TextView DescriptionTextView;
+        public CheckBox CheckAssignment;
 
         public ViewHolder(View itemView) {
             super(itemView);
             TitleTextView = (TextView)itemView.findViewById(R.id.titleTv);
             DescriptionTextView = (TextView)itemView.findViewById(R.id.descriptionTv);
+            CheckAssignment=(CheckBox)itemView.findViewById(R.id.checkBox);
         }
     }
 
