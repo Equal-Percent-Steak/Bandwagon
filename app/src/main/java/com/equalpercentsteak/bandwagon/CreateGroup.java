@@ -58,10 +58,17 @@ public class CreateGroup extends MainActivity {
     public void onClick(View v){
         EditText enterGroup = findViewById(R.id.groupName);
         EditText enterDetails = findViewById(R.id.groupDescription);
-        if( TextUtils.isEmpty(enterGroup.getText())||TextUtils.isEmpty(enterDetails.getText())){
-            Toast.makeText(this, "Fill in all fields", Toast.LENGTH_SHORT).show();
-            enterGroup.setError( "All fields must be filled in" );
+
+        if( TextUtils.isEmpty(enterGroup.getText())){
+            Toast.makeText(this, "Please enter a group name", Toast.LENGTH_SHORT).show();
+            enterGroup.setError( "Group name must be entered" );
         }
+
+        else if(TextUtils.isEmpty(enterDetails.getText())) {
+            Toast.makeText(this, "Please enter group details", Toast.LENGTH_SHORT).show();
+            enterGroup.setError( "Group details must be entered" );
+        }
+
         else {
             EditText groupName = (EditText) findViewById(R.id.groupName);
             EditText description = (EditText) findViewById(R.id.groupDescription);

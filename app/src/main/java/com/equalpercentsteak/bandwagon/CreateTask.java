@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -154,11 +156,35 @@ public class CreateTask extends MainActivity {
         EditText enterTask = findViewById(R.id.enterTask);
         EditText enterDetails = findViewById(R.id.enterDetails);
         Spinner groupChoice = findViewById(R.id.groupChoice);
-        if( TextUtils.isEmpty(enterTask.getText())||TextUtils.isEmpty(enterDetails.getText())
-                ||groupChoice.getSelectedItem()==null||dateArr[0]==null||timeArr[0]==null){
-            Toast.makeText(this, "Fill in all fields", Toast.LENGTH_SHORT).show();
-            enterTask.setError( "All fields must be filled in" );
+
+        if( TextUtils.isEmpty(enterTask.getText())){
+            Toast.makeText(this, "Please enter a task name", Toast.LENGTH_SHORT).show();
+            enterTask.setError( "Task name must be entered" );
         }
+
+        else if(groupChoice.getSelectedItem()==null){
+            Toast.makeText(this, "Please select a group", Toast.LENGTH_SHORT).show();
+            TextView errorText = (TextView)groupChoice.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);
+            errorText.setText("Group must be selected");
+        }
+
+        else if(dateArr[0]==null) {
+            Toast.makeText(this, "Please select a due date", Toast.LENGTH_SHORT).show();
+            dateButton.setError("Due date must be selected");
+        }
+
+        else if(timeArr[0]==null) {
+            Toast.makeText(this, "Please select a due time", Toast.LENGTH_SHORT).show();
+            timeButton.setError("Due time must be selected");
+        }
+
+        else if( TextUtils.isEmpty(enterDetails.getText())){
+            Toast.makeText(this, "Please enter task details", Toast.LENGTH_SHORT).show();
+            enterDetails.setError( "Task details must be entered" );
+        }
+
         else {
 
             EditText taskName = findViewById(R.id.enterTask);
