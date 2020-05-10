@@ -14,7 +14,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    TextView mTitle, mDes;
+    ImageView mImageView;
+    TextView mTitle, mDes, mDate;
     CheckBox checkAssignments;
     OnAssignmentListener onAssignmentListener;
 
@@ -23,6 +24,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
 
         this.mTitle = itemView.findViewById(R.id.titleTv);
         this.mDes = itemView.findViewById(R.id.descriptionTv);
+        this.mDate = itemView.findViewById(R.id.dateRVView);
         this.onAssignmentListener=onAssignmentListener;
         this.checkAssignments = itemView.findViewById(R.id.checkBox);
 

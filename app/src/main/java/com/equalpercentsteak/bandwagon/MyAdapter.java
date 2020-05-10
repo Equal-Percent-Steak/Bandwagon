@@ -62,6 +62,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         return new MyHolder(view, onAssignmentListener);
     }
 
+    /**
+     * Updates the contents of the recycler view to display the task Description
+     * @param myHolder the ViewHolder
+     * @param i the position of the adapter
+     */
     @Override
     public void onBindViewHolder(@NonNull MyHolder myHolder, int i) {
         myHolder.mTitle.setText(assignments.get(i).getTitle());
@@ -69,6 +74,41 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 //        if(check variable){
 //            CheckAssignment.setChecked(true);
 //        }
+        String date =  assignments.get(i).getDate();
+        String time =  assignments.get(i).getTime();
+
+        String hour = time.substring(0, 2);
+        String minute = time.substring(2, 4);
+
+        String year = date.substring(0, 4);
+        String day = date.substring(6, 8);
+        String month = "";
+        String monthNum = date.substring(4, 6);
+        if(monthNum.equals("01"))
+            month = "January";
+        else if(monthNum.equals("02"))
+            month = "February";
+        else if(monthNum.equals("03"))
+            month = "March";
+        else if(monthNum.equals("04"))
+            month = "April";
+        else if(monthNum.equals("05"))
+            month = "May";
+        else if(monthNum.equals("06"))
+            month = "June";
+        else if(monthNum.equals("07"))
+            month = "July";
+        else if(monthNum.equals("08"))
+            month = "August";
+        else if(monthNum.equals("09"))
+            month = "September";
+        else if(monthNum.equals("10"))
+            month = "October";
+        else if(monthNum.equals("11"))
+            month = "November";
+        else if(monthNum.equals("12"))
+            month = "December";
+        myHolder.mDate.setText(month + " " + day + ", " + year + " at " + hour + ":" + minute);
 
     }
 
