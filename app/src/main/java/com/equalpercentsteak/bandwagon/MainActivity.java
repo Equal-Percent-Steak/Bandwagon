@@ -215,6 +215,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         intent.putExtra("details", list.get(position).getDescription());
         intent.putExtra("date", list.get(position).getDate());
         intent.putExtra("time", list.get(position).getTime());
+        intent.putExtra("group",list.get(position).getGroup().getName());
         startActivity(intent);
     }
 

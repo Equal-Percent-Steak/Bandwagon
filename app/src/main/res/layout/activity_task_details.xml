@@ -73,7 +73,7 @@
     -->
 
     <TextView
-        android:id="@+id/percentDoneText"
+        android:id="@+id/completedStudents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -129,9 +129,9 @@
         android:text="@string/percentageDescription"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/percentDoneText"
-        app:layout_constraintStart_toStartOf="@+id/percentDoneText"
-        app:layout_constraintTop_toBottomOf="@+id/percentDoneText" />
+        app:layout_constraintEnd_toEndOf="@+id/completedStudents"
+        app:layout_constraintStart_toStartOf="@+id/completedStudents"
+        app:layout_constraintTop_toBottomOf="@+id/completedStudents" />
 
     <TextView
         android:id="@+id/detailsLabel"
