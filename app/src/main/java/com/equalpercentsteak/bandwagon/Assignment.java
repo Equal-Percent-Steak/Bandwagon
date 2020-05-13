@@ -6,14 +6,35 @@ import java.util.HashMap;
 
 public class Assignment {
 
+    /**
+     * The String title of the assignment
+     */
     private String title;
+    /**
+     * The String description of the assignment
+     */
     private String description;
+    /**
+     * The String due date of the assignment in the form yyyymmdd
+     */
     private String date;
+    /**
+     * The String due time of the assignment in the form hhmm
+     */
     private String time;
+    /**
+     * The Group that the assignment belongs to
+     */
     private Group group;
+    /**
+     * The HashMap of users that records the students that have completed the assignment
+     */
     private HashMap<String, Boolean> completedStudents;
 
 
+    /**
+     * Constructs an Assignment object with an empty string for a title, description, date, time, and a new empty ArrayList of completed students
+     */
     public Assignment(){
         this.title= "";
         this.description = "";
@@ -22,6 +43,13 @@ public class Assignment {
         completedStudents = new HashMap<>();
     }
 
+    /**
+     * Constructs an Assignment object with a given String title, description, date, and time, and a new ArrayList of completed students
+     * @param title the String of the Assignment title
+     * @param description the String of the description of the Assignment
+     * @param date the String of the due date of the Assignment in the form yyyymmdd
+     * @param time the String of the due time of the Assignment in the form hhmm
+     */
     public Assignment(String title, String description, String date, String time, Group group){
         this.title= title;
         this.description = description;
@@ -31,6 +59,11 @@ public class Assignment {
         completedStudents = new HashMap<>();
     }
 
+    /**
+     * Constructs an Assignment with a given String Title and String description, all other fields are empty
+     * @param title the String title of the Assignment
+     * @param description the String description of the Assignment
+     */
     public Assignment(String title, String description){
         this.title= title;
         this.description = description;
@@ -95,31 +128,61 @@ public class Assignment {
     public void setGroup(Group group){
         this.group = group;
     }
-    
+
+    /**
+     * Returns the ArrayList of users that have completed the Assignment
+     * @return the ArrayList of users that have completed the Assignment
+     */
+
+
     public HashMap<String, Boolean> getCompletedStudents() {
         return completedStudents;
     }
 
+    /**
+     * Adds a student to the HashMap of students that have completed the Assignment
+     * @param student the Student that has completed the Assignment
+     */
     public void addCompletedStudents(User student){
         completedStudents.put(student.getId(), true);
     }
 
+    /**
+     * Sets the ArrayList of completed Students
+     * @param completedStudents the ArrayList of Users that have completed the Assignment
+     */
     public void setCompletedStudents(HashMap<String, Boolean> completedStudents) {
         this.completedStudents = completedStudents;
     }
 
+    /**
+     * Gets the number of students that have completed the Assignment
+     * @return the size of the HashMap of Users that have completed the Assignment
+     */
     public int getCompletedStudentsSize(){
         return completedStudents.size();
     }
 
+    /**
+     * Gets the due time of the assignment
+     * @return the due time of the assignment in the form hhmm
+     */
     public String getTime(){
         return time;
     }
 
+    /**
+     * Sets the due time of the Assignment
+     * @param time the new due time that the Assignment will have in the form hhmm
+     */
     public void setTime(String time){
         this.time = time;
     }
 
+    /**
+     * Creates a sample ArrayList of Assignments with titles and descriptions
+     * @return an ArrayList of Assignment objects
+     */
     public static ArrayList<Assignment> createAssignmentList() {
         ArrayList<Assignment> assignments = new ArrayList<Assignment>();
         assignments.add(new Assignment("Exeter page 58", "Questions 1-9"));
@@ -128,6 +191,10 @@ public class Assignment {
         return assignments;
     }
 
+    /**
+     * Creates a sample ArrayList of Assignments with titles and descriptions
+     * @return the ArrayList of Assignment objects
+     */
     public static ArrayList<Assignment> getMyList(){
 
         ArrayList<Assignment> assignmentsList = new ArrayList<>();

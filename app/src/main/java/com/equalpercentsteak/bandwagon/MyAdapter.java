@@ -13,10 +13,25 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
+    /**
+     * The Context of the adapter
+     */
     Context c;
+    /**
+     * An ArrayList of assignments
+     */
     ArrayList<Assignment> assignments;
+    /**
+     * An ArrayList of Groups
+     */
     ArrayList<Group> groups;
+    /**
+     * An ArrayList of strings that has the groupNames
+     */
     ArrayList<String> groupNames;
+    /**
+     * The onAssignmentListener for the onClick method
+     */
     private MyHolder.OnAssignmentListener onAssignmentListener;
 
     /**
@@ -52,6 +67,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         this.assignments=assignments;
     }
 
+    /**
+     * Returns a MyHolder object based on a viewGroup and integer
+     * @param viewGroup the viewGroup
+     * @param i the integer
+     * @return a MyHolder object
+     */
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

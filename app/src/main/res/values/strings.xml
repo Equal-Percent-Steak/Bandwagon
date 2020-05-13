@@ -61,7 +61,7 @@
     <string name="enterPickDate">Select Due Date</string>
     <string name="taskName">Task Name: </string>
     <string name="taskNameHint">Name of Task</string>
-    <string name="that_is_in">That is in</string>
+    <string name="that_is_in">That is in </string>
     <string name="exampleNumber">xx</string>
     <string name="taskname">Task Name</string>
     <string name="days">" days "</string>

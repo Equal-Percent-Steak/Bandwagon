@@ -48,6 +48,7 @@
         app:layout_constraintStart_toStartOf="@+id/dueLabel"
         app:layout_constraintTop_toBottomOf="@+id/dueLabel" />
 
+   <!--
     <ImageView
         android:id="@+id/percentCompleteDiagram"
         android:layout_width="100dp"
@@ -58,7 +59,8 @@
         android:src="@drawable/example_pie_diagram"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/countdownText" />
-
+    -->
+   <!--
     <ImageView
         android:id="@+id/timeDue"
         android:layout_width="100dp"
@@ -68,18 +70,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/percentCompleteDiagram"
         app:srcCompat="@drawable/example_clock" />
+    -->
 
     <TextView
         android:id="@+id/percentDoneText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="@string/exampleNumber"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/percentCompleteDiagram"
-        app:layout_constraintStart_toStartOf="@+id/percentCompleteDiagram"
-        app:layout_constraintTop_toBottomOf="@+id/percentCompleteDiagram" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
+    <!--
     <TextView
         android:id="@+id/timeToDoText"
         android:layout_width="wrap_content"
@@ -90,7 +94,9 @@
         app:layout_constraintEnd_toEndOf="@+id/timeDue"
         app:layout_constraintStart_toStartOf="@+id/timeDue"
         app:layout_constraintTop_toBottomOf="@+id/timeDue" />
+    -->
 
+    <!--
     <TextView
         android:id="@+id/averageTimeText"
         android:layout_width="wrap_content"
@@ -101,7 +107,8 @@
         app:layout_constraintEnd_toEndOf="@+id/timeToDoText"
         app:layout_constraintStart_toStartOf="@+id/timeToDoText"
         app:layout_constraintTop_toBottomOf="@+id/timeToDoText" />
-
+    -->
+   <!--
     <TextView
         android:id="@+id/averageTextDescriptionLower"
         android:layout_width="150dp"
@@ -113,7 +120,7 @@
         app:layout_constraintEnd_toEndOf="@+id/averageTimeText"
         app:layout_constraintStart_toStartOf="@+id/averageTimeText"
         app:layout_constraintTop_toBottomOf="@+id/averageTimeText" />
-
+    -->
     <TextView
         android:id="@+id/percentageDescription"
         android:layout_width="150dp"
