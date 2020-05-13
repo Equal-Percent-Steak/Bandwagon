@@ -25,7 +25,7 @@ public class ClassMembers extends MainActivity {
         RecyclerView rvUsers = (RecyclerView)findViewById(R.id.rvUsers);
 
         // Initialize contacts
-        users = User.createUserList();
+        //TODO:Not implemented correctly
         // Create adapter passing in the sample user data
         UserAdapter adapter = new UserAdapter(users);
         // Attach the adapter to the recyclerview to populate items

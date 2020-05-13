@@ -66,6 +66,13 @@ public class Group {
     }
 
     /**
+     * Sets the name of the group
+     */
+    public void setName(String name){
+        this.name = name;
+    }
+
+    /**
      * Gets the ArrayList of Users
      * @return the ArrayList of Users
      */

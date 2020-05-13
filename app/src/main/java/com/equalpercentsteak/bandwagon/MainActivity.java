@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                 FirebaseUser userFB = firebaseAuth.getCurrentUser();
                 if (userFB != null){
 //                    onSignedInInitialize(userFB.getDisplayName());
-                    user = new User(userFB.getEmail());
+                    user = new User(userFB.getEmail(),userFB.getUid());
                     keyId = userFB.getUid();
                 } else if (userFB == null){
                     //not signed in
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                                     .setAvailableProviders(providers)
                                     .build(),
                             RC_SIGN_IN);
-                    user = new User(userFB.getEmail());
+                    user = new User(userFB.getEmail(),userFB.getUid());
                     keyId = userFB.getUid();
                     addUserToDB(userFB);
                 }
@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         startActivity(intent);
     }
 
-    public void Check(View v){
+    public void check(View v){
         CheckBox completedCheck = (CheckBox)findViewById(R.id.checkBox);
         if(completedCheck.isChecked()){
             //Change boolean for specific user

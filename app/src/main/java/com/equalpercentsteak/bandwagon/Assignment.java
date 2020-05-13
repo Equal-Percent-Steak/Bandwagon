@@ -2,6 +2,7 @@ package com.equalpercentsteak.bandwagon;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Assignment {
 
@@ -10,7 +11,7 @@ public class Assignment {
     private String date;
     private String time;
     private Group group;
-    private ArrayList<User> completedStudents;
+    private HashMap<String, Boolean> completedStudents;
 
 
     public Assignment(){
@@ -18,15 +19,16 @@ public class Assignment {
         this.description = "";
         this.date = "";
         this.time = "";
-        completedStudents = new ArrayList<>();
+        completedStudents = new HashMap<>();
     }
 
-    public Assignment(String title, String description, String date, String time){
+    public Assignment(String title, String description, String date, String time, Group group){
         this.title= title;
         this.description = description;
         this.date = date;
         this.time = time;
-        completedStudents = new ArrayList<>();
+        this.group = group;
+        completedStudents = new HashMap<>();
     }
 
     public Assignment(String title, String description){
@@ -94,15 +96,15 @@ public class Assignment {
         this.group = group;
     }
     
-    public ArrayList<User> getCompletedStudents() {
+    public HashMap<String, Boolean> getCompletedStudents() {
         return completedStudents;
     }
 
     public void addCompletedStudents(User student){
-        completedStudents.add(student);
+        completedStudents.put(student.getId(), true);
     }
 
-    public void setCompletedStudents(ArrayList<User> completedStudents) {
+    public void setCompletedStudents(HashMap<String, Boolean> completedStudents) {
         this.completedStudents = completedStudents;
     }
 

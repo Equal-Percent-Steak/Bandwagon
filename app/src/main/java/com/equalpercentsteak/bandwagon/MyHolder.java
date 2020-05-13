@@ -14,6 +14,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 
 public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -35,8 +37,10 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
         checkAssignments.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
                 //TODO: work on this later Andrew
-                groupFB = FirebaseDatabase.getInstance().getReference().child("groups").child(mGroup.getName()).child("assignments").child(mTitle.toString()).child("completedStudents");
+                groupFB = FirebaseDatabase.getInstance().getReference().child("groups").child(mGroup.getName()).child("assignments").child(mTitle.getText().toString()).child("completedStudents").child(MainActivity.getUser().getId());
+                groupFB.setValue(true);
             }
         }
         );

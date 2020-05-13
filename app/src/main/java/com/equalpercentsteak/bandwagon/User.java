@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class User {
 
     private String username;
+    private String id;
 //    private ArrayList<String> classes;
 //    private String name;
 
@@ -13,37 +14,26 @@ public class User {
 //        classes = new ArrayList<>();
     }
 
-    public User (String userName){
+    public User (String userName, String id){
         username = userName;
+        this.id = id;
 //        classes = new ArrayList<>();
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
-//
-//    public void addClass(String c){
-//        classes.add(c);
-//    }
-//
-//    public void removeClass(String c){
-//        classes.remove(c);
-//    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id){
+        this.id = id;
+    }
 
     public String getUsername(){
         return username;
-    }
-
-    public void display(){
-        System.out.println(username);
-    }
-
-    public static ArrayList<User> createUserList() {
-        ArrayList<User> users = new ArrayList<User>();
-        users.add(new User("kayla"));
-        users.add(new User("andrew"));
-        users.add(new User("hazelyn"));
-        return users;
     }
 
     public static ArrayList<Group> generateGroupList(){

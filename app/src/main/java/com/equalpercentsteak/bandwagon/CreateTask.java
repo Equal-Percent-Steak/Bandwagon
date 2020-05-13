@@ -199,6 +199,9 @@ public class CreateTask extends MainActivity {
             a.setDescription(description.getText().toString());
             a.setDate(date);
             a.setTime(time);
+            Group g = new Group();
+            g.setName(groupChoice.getSelectedItem().toString());
+            a.setGroup(g);
 
             int itemCount = myAdapter.getItemCount();
             myAdapter.notifyItemInserted(itemCount);
