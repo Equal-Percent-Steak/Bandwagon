@@ -25,12 +25,33 @@ import java.util.ArrayList;
 
 public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+    /**
+     * The TextViews in the holder of the title, description, and date
+     */
     public TextView mTitle, mDes, mDate;
-    public final CheckBox checkAssignments;
+    /**
+     * The checkBox that describes whether the user has completed the assignment
+     */
+    public CheckBox checkAssignments;
+    /**
+     * The onAssignmentListener which works with the onClick
+     */
     public OnAssignmentListener onAssignmentListener;
+    /**
+     * The Group that the Assignment in the holder belongs to
+     */
     public Group mGroup;
+    //TODO Add firebase description
+    /**
+     *
+     */
     public DatabaseReference groupFB;
 
+    /**
+     * Constructs a MyHolder object that takes in a View object and an onAssignmentListener
+     * @param itemView
+     * @param onAssignmentListener the onAssignmentListener
+     */
     public MyHolder(@NonNull final View itemView, OnAssignmentListener onAssignmentListener) {
         super(itemView);
 

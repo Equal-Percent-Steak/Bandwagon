@@ -82,6 +82,7 @@
     <string name="groups">Groups</string>
     <string name="user">User</string>
     <string name="backToGroupAssignments">Back to Group Assignments</string>
+    <string name="editTask">Edit Task</string>
     <string-array name="dropdownNames">
         <item>Class One</item>
         <item>Class Two</item>

@@ -116,4 +116,11 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void performGoToEditTask(View v) {
+        Log.d(TAG, "performGoToEditTask: intent created");
+        Intent intent = new Intent(this, EditTaskActivity.class);
+        
+        startActivity(intent);
+    }
+
 }
