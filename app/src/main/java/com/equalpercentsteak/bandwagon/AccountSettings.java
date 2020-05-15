@@ -11,22 +11,29 @@ import android.view.View;
 
 public class AccountSettings extends MainActivity {
 
+    /**
+     * Starts the AccountSettings page
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_settings);
     }
 
+    /**
+     * Creates the ChangePassword activity
+     * @param v
+     */
     public void performChangePassword(View v){
         Intent intent = new Intent(this, ChangePassword.class);
         startActivity(intent);
     }
 
-    public void performEnterNewGroup(View v){
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-    }
-
+    /**
+     * Returns to the home page
+     * @param v
+     */
     public void performReturnHome(View v) {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);

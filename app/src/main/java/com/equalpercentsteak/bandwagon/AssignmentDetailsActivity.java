@@ -22,6 +22,10 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
     public DatabaseReference ref;
     private String mGroup;
 
+    /**
+     * Creates the activity that shows the details for each assignment when it is clicked.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,14 +96,21 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
+
+    /**
+     * Starts the AccountSettings Activity
+     * @param v
+     */
     public void performReturnSettings(View v) {
         Intent intent = new Intent(this,AccountSettings.class);
         startActivity(intent);
     }
 
+    /**
+     * Starts the EditTask activity
+     * @param v
+     */
     public void performGoToEditTask(View v) {
         Log.d(TAG, "performGoToEditTask: intent created");
         Intent intent = new Intent(this, EditTaskActivity.class);

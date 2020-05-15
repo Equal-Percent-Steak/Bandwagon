@@ -16,6 +16,10 @@ public class ClassMembers extends MainActivity {
 
     ArrayList<User> users;
 
+    /**
+     * Creates the activity that lists all of the users in each class.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,10 @@ public class ClassMembers extends MainActivity {
         rvUsers.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    /**
+     * Returns to the details page of the individual group
+     * @param v
+     */
     public void performViewClassAssignments(View v) {
         Intent intent = new Intent(this,IndividualGroupPage.class);
         startActivity(intent);

@@ -29,6 +29,11 @@ public class AddUser extends MainActivity {
     private ArrayList<String> list;
     private DatabaseReference mGroups;
 
+    /**
+     * Creates the AddUser activity that allows a user to add another user to a group.
+     * When the AddUser activity is created, the list of groups is pulled from Firebase so that the group choice spinner is adaptive.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +65,10 @@ public class AddUser extends MainActivity {
 
     }
 
+    /**
+     * When the "Done" button is clicked, the onClick listener is called, which ensures that all fields have been checked and then sends the new user data to Firebase.
+     * @param v
+     */
     public void onClick(View v){
         EditText username = findViewById(R.id.username);
         Spinner groupChoice = findViewById(R.id.groupChoice);
