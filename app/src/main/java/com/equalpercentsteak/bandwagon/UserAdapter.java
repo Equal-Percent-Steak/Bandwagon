@@ -14,6 +14,12 @@ import java.util.List;
 public class UserAdapter extends
         RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
+    /**
+     *
+     * @param parent the parent ViewGroup
+     * @param viewType the int viewType
+     * @return returns the ViewHolder
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,7 +51,7 @@ public class UserAdapter extends
 
     /**
      * Gets the number of users in the adapter
-     * @return
+     * @return the number of users in the adapter
      */
     @Override
     public int getItemCount() {
