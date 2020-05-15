@@ -1,14 +1,11 @@
 package com.equalpercentsteak.bandwagon;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -38,7 +35,7 @@ public class AddUser extends MainActivity {
     /**
      * Creates the AddUser activity that allows a user to add another user to a group.
      * When the AddUser activity is created, the list of groups is pulled from Firebase so that the group choice spinner is adaptive.
-     * @param savedInstanceState
+     * @param savedInstanceState the saved state of the AddUser class
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

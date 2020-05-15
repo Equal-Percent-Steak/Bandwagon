@@ -1,31 +1,29 @@
 package com.equalpercentsteak.bandwagon;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class CreateGroup extends MainActivity {
 
+    /**
+     * The group that is created by the method
+     */
     private Group group;
 
+    /**
+     * Creates and opens an instance of the Create Group screen
+     * @param savedInstanceState the saved Create Group screen
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +53,10 @@ public class CreateGroup extends MainActivity {
 //                });
     }
 
+    /**
+     * Checks to make sure all fields have been entered, adds the new group to Firebase, and switches the view back to the home screen
+     * @param v the object to be clicked
+     */
     public void onClick(View v){
         EditText enterGroup = findViewById(R.id.groupName);
         EditText enterDetails = findViewById(R.id.groupDescription);
@@ -70,29 +72,24 @@ public class CreateGroup extends MainActivity {
         }
 
         else {
-            EditText groupName = (EditText) findViewById(R.id.groupName);
-            EditText description = (EditText) findViewById(R.id.groupDescription);
-
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference groups = database.getReference("groups");
 
-        group = new Group(groupName.getText().toString(), MainActivity.getUser());
+        group = new Group(enterGroup.getText().toString(), MainActivity.getUser());
 //TODO: this is not modeled correctly oops
-        groups.child(groupName.getText().toString()).child("group_name").setValue(groupName.getText().toString());
-        groups.child(groupName.getText().toString()).child("description").setValue(description.getText().toString());
-        groups.child(groupName.getText().toString()).child("members").child(MainActivity.keyId).setValue(MainActivity.getUser());
-        groups.child(groupName.getText().toString()).child("assignments").setValue(group.getAssignments());
+        groups.child(enterGroup.getText().toString()).child("group_name").setValue(enterGroup.getText().toString());
+        groups.child(enterGroup.getText().toString()).child("description").setValue(enterDetails.getText().toString());
+        groups.child(enterGroup.getText().toString()).child("members").child(MainActivity.keyId).setValue(MainActivity.getUser());
+        groups.child(enterGroup.getText().toString()).child("assignments").setValue(group.getAssignments());
 
 //        System.out.println(getListOfGroups());
             performReturnHome();
         }
     }
 
-    public void performExitCreateNewGroup(View v){
-        Intent intent = new Intent(this, CreateNewTaskOrGroupMenu.class);
-        startActivity(intent);
-    }
-
+    /**
+     * Switches the activity to the home screen
+     */
     public void performReturnHome() {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);

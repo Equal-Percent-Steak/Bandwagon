@@ -1,12 +1,8 @@
 package com.equalpercentsteak.bandwagon;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,15 +21,6 @@ public class AccountSettings extends MainActivity {
 
         displayName.setText(MainActivity.getUser().getId());
         email.setText(MainActivity.getUser().getUsername());
-    }
-
-    /**
-     * Changes the activity to the change password activity
-     * @param v the current activity
-     */
-    public void performChangePassword(View v){
-        Intent intent = new Intent(this, ChangePassword.class);
-        startActivity(intent);
     }
 
 //    public void performEnterNewGroup(View v){

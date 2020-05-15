@@ -23,17 +23,17 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
     TextView title, details, dueDetails, completedStudents;
 
     /**
-     *
+     * The tag that is used for Firebase
      */
     private static final String TAG = "AssignmentDetailsActivi";
 
     /**
-     *
+     * The database that stores the assignment details
      */
     public DatabaseReference ref;
 
     /**
-     *
+     * The String that describes the group the assignment belongs to
      */
     private String mGroup;
 
