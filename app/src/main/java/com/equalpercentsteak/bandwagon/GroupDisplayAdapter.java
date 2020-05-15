@@ -1,29 +1,19 @@
 package com.equalpercentsteak.bandwagon;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class GroupDisplayAdapter extends
         RecyclerView.Adapter<GroupDisplayAdapter.ViewHolder> {
 
     private OnGroupListener mOnGroupListener;
 
-    private ArrayList<Group> mGroups;
     private ArrayList<String> mGroupNames;
-
-    public GroupDisplayAdapter(ArrayList<Group> groups, OnGroupListener onGroupListener){
-        mGroups = groups;
-        mOnGroupListener = onGroupListener;
-    }
 
     public GroupDisplayAdapter(ArrayList<String> groupNames, OnGroupListener onGroupListener, String unused){
         mGroupNames = groupNames;

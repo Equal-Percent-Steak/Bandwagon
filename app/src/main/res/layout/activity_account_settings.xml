@@ -11,45 +11,23 @@
         android:id="@+id/emailShown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
         android:text="@string/exampleEmail"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/email"
-        app:layout_constraintStart_toEndOf="@+id/email"
-        app:layout_constraintTop_toTopOf="@+id/email" />
-
-    <TextView
-        android:id="@+id/passwordExample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="@string/examplePassword"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/password"
-        app:layout_constraintStart_toEndOf="@+id/password"
-        app:layout_constraintTop_toTopOf="@+id/password" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:text="@string/email"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/displayName" />
-
-    <TextView
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/password"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/displayNameShown" />
 
     <TextView
         android:id="@+id/Settings"
@@ -96,12 +74,12 @@
         android:id="@+id/displayNameShown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
         android:text="@string/displayNameShown"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/displayName"
-        app:layout_constraintStart_toEndOf="@+id/displayName"
-        app:layout_constraintTop_toTopOf="@+id/displayName" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayName" />
 
     <Button
         android:id="@+id/settingsDoneButton"
@@ -115,17 +93,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/changePasswordButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:onClick="performChangePassword"
-        android:text="@string/changePassword"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
