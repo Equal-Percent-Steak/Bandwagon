@@ -22,19 +22,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     /**
      * The Context of the adapter
      */
-    Context c;
+    private Context c;
     /**
      * An ArrayList of assignments
      */
-    ArrayList<Assignment> assignments;
+    private ArrayList<Assignment> assignments;
     /**
      * An ArrayList of Groups
      */
-    ArrayList<Group> groups;
+    private ArrayList<Group> groups;
     /**
      * An ArrayList of strings that has the groupNames
      */
-    ArrayList<String> groupNames;
+    private ArrayList<String> groupNames;
     /**
      * The onAssignmentListener for the onClick method
      */
@@ -52,26 +52,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         this.onAssignmentListener=onAssignmentListener;
     }
 
-    /**
-     * Constructs an adapter with an ArrayList of groups
-     * @param c the context that forms the adapter
-     * @param groupNames the groups with which to populate the adapter
-     * @param onAssignmentListener the onAssignmentListener for the adapter
-     * @param unused makes this a different constructor
-     */
-    public MyAdapter(Context c, ArrayList<String> groupNames, MyHolder.OnAssignmentListener onAssignmentListener, String unused) {
-        this.c = c;
-        this.groupNames = groupNames;
-        this.onAssignmentListener=onAssignmentListener;
-    }
-
-    /**
-     * Constructs an adapter with an ArrayList of assignments
-     * @param assignments the assignments to populate the adapter
-     */
-    public MyAdapter(ArrayList<Assignment> assignments) {
-        this.assignments=assignments;
-    }
+//    /**
+//     * Constructs an adapter with an ArrayList of groups
+//     * @param c the context that forms the adapter
+//     * @param groupNames the groups with which to populate the adapter
+//     * @param onAssignmentListener the onAssignmentListener for the adapter
+//     * @param unused makes this a different constructor
+//     */
+//    public MyAdapter(Context c, ArrayList<String> groupNames, MyHolder.OnAssignmentListener onAssignmentListener, String unused) {
+//        this.c = c;
+//        this.groupNames = groupNames;
+//        this.onAssignmentListener=onAssignmentListener;
+//    }
+//
+//    /**
+//     * Constructs an adapter with an ArrayList of assignments
+//     * @param assignments the assignments to populate the adapter
+//     */
+//    public MyAdapter(ArrayList<Assignment> assignments) {
+//        this.assignments=assignments;
+//    }
 
     /**
      * Returns a MyHolder object based on a viewGroup and integer
@@ -151,7 +151,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
             month = "November";
         else if(monthNum.equals("12"))
             month = "December";
-        myHolder.mDate.setText(month + " " + day + ", " + year + " at " + hour + ":" + minute);
+        String dateAndTime = month + " " + day + ", " + year + " at " + hour + ":" + minute;
+        myHolder.mDate.setText(dateAndTime);
 
     }
 

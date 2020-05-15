@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class GroupDisplayScreen extends MainActivity implements GroupDisplayAdapter.OnGroupListener {
 
-    private ArrayList<Group> groups;
+//    private ArrayList<Group> groups;
     private DatabaseReference mGroups;
     private ArrayList<String> list;
     private RecyclerView rvGroups;
@@ -35,7 +35,7 @@ public class GroupDisplayScreen extends MainActivity implements GroupDisplayAdap
         mGroups.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                list = new ArrayList<String>();
+                list = new ArrayList<>();
                 for(DataSnapshot groups: dataSnapshot.getChildren())
                 {
                     String g = groups.child("group_name").getValue().toString();
@@ -63,7 +63,7 @@ public class GroupDisplayScreen extends MainActivity implements GroupDisplayAdap
 
     @Override
     public void onGroupClick(int position) {
-        list.get(position);
+        //list.get(position);
         Intent intent = new Intent(this, IndividualGroupPage.class);
         intent.putExtra("name", list.get(position));
         startActivity(intent);

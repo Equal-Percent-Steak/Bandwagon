@@ -1,14 +1,12 @@
 package com.equalpercentsteak.bandwagon;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +20,6 @@ import java.util.ArrayList;
 
 public class IndividualGroupPage extends MainActivity {
 
-    private ArrayList<Assignment> groupAssignments;
     private TextView groupName;
     private DatabaseReference mGroups;
     private ArrayList<Assignment> list;
@@ -34,7 +31,7 @@ public class IndividualGroupPage extends MainActivity {
         setContentView(R.layout.activity_individual_group_page);
 
         // Lookup the recyclerview in activity layout
-        rvGroupAssignments = (RecyclerView) findViewById(R.id.rvGroupAssignments);
+        rvGroupAssignments = findViewById(R.id.rvGroupAssignments);
         // Set layout manager to position the items
         rvGroupAssignments.setLayoutManager(new LinearLayoutManager(this));
 
@@ -46,7 +43,7 @@ public class IndividualGroupPage extends MainActivity {
         mGroups.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                list = new ArrayList<Assignment>();
+                list = new ArrayList<>();
                 for(DataSnapshot assignments: dataSnapshot.getChildren())
                 {
                     Assignment a = assignments.getValue(Assignment.class);
@@ -70,12 +67,12 @@ public class IndividualGroupPage extends MainActivity {
         startActivity(intent);
     }
 
-    public void Check(View v){
-        CheckBox completedCheck = (CheckBox)findViewById(R.id.checkBox);
-        if(completedCheck.isChecked()){
-            //Change boolean for specific user
-        }
-    }
+//    public void Check(View v){
+//        CheckBox completedCheck = findViewById(R.id.checkBox);
+//        if(completedCheck.isChecked()){
+//            //Change boolean for specific user
+//        }
+//    }
 
 
 }

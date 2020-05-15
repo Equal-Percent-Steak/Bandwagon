@@ -26,15 +26,15 @@ public class GroupDisplayAdapter extends
      */
     private ArrayList<String> mGroupNames;
 
-    /**
-     * Constructs a GroupDisplayAdapter with a given ArrayList of groups and an onGroupListener
-     * @param groups the groups to be assigned to the adapter
-     * @param onGroupListener the onGroupListener to be used with the onClick method
-     */
-    public GroupDisplayAdapter(ArrayList<Group> groups, OnGroupListener onGroupListener){
-        mGroups = groups;
-        mOnGroupListener = onGroupListener;
-    }
+//    /**
+//     * Constructs a GroupDisplayAdapter with a given ArrayList of groups and an onGroupListener
+//     * @param groups the groups to be assigned to the adapter
+//     * @param onGroupListener the onGroupListener to be used with the onClick method
+//     */
+//    public GroupDisplayAdapter(ArrayList<Group> groups, OnGroupListener onGroupListener){
+//        mGroups = groups;
+//        mOnGroupListener = onGroupListener;
+//    }
 
     /**
      * Constructs a GroupDisplayAdapter with a given ArrayList of group names, an onGroupListener, and an unused string
@@ -96,7 +96,7 @@ public class GroupDisplayAdapter extends
         /**
          * The TextView in the holder that holds the group name
          */
-        public TextView groupNameTextView;
+        private TextView groupNameTextView;
         /**
          * The OnGroupListener that works with the onClick method for selecting a group
          */
@@ -107,7 +107,7 @@ public class GroupDisplayAdapter extends
          * @param itemView The itemView for the viewHolder
          * @param onGroupListener The OnGroupListener that works with the onClick method for selecting a group
          */
-        public ViewHolder(View itemView, OnGroupListener onGroupListener) {
+        private ViewHolder(View itemView, OnGroupListener onGroupListener) {
             super(itemView);
             groupNameTextView = itemView.findViewById(R.id.group_name);
             this.onGroupListener=onGroupListener;

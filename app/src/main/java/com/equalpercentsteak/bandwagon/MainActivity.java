@@ -6,8 +6,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -48,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     /**
      * This method is called when the activity is started.
      * It checks if the user is logged in and also lists all of the assignments the user has on one screen.
-     * @param savedInstanceState
+     * @param savedInstanceState how the app should open
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         mGroups.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                list = new ArrayList<Assignment>();
+                list = new ArrayList<>();
                 for(DataSnapshot groups: dataSnapshot.getChildren())
                 {
                     DataSnapshot individualAssignments = groups.child("assignments");

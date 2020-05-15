@@ -1,8 +1,5 @@
 package com.equalpercentsteak.bandwagon;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
 
 public class Group {
@@ -40,22 +37,22 @@ public class Group {
         this.name=name;
     }
 
-    /**
-     * Adds a user to FireBase
-     * @param u the user to add
-     */
-    //TODO: Andrew Firebase integration for adding user and assignments
-    public void addUser(User u){
-        users.add(u);
-    }
-
-    /**
-     * Adds an assignment to the ArrayList of assignments
-     * @param a the assignment to add
-     */
-    public void addAssignment(Assignment a){
-        assignments.add(a);
-    }
+//    /**
+//     * Adds a user to FireBase
+//     * @param u the user to add
+//     */
+//    //TODO: Andrew Firebase integration for adding user and assignments
+//    public void addUser(User u){
+//        users.add(u);
+//    }
+//
+//    /**
+//     * Adds an assignment to the ArrayList of assignments
+//     * @param a the assignment to add
+//     */
+//    public void addAssignment(Assignment a){
+//        assignments.add(a);
+//    }
 
     /**
      * Returns the name of the group
@@ -72,13 +69,13 @@ public class Group {
         this.name = name;
     }
 
-    /**
-     * Gets the ArrayList of Users
-     * @return the ArrayList of Users
-     */
-    public ArrayList<User> getUsers(){
-        return users;
-    }
+//    /**
+//     * Gets the ArrayList of Users
+//     * @return the ArrayList of Users
+//     */
+//    public ArrayList<User> getUsers(){
+//        return users;
+//    }
 
     /**
      * Gets the ArrayList of Assignments
@@ -88,29 +85,29 @@ public class Group {
         return assignments;
     }
 
-    /**
-     * creates a list of the groups
-     * @return the groups in a sample array
-     */
-    public static ArrayList<Group> createGroupsList(){
-        ArrayList<Group> groups = new ArrayList<Group>();
-
-        groups.add(new Group("Math"));
-        groups.add(new Group("Spanish"));
-        groups.add(new Group("STEM 3"));
-
-        return groups;
-    }
-
-    public void updateAssignments(){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference groups = database.getReference("groups").child(name);
-        groups.child("assignments").setValue(getAssignments());
-    }
-
-    public void updateUsers(){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference groups = database.getReference("groups").child(name);
-        groups.child("members").setValue(getUsers());
-    }
+//    /**
+//     * creates a list of the groups
+//     * @return the groups in a sample array
+//     */
+//    public static ArrayList<Group> createGroupsList(){
+//        ArrayList<Group> groups = new ArrayList<Group>();
+//
+//        groups.add(new Group("Math"));
+//        groups.add(new Group("Spanish"));
+//        groups.add(new Group("STEM 3"));
+//
+//        return groups;
+//    }
+//
+//    public void updateAssignments(){
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference groups = database.getReference("groups").child(name);
+//        groups.child("assignments").setValue(getAssignments());
+//    }
+//
+//    public void updateUsers(){
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference groups = database.getReference("groups").child(name);
+//        groups.child("members").setValue(getUsers());
+//    }
 }
