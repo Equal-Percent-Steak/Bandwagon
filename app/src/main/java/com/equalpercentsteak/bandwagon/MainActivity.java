@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -174,6 +173,11 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         startActivity(intent);
     }
 
+    public void performEnterSignOut(MenuItem item){
+
+        FirebaseAuth.getInstance().signOut();
+    }
+
     /**
      * When the user clicks the create task button from the menu, the Create Task page is opened
      * @param item the item selected from the menu
@@ -248,13 +252,6 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         intent.putExtra("group",list.get(position).getGroup().getName());
         startActivity(intent);
     }
-
-//    public void check(View v){
-//        CheckBox completedCheck = (CheckBox)findViewById(R.id.checkBox);
-//        if(completedCheck.isChecked()){
-//            //Change boolean for specific user
-//        }
-//    }
 }
 
 

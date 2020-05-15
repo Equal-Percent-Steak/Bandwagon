@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 public class AccountSettings extends MainActivity {
 
@@ -19,6 +20,11 @@ public class AccountSettings extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_settings);
+        TextView displayName = findViewById(R.id.displayNameShown);
+        TextView email = findViewById(R.id.emailShown);
+
+        displayName.setText(MainActivity.getUser().getId());
+        email.setText(MainActivity.getUser().getUsername());
     }
 
     /**
