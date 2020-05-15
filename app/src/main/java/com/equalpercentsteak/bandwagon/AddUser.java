@@ -26,7 +26,13 @@ import java.util.ArrayList;
 
 public class AddUser extends MainActivity {
 
+    /**
+     * the list of groups to be displayed in the spinner for the user
+     */
     private ArrayList<String> list;
+    /**
+     * the list of groups stored in Firebase specific to the user
+     */
     private DatabaseReference mGroups;
 
     /**

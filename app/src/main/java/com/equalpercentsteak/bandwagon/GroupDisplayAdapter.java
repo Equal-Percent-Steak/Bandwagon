@@ -59,6 +59,7 @@ public class GroupDisplayAdapter extends
         return mGroupNames.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView groupNameTextView;
         OnGroupListener onGroupListener;

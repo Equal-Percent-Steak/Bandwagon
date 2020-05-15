@@ -19,6 +19,11 @@ public class ChangePassword extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
     }
+
+    /**
+     * Changes the screen to the account settings screen
+     * @param v the button clicked which changes the view
+     */
     public void performReturnSettings(View v) {
         Intent intent = new Intent(this,AccountSettings.class);
         startActivity(intent);

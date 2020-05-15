@@ -163,7 +163,7 @@
         android:id="@+id/settingsDoneButton"
         android:layout_width="160dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="25dp"
         android:fontFamily="sans-serif-medium"
         android:onClick="performReturnHome"
         android:text="@string/done"

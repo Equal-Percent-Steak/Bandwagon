@@ -17,9 +17,24 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AssignmentDetailsActivity extends AppCompatActivity {
 
+    /**
+     * the data to be displayed to the user
+     */
     TextView title, details, dueDetails, completedStudents;
+
+    /**
+     *
+     */
     private static final String TAG = "AssignmentDetailsActivi";
+
+    /**
+     *
+     */
     public DatabaseReference ref;
+
+    /**
+     *
+     */
     private String mGroup;
 
     /**

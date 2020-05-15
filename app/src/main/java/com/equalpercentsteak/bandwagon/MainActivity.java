@@ -117,6 +117,11 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         });
     }
 
+    /**
+     * Creates an instance of the menu
+     * @param menu the menu to be applied to all screens for ease of navigation
+     * @return the menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -125,29 +130,29 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.settingsMenu:
-                Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.sign_out_menu:
-                Toast.makeText(this, "Sign out selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.createNewMenu:
-                Toast.makeText(this, "Create New selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.groupMenu:
-                Toast.makeText(this, "Create New Group selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.taskMenu:
-                Toast.makeText(this, "Create New Task selected", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch(item.getItemId()){
+//            case R.id.settingsMenu:
+//                Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
+//                return true;
+//            case R.id.sign_out_menu:
+//                Toast.makeText(this, "Sign out selected", Toast.LENGTH_SHORT).show();
+//                return true;
+//            case R.id.createNewMenu:
+//                Toast.makeText(this, "Add New selected", Toast.LENGTH_SHORT).show();
+//                return true;
+//            case R.id.groupMenu:
+//                Toast.makeText(this, "Create New Group selected", Toast.LENGTH_SHORT).show();
+//                return true;
+//            case R.id.taskMenu:
+//                Toast.makeText(this, "Create New Task selected", Toast.LENGTH_SHORT).show();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//
+//    }
 
     @Override
     protected void onResume() {
@@ -159,35 +164,60 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         mDatabase.child(keyId).setValue(user);
     }
 
+    /**
+     * When the user clicks the settings button from the menu, the Settings page is opened
+     * @param item the item selected from the menu
+     */
     public void performEnterSettings(MenuItem item){
         Intent intent = new Intent(this,AccountSettings.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         startActivity(intent);
     }
 
+    /**
+     * When the user clicks the create task button from the menu, the Create Task page is opened
+     * @param item the item selected from the menu
+     */
     public void performEnterNewTask(MenuItem item){
         Intent intent = new Intent(this,CreateTask.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         startActivity(intent);
     }
+
+    /**
+     * When the user clicks the create group button from the menu, the Create Group page is opened
+     * @param item the item selected from the menu
+     */
     public void performEnterNewGroup(MenuItem item){
         Intent intent = new Intent(this,CreateGroup.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         startActivity(intent);
     }
 
+    /**
+     * When the user clicks the add user button from the menu, the Add User page is opened
+     * @param item the item selected from the menu
+     */
     public void performEnterNewUser(MenuItem item){
         Intent intent = new Intent(this,AddUser.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         startActivity(intent);
     }
 
+    /**
+     * When the user clicks the Groups button from the menu, the Groups page is opened
+     * @param item the item selected from the menu
+     */
     public void performEnterGroups(MenuItem item){
         Intent intent = new Intent(this,GroupDisplayScreen.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         startActivity(intent);
     }
 
+    /**
+     * When the user clicks the Groups button from the menu, the Groups page is opened
+     * @param item the item selected from the menu
+     */
     public void performReturnHome(MenuItem item) {
         Intent intent = new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
@@ -219,12 +249,12 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         startActivity(intent);
     }
 
-    public void check(View v){
-        CheckBox completedCheck = (CheckBox)findViewById(R.id.checkBox);
-        if(completedCheck.isChecked()){
-            //Change boolean for specific user
-        }
-    }
+//    public void check(View v){
+//        CheckBox completedCheck = (CheckBox)findViewById(R.id.checkBox);
+//        if(completedCheck.isChecked()){
+//            //Change boolean for specific user
+//        }
+//    }
 }
 
 

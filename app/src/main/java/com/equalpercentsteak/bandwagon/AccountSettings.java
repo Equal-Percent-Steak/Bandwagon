@@ -12,8 +12,8 @@ import android.view.View;
 public class AccountSettings extends MainActivity {
 
     /**
-     * Starts the AccountSettings page
-     * @param savedInstanceState
+     * Creates the Account Settings page
+     * @param savedInstanceState the saved Account Settings page
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,17 +22,22 @@ public class AccountSettings extends MainActivity {
     }
 
     /**
-     * Creates the ChangePassword activity
-     * @param v
+     * Changes the activity to the change password activity
+     * @param v the current activity
      */
     public void performChangePassword(View v){
         Intent intent = new Intent(this, ChangePassword.class);
         startActivity(intent);
     }
 
+//    public void performEnterNewGroup(View v){
+//        Intent intent = new Intent(this,MainActivity.class);
+//        startActivity(intent);
+//    }
+
     /**
-     * Returns to the home page
-     * @param v
+     * Changes the activity to the main activity
+     * @param v The current activity
      */
     public void performReturnHome(View v) {
         Intent intent = new Intent(this,MainActivity.class);
