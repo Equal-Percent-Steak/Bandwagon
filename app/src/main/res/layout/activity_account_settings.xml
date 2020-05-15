@@ -52,44 +52,6 @@
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
-        android:id="@+id/completedText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/timeOption"
-        android:textSize="24sp"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/completedText2" />
-
-    <TextView
-        android:id="@+id/completedText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/completedOption"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appSettings" />
-
-    <TextView
-        android:id="@+id/appSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="@string/appSettings"
-        android:textColor="#00B488"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changePasswordButton" />
-
-    <TextView
         android:id="@+id/Settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -140,24 +102,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/displayName"
         app:layout_constraintStart_toEndOf="@+id/displayName"
         app:layout_constraintTop_toTopOf="@+id/displayName" />
-
-    <Switch
-        android:id="@+id/completedSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/completedText2"
-        app:layout_constraintStart_toEndOf="@+id/completedText2"
-        app:layout_constraintTop_toTopOf="@+id/completedText2" />
-
-    <Switch
-        android:id="@+id/timeSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/completedText"
-        app:layout_constraintStart_toEndOf="@+id/completedText"
-        app:layout_constraintTop_toTopOf="@+id/completedText" />
 
     <Button
         android:id="@+id/settingsDoneButton"

@@ -10,12 +10,15 @@ import android.view.View;
 
 public class ChangePassword extends MainActivity {
 
+    private Bundle savedInstanceState;
+
     /**
      * Creates the activity to change the user's password
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.savedInstanceState = savedInstanceState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
     }
