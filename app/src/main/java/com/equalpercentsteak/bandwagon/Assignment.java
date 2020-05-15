@@ -30,6 +30,10 @@ public class Assignment {
      * The HashMap of users that records the students that have completed the assignment
      */
     private HashMap<String, Boolean> completedStudents;
+    /**
+     * The count of users that have completed an assignment
+     */
+    private long completedStudentsSize;
 
 
     /**
@@ -41,6 +45,7 @@ public class Assignment {
         this.date = "";
         this.time = "";
         completedStudents = new HashMap<>();
+        completedStudentsSize = 0;
     }
 
     /**
@@ -57,6 +62,7 @@ public class Assignment {
         this.time = time;
         this.group = group;
         completedStudents = new HashMap<>();
+        completedStudentsSize = 0;
     }
 
     /**

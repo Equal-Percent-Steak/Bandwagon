@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -46,6 +47,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
      *
      */
     public DatabaseReference groupFB;
+    public DatabaseReference checkIfButtonPressed;
 
     /**
      * Constructs a MyHolder object that takes in a View object and an onAssignmentListener
@@ -67,8 +69,6 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 groupFB = FirebaseDatabase.getInstance().getReference().child("groups").child(mGroup.getName()).child("assignments").child(mTitle.getText().toString()).child("completedStudents").child(MainActivity.getUser().getId());
-                //TODO: work on this later Andrew
-
                 if (checkAssignments.isChecked()){
                     groupFB.setValue(true);
                     itemView.jumpDrawablesToCurrentState();
@@ -78,8 +78,8 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
             }
         }
         );
-        itemView.setOnClickListener(this);
-        itemView.jumpDrawablesToCurrentState();
+
+
     }
 
     @Override

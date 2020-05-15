@@ -8,6 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 
@@ -89,10 +95,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
      * @param i the position of the adapter
      */
     @Override
-    public void onBindViewHolder(@NonNull MyHolder myHolder, int i) {
+    public void onBindViewHolder(@NonNull final MyHolder myHolder, int i) {
         myHolder.mTitle.setText(assignments.get(i).getTitle());
         myHolder.mDes.setText(assignments.get(i).getDescription());
         myHolder.mGroup = assignments.get(i).getGroup();
+
+        DatabaseReference checkIfButtonPressed = FirebaseDatabase.getInstance().getReference().child("groups").child(myHolder.mGroup.getName()).child("assignments").child(myHolder.mTitle.getText().toString()).child("completedStudents");
+        checkIfButtonPressed.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild(MainActivity.getUser().getId())){
+                    myHolder.checkAssignments.setChecked((boolean) dataSnapshot.child(MainActivity.getUser().getId()).getValue());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 //        if(check variable){
 //            CheckAssignment.setChecked(true);
 //        }

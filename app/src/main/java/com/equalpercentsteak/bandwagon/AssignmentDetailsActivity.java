@@ -13,6 +13,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AssignmentDetailsActivity extends AppCompatActivity {
 
@@ -78,29 +79,12 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
         dueDetails.setText(month + " " + day + ", " + year + " at " + hour + ":" + minute);
 
         ref = FirebaseDatabase.getInstance().getReference().child("groups").child(mGroup).child("assignments").child(assignmentTitle);
-        ref.addChildEventListener(new ChildEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 ref.child("completedStudentsSize").setValue(dataSnapshot.child("completedStudents").getChildrenCount());
                 studentsCompleted[0] = (int) dataSnapshot.child("completedStudents").getChildrenCount();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                ref.child("completedStudentsSize").setValue(dataSnapshot.child("completedStudents").getChildrenCount());
-                studentsCompleted[0] = (int) dataSnapshot.child("completedStudents").getChildrenCount();
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                ref.child("completedStudentsSize").setValue(dataSnapshot.child("completedStudents").getChildrenCount());
-                studentsCompleted[0] = (int) dataSnapshot.child("completedStudents").getChildrenCount();
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                ref.child("completedStudentsSize").setValue(dataSnapshot.child("completedStudents").getChildrenCount());
-                studentsCompleted[0] = (int) dataSnapshot.child("completedStudents").getChildrenCount();
+                completedStudents.setText(studentsCompleted[0] + "");
             }
 
             @Override
@@ -109,7 +93,7 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
             }
         });
 
-        completedStudents.setText(studentsCompleted[0] + "");
+
     }
     public void performReturnSettings(View v) {
         Intent intent = new Intent(this,AccountSettings.class);
