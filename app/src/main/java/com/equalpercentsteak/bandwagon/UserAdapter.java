@@ -28,6 +28,11 @@ public class UserAdapter extends
         return viewHolder;
     }
 
+    /**
+     * Updates the contents of the recycler view to display the task Description
+     * @param viewHolder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(UserAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
@@ -38,22 +43,41 @@ public class UserAdapter extends
         textView.setText(user.getUsername());
     }
 
+    /**
+     * Gets the number of users in the adapter
+     * @return
+     */
     @Override
     public int getItemCount() {
         return mUsers.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
+        /**
+         * The TextView of each user
+         */
         public TextView UserTextView;
 
+        /**
+         * Constructs a ViewHolder
+         * @param itemView
+         */
         public ViewHolder(View itemView) {
             super(itemView);
             UserTextView = (TextView)itemView.findViewById(R.id.user_name);
         }
     }
 
+    /**
+     * The list of users in the adapter
+     */
     private List<User> mUsers;
 
+    /**
+     * Constructs a UserAdapter with a list of users
+     * @param users the list of users to be added to the adapter
+     */
     public UserAdapter(List<User> users){
         mUsers = users;
     }

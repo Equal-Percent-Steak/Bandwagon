@@ -1,5 +1,6 @@
 package com.equalpercentsteak.bandwagon;
 
+import android.content.Context;
 import android.content.Intent;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -72,6 +74,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
                 if (checkAssignments.isChecked()){
                     groupFB.setValue(true);
                     itemView.jumpDrawablesToCurrentState();
+                    Snackbar.make(buttonView, "Yay! You did it!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 } else if (!checkAssignments.isChecked()){
                     groupFB.removeValue();
                 }
