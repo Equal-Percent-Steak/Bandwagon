@@ -79,7 +79,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
         }
         );
 
-
+        itemView.setOnClickListener(this);
     }
 
     @Override
