@@ -12,7 +12,11 @@ public class User {
      * A string id that is individual to each user
      */
     private String id;
-//    private ArrayList<String> classes;
+
+    /**
+     * List of all classes that a user is in
+     */
+    private ArrayList<String> classes;
 //    private String name;
 
     /**
@@ -20,7 +24,7 @@ public class User {
      */
     public User(){
         username="";
-//        classes = new ArrayList<>();
+        classes = new ArrayList<>();
     }
 
     /**
@@ -31,7 +35,7 @@ public class User {
     public User (String userName, String id){
         username = userName;
         this.id = id;
-//        classes = new ArrayList<>();
+        classes = new ArrayList<>();
     }
 
     /**
@@ -66,6 +70,29 @@ public class User {
         return username;
     }
 
+    /**
+     * Gets the list of classes for the user
+     * @return
+     */
+    public ArrayList<String> getClasses() {
+        return classes;
+    }
+
+    /**
+     * Sets the list of classes for the user
+     * @param classes list of classes
+     */
+    public void setClasses(ArrayList<String> classes) {
+        this.classes = classes;
+    }
+
+    /**
+     * Adds classes to the class ArrayList
+     * @param c class to be added
+     */
+    public void addClasses(String c) {
+        this.classes.add(c);
+    }
     /**
      * Generates an ArrayList of sample Groups
      * @return an ArrayList of groups with given names

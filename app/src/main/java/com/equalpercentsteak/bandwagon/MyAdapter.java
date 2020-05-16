@@ -100,7 +100,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         myHolder.mDes.setText(assignments.get(i).getDescription());
         myHolder.mGroup = assignments.get(i).getGroup();
 
-        DatabaseReference checkIfButtonPressed = FirebaseDatabase.getInstance().getReference().child("groups").child(myHolder.mGroup.getName()).child("assignments").child(myHolder.mTitle.getText().toString()).child("completedStudents");
+        DatabaseReference checkIfButtonPressed = FirebaseDatabase.getInstance().getReference().child("groups").child(myHolder.mGroup).child("assignments").child(myHolder.mTitle.getText().toString()).child("completedStudents");
         checkIfButtonPressed.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,13 +42,15 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     private static User user;
     public static String keyId;
     private DatabaseReference mGroups;
+    private DatabaseReference mUsers;
+    private ArrayList<String> namesOfAllowedGroups;
     private ArrayList<Assignment> list;
 
 
     /**
      * This method is called when the activity is started.
      * It checks if the user is logged in and also lists all of the assignments the user has on one screen.
-     * @param savedInstanceState how the app should open
+     * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
 //                    onSignedInInitialize(userFB.getDisplayName());
                     user = new User(userFB.getEmail(),userFB.getUid());
                     keyId = userFB.getUid();
+                    loadGroups();
                 } else if (userFB == null){
                     //not signed in
 //                    onSignedOutCleanup();
@@ -85,35 +90,61 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                     user = new User(userFB.getEmail(),userFB.getUid());
                     keyId = userFB.getUid();
                     addUserToDB(userFB);
+                    loadGroups();
                 }
             }
         };
 
-        // Populates the recycler view with the list of all of the tasks from Firebase
-        mGroups = FirebaseDatabase.getInstance().getReference().child("groups");
-        mGroups.addValueEventListener(new ValueEventListener() {
+
+    }
+
+    public void loadGroups(){
+        mUsers = FirebaseDatabase.getInstance().getReference().child("users").child(getUser().getId());
+        mUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                list = new ArrayList<>();
-                for(DataSnapshot groups: dataSnapshot.getChildren())
-                {
-                    DataSnapshot individualAssignments = groups.child("assignments");
-                    for(DataSnapshot assignments: individualAssignments.getChildren()){
-                        Assignment a = assignments.getValue(Assignment.class);
-                        list.add(a);
-                    }
+                namesOfAllowedGroups = new ArrayList<>();
+                long children = dataSnapshot.child("classes").getChildrenCount();
+                for(DataSnapshot groups: dataSnapshot.child("classes").getChildren()){
+                    namesOfAllowedGroups.add((String) groups.getValue());
                 }
-                myAdapter = new MyAdapter(MainActivity.this,list,MainActivity.this);
-                mRecyclerView.setAdapter(myAdapter);
+                loadAdapter();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(MainActivity.this, "Something is wrong", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
 
+    public void loadAdapter(){
+        if(namesOfAllowedGroups != null){
+            for(String groups: namesOfAllowedGroups){
+                // Populates the recycler view with the list of all of the tasks from Firebase
+                mGroups = FirebaseDatabase.getInstance().getReference().child("groups").child(groups);
+                mGroups.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        list = new ArrayList<Assignment>();
+                        DataSnapshot individualAssignments = dataSnapshot.child("assignments");
+                        for(DataSnapshot assignments: individualAssignments.getChildren()){
+                            Assignment a = assignments.getValue(Assignment.class);
+                            list.add(a);
+                        }
+
+                        myAdapter = new MyAdapter(MainActivity.this,list,MainActivity.this);
+                        mRecyclerView.setAdapter(myAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(MainActivity.this, "Something is wrong" + getUser().getId(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }
+    }
     /**
      * Creates an instance of the menu
      * @param menu the menu to be applied to all screens for ease of navigation
@@ -247,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         intent.putExtra("details", list.get(position).getDescription());
         intent.putExtra("date", list.get(position).getDate());
         intent.putExtra("time", list.get(position).getTime());
-        intent.putExtra("group",list.get(position).getGroup().getName());
+        intent.putExtra("group",list.get(position).getGroup());
         startActivity(intent);
     }
 }

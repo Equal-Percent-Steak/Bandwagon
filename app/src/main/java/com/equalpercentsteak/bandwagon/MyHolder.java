@@ -29,7 +29,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
     /**
      * The Group that the Assignment in the holder belongs to
      */
-    public Group mGroup;
+    public String mGroup;
     //TODO Add firebase description
     /**
      *
@@ -56,7 +56,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                groupFB = FirebaseDatabase.getInstance().getReference().child("groups").child(mGroup.getName()).child("assignments").child(mTitle.getText().toString()).child("completedStudents").child(MainActivity.getUser().getId());
+                groupFB = FirebaseDatabase.getInstance().getReference().child("groups").child(mGroup).child("assignments").child(mTitle.getText().toString()).child("completedStudents").child(MainActivity.getUser().getId());
                 if (checkAssignments.isChecked()){
                     groupFB.setValue(true);
                     itemView.jumpDrawablesToCurrentState();

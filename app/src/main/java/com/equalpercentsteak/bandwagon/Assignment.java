@@ -24,7 +24,7 @@ public class Assignment {
     /**
      * The Group that the assignment belongs to
      */
-    private Group group;
+    private String group;
     /**
      * The HashMap of users that records the students that have completed the assignment
      */
@@ -54,7 +54,7 @@ public class Assignment {
      * @param date the String of the due date of the Assignment in the form yyyymmdd
      * @param time the String of the due time of the Assignment in the form hhmm
      */
-    public Assignment(String title, String description, String date, String time, Group group){
+    public Assignment(String title, String description, String date, String time, String group){
         this.title= title;
         this.description = description;
         this.date = date;
@@ -84,7 +84,7 @@ public class Assignment {
     /**
      * @return group that the assignment belongs to
      */
-    public Group getGroup(){
+    public String getGroup(){
         return group;
     }
 
@@ -130,7 +130,7 @@ public class Assignment {
      * Sets the group of the assignment
      * @param group group of the assignment
      */
-    public void setGroup(Group group){
+    public void setGroup(String group){
         this.group = group;
     }
 

@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 
 public class CreateGroup extends MainActivity {
 
@@ -74,15 +76,18 @@ public class CreateGroup extends MainActivity {
         else {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference groups = database.getReference("groups");
+            DatabaseReference users = database.getReference("users");
+            group = new Group(enterGroup.getText().toString(), MainActivity.getUser());
+    //TODO: this is not modeled correctly oops
+            groups.child(enterGroup.getText().toString()).child("group_name").setValue(enterGroup.getText().toString());
+            groups.child(enterGroup.getText().toString()).child("description").setValue(enterDetails.getText().toString());
+            groups.child(enterGroup.getText().toString()).child("members").child(MainActivity.keyId).setValue(MainActivity.getUser());
+            groups.child(enterGroup.getText().toString()).child("assignments").setValue(group.getAssignments());
 
-        group = new Group(enterGroup.getText().toString(), MainActivity.getUser());
-//TODO: this is not modeled correctly oops
-        groups.child(enterGroup.getText().toString()).child("group_name").setValue(enterGroup.getText().toString());
-        groups.child(enterGroup.getText().toString()).child("description").setValue(enterDetails.getText().toString());
-        groups.child(enterGroup.getText().toString()).child("members").child(MainActivity.keyId).setValue(MainActivity.getUser());
-        groups.child(enterGroup.getText().toString()).child("assignments").setValue(group.getAssignments());
-
-//        System.out.println(getListOfGroups());
+            ArrayList<String> groupArr = new ArrayList<>();
+            groupArr.add(enterGroup.getText().toString());
+            users.child(MainActivity.getUser().getId()).child("classes").setValue(groupArr);
+    //        System.out.println(getListOfGroups());
             performReturnHome();
         }
     }
