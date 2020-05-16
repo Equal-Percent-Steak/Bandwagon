@@ -68,7 +68,7 @@
     <string name="hours_and">" hours and "</string>
     <string name="minutes">" minutes"</string>
     <string name="sampleDateWithTime">Month xx, xxxx at xx:xx</string>
-    <string name="percentageDescription">of people have completed this task</string>
+    <string name="percentageDescription">people have completed this task</string>
     <string name="timeAboveLabel">It is taking people</string>
     <string name="timeBelowLabel">minutes to complete this task</string>
     <string name="exampleDescription">blahblah blah</string>
