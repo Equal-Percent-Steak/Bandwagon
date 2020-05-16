@@ -31,15 +31,16 @@ public class GroupDisplayScreen extends MainActivity implements GroupDisplayAdap
         rvGroups = findViewById(R.id.rvGroups);
         rvGroups.setLayoutManager(new LinearLayoutManager(this));
 
-        mGroups = FirebaseDatabase.getInstance().getReference().child("groups");
+        mGroups = FirebaseDatabase.getInstance().getReference().child("users").child(MainActivity.getUser().getId()).child("classes");
+
         mGroups.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list = new ArrayList<>();
                 for(DataSnapshot groups: dataSnapshot.getChildren())
                 {
-                    String g = groups.child("group_name").getValue().toString();
-                    list.add(g);
+                    String gName = groups.getValue().toString();
+                    list.add(gName);
                 }
                 GroupDisplayAdapter groupDisplayAdapter = new GroupDisplayAdapter(list,GroupDisplayScreen.this, "");
                 rvGroups.setAdapter(groupDisplayAdapter);

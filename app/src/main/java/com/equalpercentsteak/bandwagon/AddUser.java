@@ -31,12 +31,14 @@ public class AddUser extends MainActivity {
      * the list of groups stored in Firebase specific to the user
      */
     private DatabaseReference mGroups;
-
     /**
      * Creates the AddUser activity that allows a user to add another user to a group.
      * When the AddUser activity is created, the list of groups is pulled from Firebase so that the group choice spinner is adaptive.
      * @param savedInstanceState the saved state of the AddUser class
      */
+
+    private ArrayList classes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +46,14 @@ public class AddUser extends MainActivity {
 
         final Spinner groupMenu = (Spinner) findViewById(R.id.groupChoice);
 
-        mGroups = FirebaseDatabase.getInstance().getReference().child("groups");
+        mGroups = FirebaseDatabase.getInstance().getReference().child("users").child(MainActivity.getUser().getId()).child("classes");
         mGroups.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list = new ArrayList<String>();
                 for(DataSnapshot groups: dataSnapshot.getChildren())
                 {
-                    String g = groups.child("group_name").getValue().toString();
+                    String g = groups.getValue().toString();
                     list.add(g);
                 }
                 ArrayAdapter<String> groupMenuAdapter = new ArrayAdapter<String>(AddUser.this,
@@ -74,7 +76,7 @@ public class AddUser extends MainActivity {
      */
     public void onClick(View v){
         EditText username = findViewById(R.id.username);
-        Spinner groupChoice = findViewById(R.id.groupChoice);
+        final Spinner groupChoice = findViewById(R.id.groupChoice);
 
         if( TextUtils.isEmpty(username.getText())){
             Toast.makeText(this, "Please enter a user to invite", Toast.LENGTH_SHORT).show();
@@ -90,12 +92,41 @@ public class AddUser extends MainActivity {
         }
 
         else {
-            EditText usernameInput = (EditText) findViewById(R.id.username);
+            final EditText usernameInput = (EditText) findViewById(R.id.username);
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference users = database.getReference("users");
+            final DatabaseReference users = database.getReference("users").child(usernameInput.getText().toString());
+            final DatabaseReference groups = database.getReference("groups");
+
+            users.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.hasChild("classes")){
+                        classes = (ArrayList<String>) dataSnapshot.child("classes").getValue();
+                        if(!classes.contains(groupChoice.getSelectedItem().toString())){
+                            classes.add(groupChoice.getSelectedItem().toString());
+                            users.child("classes").setValue(classes);
+                        }
+
+                        User u = new User(dataSnapshot.child("username").getValue(String.class),usernameInput.getText().toString());
+                        groups.child(groupChoice.getSelectedItem().toString()).child("members").child(usernameInput.getText().toString()).setValue(u);
+                    } else{
+                        classes = new ArrayList<>();
+                        classes.add(groupChoice.getSelectedItem().toString());
+                        users.child("classes").setValue(classes);
+
+                        User u = new User(dataSnapshot.child("username").getValue(String.class),usernameInput.getText().toString());
+                        groups.child(groupChoice.getSelectedItem().toString()).child("members").child(usernameInput.getText().toString()).setValue(u);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
             //TODO:Add members to the correct group
-            users.child(usernameInput.getText().toString()).child("username").setValue(usernameInput.getText().toString());
+//            users.child(usernameInput.getText().toString()).child("username").setValue(usernameInput.getText().toString());
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }

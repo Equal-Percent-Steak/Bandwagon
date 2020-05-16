@@ -64,15 +64,9 @@ public class IndividualGroupPage extends MainActivity {
 
     public void performViewGroupMembers(View v) {
         Intent intent = new Intent(this,ClassMembers.class);
+        intent.putExtra("group_name",getIntent().getStringExtra("name"));
         startActivity(intent);
     }
-
-//    public void Check(View v){
-//        CheckBox completedCheck = findViewById(R.id.checkBox);
-//        if(completedCheck.isChecked()){
-//            //Change boolean for specific user
-//        }
-//    }
 
 
 }

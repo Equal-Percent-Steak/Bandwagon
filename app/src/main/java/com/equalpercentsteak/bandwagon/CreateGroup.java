@@ -78,7 +78,7 @@ public class CreateGroup extends MainActivity {
             DatabaseReference groups = database.getReference("groups");
             DatabaseReference users = database.getReference("users");
             group = new Group(enterGroup.getText().toString(), MainActivity.getUser());
-    //TODO: this is not modeled correctly oops
+
             groups.child(enterGroup.getText().toString()).child("group_name").setValue(enterGroup.getText().toString());
             groups.child(enterGroup.getText().toString()).child("description").setValue(enterDetails.getText().toString());
             groups.child(enterGroup.getText().toString()).child("members").child(MainActivity.keyId).setValue(MainActivity.getUser());
