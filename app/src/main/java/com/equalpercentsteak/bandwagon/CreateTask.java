@@ -60,14 +60,14 @@ public class CreateTask extends MainActivity {
         //Read users groups to spinner from Group class
         final Spinner groupMenu = (Spinner) findViewById(R.id.groupChoice);
 
-        mGroups = FirebaseDatabase.getInstance().getReference().child("groups");
+        mGroups = FirebaseDatabase.getInstance().getReference().child("users").child(MainActivity.getUser().getId()).child("classes");
         mGroups.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list = new ArrayList<String>();
                 for(DataSnapshot groups: dataSnapshot.getChildren())
                 {
-                    String g = groups.child("group_name").getValue().toString();
+                    String g = groups.getValue().toString();
                     list.add(g);
                 }
                 ArrayAdapter<String> groupMenuAdapter = new ArrayAdapter<String>(CreateTask.this,
