@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     private DatabaseReference mUsers;
     private ArrayList<String> namesOfAllowedGroups;
     private ArrayList<Assignment> list;
+    private ArrayList<String> listOfUniqueNames;
+
 
 
     /**
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                 }
                 list = new ArrayList<Assignment>();
 
+                listOfUniqueNames = new ArrayList<>();
             }
         };
 
@@ -131,7 +134,10 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                         DataSnapshot individualAssignments = dataSnapshot.child("assignments");
                         for(DataSnapshot assignments: individualAssignments.getChildren()){
                             Assignment a = assignments.getValue(Assignment.class);
-                            list.add(a);
+                            if(!listOfUniqueNames.contains(a.getTitle())){
+                                list.add(a);
+                                listOfUniqueNames.add(a.getTitle());
+                            }
                         }
 
                         myAdapter = new MyAdapter(MainActivity.this,list,MainActivity.this);
