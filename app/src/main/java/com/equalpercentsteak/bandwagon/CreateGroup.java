@@ -9,8 +9,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -22,10 +27,23 @@ public class CreateGroup extends MainActivity {
      */
     private Group group;
 
+    private ArrayList<String>[] arr = new ArrayList[1];
     /**
      * Creates and opens an instance of the Create Group screen
      * @param savedInstanceState the saved Create Group screen
      */
+
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    private DatabaseReference groups = database.getReference("groups");
+
+    private ValueEventListener listener;
+
+    /**
+     * DatabaseReference of the users
+     */
+    private final DatabaseReference users = database.getReference("users");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +78,7 @@ public class CreateGroup extends MainActivity {
      * @param v the object to be clicked
      */
     public void onClick(View v){
-        EditText enterGroup = findViewById(R.id.groupName);
+        final EditText enterGroup = findViewById(R.id.groupName);
         EditText enterDetails = findViewById(R.id.groupDescription);
 
         if( TextUtils.isEmpty(enterGroup.getText())){
@@ -74,9 +92,6 @@ public class CreateGroup extends MainActivity {
         }
 
         else {
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference groups = database.getReference("groups");
-            DatabaseReference users = database.getReference("users");
             group = new Group(enterGroup.getText().toString(), MainActivity.getUser());
 
             groups.child(enterGroup.getText().toString()).child("group_name").setValue(enterGroup.getText().toString());
@@ -84,11 +99,29 @@ public class CreateGroup extends MainActivity {
             groups.child(enterGroup.getText().toString()).child("members").child(MainActivity.keyId).setValue(MainActivity.getUser());
             groups.child(enterGroup.getText().toString()).child("assignments").setValue(group.getAssignments());
 
-            ArrayList<String> groupArr = new ArrayList<>();
-            groupArr.add(enterGroup.getText().toString());
-            users.child(MainActivity.getUser().getId()).child("classes").setValue(groupArr);
-    //        System.out.println(getListOfGroups());
-            performReturnHome();
+            listener = users.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    ArrayList<String> groupArr;
+                    if(dataSnapshot.child(MainActivity.getUser().getId()).child("classes").exists()){
+                        groupArr = (ArrayList<String>) dataSnapshot.child(MainActivity.getUser().getId()).child("classes").getValue();
+                    } else{
+                        groupArr = new ArrayList<>();
+                    }
+                    groupArr.add(enterGroup.getText().toString());
+                    //        System.out.println(getListOfGroups());
+                    arr[0] = groupArr;
+                    users.child(MainActivity.getUser().getId()).child("classes").setValue(arr[0]);
+                    performReturnHome();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+
+            });
+
         }
     }
 
@@ -96,6 +129,7 @@ public class CreateGroup extends MainActivity {
      * Switches the activity to the home screen
      */
     public void performReturnHome() {
+        users.removeEventListener(listener);
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }

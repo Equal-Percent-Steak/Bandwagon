@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                     addUserToDB(userFB);
                     loadGroups();
                 }
+                list = new ArrayList<Assignment>();
+
             }
         };
 
@@ -126,7 +128,6 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                 mGroups.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        list = new ArrayList<Assignment>();
                         DataSnapshot individualAssignments = dataSnapshot.child("assignments");
                         for(DataSnapshot assignments: individualAssignments.getChildren()){
                             Assignment a = assignments.getValue(Assignment.class);
@@ -145,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
             }
         }
     }
+
     /**
      * Creates an instance of the menu
      * @param menu the menu to be applied to all screens for ease of navigation
