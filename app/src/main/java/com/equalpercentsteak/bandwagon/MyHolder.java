@@ -46,8 +46,13 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
      *
      */
     public DatabaseReference groupFB;
-    public DatabaseReference checkIfButtonPressed;
+    /**
+     * Adds SoundPool which plays sounds
+     */
     private SoundPool pl;
+    /**
+     * Stores the loaded sound
+     */
     private int sound;
 
 
