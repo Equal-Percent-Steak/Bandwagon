@@ -1,6 +1,7 @@
 package com.equalpercentsteak.bandwagon;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
      * The onAssignmentListener for the onClick method
      */
     private MyHolder.OnAssignmentListener onAssignmentListener;
-
+    /**
+     * The sound player that plays a sound when an assignment is completed
+     */
     /**
      * Constructs an adapter with an ArrayList of Assignments
      * @param c the context that forms the adapter
@@ -86,7 +89,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row, null);
 
 
-        return new MyHolder(view, onAssignmentListener);
+        return new MyHolder(view, onAssignmentListener, c);
     }
 
     /**
@@ -99,6 +102,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         myHolder.mTitle.setText(assignments.get(i).getTitle());
         myHolder.mDes.setText(assignments.get(i).getDescription());
         myHolder.mGroup = assignments.get(i).getGroup();
+        myHolder.c = c;
 
         DatabaseReference checkIfButtonPressed = FirebaseDatabase.getInstance().getReference().child("groups").child(myHolder.mGroup).child("assignments").child(myHolder.mTitle.getText().toString()).child("completedStudents");
         checkIfButtonPressed.addValueEventListener(new ValueEventListener() {
@@ -164,4 +168,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     public int getItemCount() {
         return assignments.size();
     }
+
 }
+
