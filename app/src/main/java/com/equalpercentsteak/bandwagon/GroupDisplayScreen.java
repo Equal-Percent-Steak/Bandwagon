@@ -16,6 +16,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * This is the class corresponding to the screen where all of the groups are displayed.
+ */
 public class GroupDisplayScreen extends MainActivity implements GroupDisplayAdapter.OnGroupListener {
 
 //    private ArrayList<Group> groups;

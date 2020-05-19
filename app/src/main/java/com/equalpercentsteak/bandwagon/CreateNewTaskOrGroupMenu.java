@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * This class corresponds to the add button page which is not currently implemented in our app.
+ */
 public class CreateNewTaskOrGroupMenu extends MainActivity {
 
     @Override

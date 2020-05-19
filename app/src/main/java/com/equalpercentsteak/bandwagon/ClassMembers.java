@@ -25,6 +25,9 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+/**
+ * This is the class for the Class Members page that can be opened from the Group Assignments page.
+ */
 public class ClassMembers extends MainActivity {
 
     private DatabaseReference mUsers;

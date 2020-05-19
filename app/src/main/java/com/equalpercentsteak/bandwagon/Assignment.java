@@ -3,6 +3,9 @@ package com.equalpercentsteak.bandwagon;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This class constructs and describes an Assignment
+ */
 public class Assignment {
 
     /**

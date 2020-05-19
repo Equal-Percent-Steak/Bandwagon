@@ -36,6 +36,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * The class to go along with the Create Task page
+ */
 public class CreateTask extends MainActivity {
 
     FirebaseFirestore db;

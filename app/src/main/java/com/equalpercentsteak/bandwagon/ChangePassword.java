@@ -8,6 +8,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 
+/**
+ * This class corresponds to the Change Password screen that can be opened from the Settings page
+ */
 public class ChangePassword extends MainActivity {
 
     private Bundle savedInstanceState;

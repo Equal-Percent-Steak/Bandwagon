@@ -21,6 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * The class that goes along with the Add User page
+ */
 public class AddUser extends MainActivity {
 
     /**

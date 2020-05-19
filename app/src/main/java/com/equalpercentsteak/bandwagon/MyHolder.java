@@ -11,7 +11,9 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
+/**
+ * This class holds the data displayed by the adapter on the home page.
+ */
 public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     /**

@@ -16,7 +16,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
+/**
+ * This class helps display the assignments on the home page.
+ */
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     /**

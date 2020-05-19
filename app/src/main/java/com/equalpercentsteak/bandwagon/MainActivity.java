@@ -28,7 +28,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * The class for the Home page
+ */
 public class MainActivity extends AppCompatActivity implements MyHolder.OnAssignmentListener {
     private static final String TAG = "MainActivity";
 
@@ -94,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                     addUserToDB(userFB);
                     loadGroups();
                 }
-                list = new ArrayList<Assignment>();
+                list = new ArrayList<>();
 
                 listOfUniqueNames = new ArrayList<>();
             }

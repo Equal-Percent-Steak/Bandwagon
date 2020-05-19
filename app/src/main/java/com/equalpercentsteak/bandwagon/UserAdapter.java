@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+/**
+ * This class displays the usernames on the class members screen.
+ */
 public class UserAdapter extends
         RecyclerView.Adapter<UserAdapter.ViewHolder> {
 

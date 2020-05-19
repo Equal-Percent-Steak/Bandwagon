@@ -18,6 +18,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * This class corresponds to the individual group page which is opened upon clicking on a group from the groups page.
+ */
 public class IndividualGroupPage extends MainActivity {
 
     private TextView groupName;

@@ -13,6 +13,9 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * This class allows the user to login upon opening the app.
+ */
 public class Login extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123;

@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * The Account Settings page
+ */
 public class AccountSettings extends MainActivity {
 
     /**

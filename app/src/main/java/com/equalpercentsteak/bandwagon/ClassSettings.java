@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * This is the class for the Class Settings page that is not currently implemented in our app.
+ */
 public class ClassSettings extends MainActivity {
 
     /**

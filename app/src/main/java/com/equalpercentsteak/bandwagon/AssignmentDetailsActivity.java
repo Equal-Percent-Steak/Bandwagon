@@ -14,6 +14,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * This class corresponds to the Assigment Details page that is opened upon clicking on an Assignment.
+ */
 public class AssignmentDetailsActivity extends AppCompatActivity {
 
     /**

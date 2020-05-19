@@ -8,6 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
+/**
+ * This class displays the individual groups in the correct format on the Groups page.
+ */
 public class GroupDisplayAdapter extends
         RecyclerView.Adapter<GroupDisplayAdapter.ViewHolder> {
 

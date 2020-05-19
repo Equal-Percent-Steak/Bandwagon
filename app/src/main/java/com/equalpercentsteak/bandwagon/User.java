@@ -2,6 +2,9 @@ package com.equalpercentsteak.bandwagon;
 
 import java.util.ArrayList;
 
+/**
+ * This class creates a user with unique id and helps display and communicate its data.
+ */
 public class User {
 
     /**

@@ -31,6 +31,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * This is the class for the Edit Task page which is not currently implemented in our app.
+ */
 public class EditTaskActivity extends MainActivity {
 
     FirebaseFirestore db;

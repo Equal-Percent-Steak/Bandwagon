@@ -2,6 +2,9 @@ package com.equalpercentsteak.bandwagon;
 
 import java.util.ArrayList;
 
+/**
+ * This class creates and accesses data within a Group.
+ */
 public class Group {
 
     private ArrayList<User> users;

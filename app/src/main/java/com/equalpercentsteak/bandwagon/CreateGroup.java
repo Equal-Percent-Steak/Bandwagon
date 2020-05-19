@@ -19,7 +19,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
+/**
+ * This is the class for the Create Group page which can be accessed from the menu.
+ */
 public class CreateGroup extends MainActivity {
 
     /**
