@@ -1,6 +1,7 @@
 package com.equalpercentsteak.bandwagon;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -69,17 +71,33 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         // Initializes linear layout
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         // The listener checks if the user is logged in, and if the user is not, it forces the user to sign in
         mFirebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser userFB = firebaseAuth.getCurrentUser();
-                if (userFB != null){
+                final FirebaseUser userFB = firebaseAuth.getCurrentUser();
+                if (userFB != null) {
 //                    onSignedInInitialize(userFB.getDisplayName());
-                    user = new User(userFB.getEmail(),userFB.getUid());
+                    user = new User(userFB.getEmail(), userFB.getUid());
                     keyId = userFB.getUid();
+                    DatabaseReference users = FirebaseDatabase.getInstance().getReference().child("users");
+                    users.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if(!dataSnapshot.child(userFB.getUid()).exists()){
+                                addUserToDB();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                     loadGroups();
-                } else if (userFB == null){
+                } else if (userFB == null) {
                     //not signed in
 //                    onSignedOutCleanup();
                     List<AuthUI.IdpConfig> providers = Arrays.asList(
@@ -91,18 +109,14 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                                     .setAvailableProviders(providers)
                                     .build(),
                             RC_SIGN_IN);
-                    user = new User(userFB.getEmail(),userFB.getUid());
-                    keyId = userFB.getUid();
-                    addUserToDB(userFB);
-                    loadGroups();
                 }
-                list = new ArrayList<>();
+                    list = new ArrayList<Assignment>();
 
-                listOfUniqueNames = new ArrayList<>();
+                    listOfUniqueNames = new ArrayList<>();
+
             }
+
         };
-
-
     }
 
     public void loadGroups(){
@@ -143,6 +157,8 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
                         }
 
                         myAdapter = new MyAdapter(MainActivity.this,list,MainActivity.this);
+
+
                         mRecyclerView.setAdapter(myAdapter);
                     }
 
@@ -198,8 +214,8 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
     }
 
-    private void addUserToDB(FirebaseUser currentUser){
-        mDatabase.child(keyId).setValue(user);
+    private void addUserToDB(){
+        mDatabase.child("users").child(keyId).setValue(user);
     }
 
     /**
