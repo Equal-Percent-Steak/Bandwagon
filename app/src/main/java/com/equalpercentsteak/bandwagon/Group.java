@@ -7,8 +7,19 @@ import java.util.ArrayList;
  */
 public class Group {
 
+    /**
+     * the Array List of users belonging to the group
+     */
     private ArrayList<User> users;
+
+    /**
+     * the Array List of Assignments belonging to the group
+     */
     private ArrayList<Assignment> assignments;
+
+    /**
+     * the name of the group
+     */
     private String name;
 
     /**

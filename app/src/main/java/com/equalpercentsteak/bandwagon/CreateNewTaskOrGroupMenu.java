@@ -11,17 +11,29 @@ import android.view.View;
  */
 public class CreateNewTaskOrGroupMenu extends MainActivity {
 
+    /**
+     * Creates a new instance of the add task or group screen
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_task_or_group_menu);
     }
 
+    /**
+     * changes the screen to Create new Task
+     * @param v the button or item that is clicked
+     */
     public void performCreateNewTask(View v){
         Intent intent = new Intent(this, CreateTask.class);
         startActivity(intent);
     }
 
+    /**
+     * changes the screen to Create New Group
+     * @param v the button or item that is clicked
+     */
     public void performCreateNewGroup(View v){
         Intent intent = new Intent(this,CreateGroup.class);
         startActivity(intent);

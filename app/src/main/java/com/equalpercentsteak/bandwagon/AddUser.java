@@ -42,6 +42,10 @@ public class AddUser extends MainActivity {
 
     private ArrayList classes;
 
+    /**
+     * Creates the Add User screen
+     * @param savedInstanceState the saved add user screen
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

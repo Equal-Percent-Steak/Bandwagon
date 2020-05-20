@@ -10,9 +10,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,18 +19,13 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -41,20 +34,75 @@ import java.util.Calendar;
  */
 public class CreateTask extends MainActivity {
 
+    /**
+     * the stored data in Firebase
+     */
     FirebaseFirestore db;
+
+    /**
+     * Identifies the data as a created task
+     */
     final String TAG = "CreateTask";
+
+    /**
+     * Provides a way for the user to select a due date
+     */
     private DatePickerDialog datePicker;
+
+    /**
+     * Provides a way for the user to select a due time
+     */
     private TimePickerDialog timePicker;
+
+    /**
+     * The text from the selected date
+     */
     private EditText dateButton;
+
+    /**
+     * the text from the selected time
+     */
     private EditText timeButton;
+
+    /**
+     * the time due as a String
+     */
     private String time;
+
+    /**
+     * the due date as a String
+     */
     private String date;
+
+    /**
+     * the date as a string obtained from the array of possible dates
+     */
     final String[] dateArr = new String[1];
+
+    /**
+     * the time as a string obtained from the array of possible times
+     */
     final String[] timeArr = new String[1];
+
+    /**
+     * the TextView which displays the assignment title
+     */
     private AppCompatTextView tvPicker;
+
+    /**
+     * The ArrayList of groups to choose from when adding an assignment
+     */
     private ArrayList<String> list;
+
+    /**
+     * the list of groups the user belongs to stored in Firebase
+     */
     private DatabaseReference mGroups;
 
+    /**
+     * creates an instance of the Create Task screen
+     * @param savedInstanceState the saved Create Task screen
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,6 +202,10 @@ public class CreateTask extends MainActivity {
 
     }
 
+    /**
+     * Checks for validity, adds the entered task to the Firebase, and returns to the home screen
+     * @param v the button to be clicked
+     */
     public void addTaskToFB(View v) {
 
         EditText enterTask = findViewById(R.id.enterTask);
@@ -219,11 +271,10 @@ public class CreateTask extends MainActivity {
 
     }
 
-    public void performExitCreateNewTask(View v){
-        Intent intent = new Intent(this, CreateNewTaskOrGroupMenu.class);
-        startActivity(intent);
-    }
-
+    /**
+     * Returns to the home screen
+     * @param v the button to be clicked
+     */
     public void performReturnHome(View v) {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);

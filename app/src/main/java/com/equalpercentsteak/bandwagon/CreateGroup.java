@@ -29,16 +29,24 @@ public class CreateGroup extends MainActivity {
      */
     private Group group;
 
-    private ArrayList<String>[] arr = new ArrayList[1];
     /**
-     * Creates and opens an instance of the Create Group screen
-     * @param savedInstanceState the saved Create Group screen
+     * an Array List of the group names
      */
+    private ArrayList<String>[] arr = new ArrayList[1];
 
+    /**
+     * an instance of the Firebase database
+     */
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
+    /**
+     * a reference to the groups in Firebase
+     */
     private DatabaseReference groups = database.getReference("groups");
 
+    /**
+     * a listener to determine when the groups have been changed
+     */
     private ValueEventListener listener;
 
     /**
@@ -46,6 +54,10 @@ public class CreateGroup extends MainActivity {
      */
     private final DatabaseReference users = database.getReference("users");
 
+    /**
+     * Creates and opens an instance of the Create Group screen
+     * @param savedInstanceState the saved Create Group screen
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

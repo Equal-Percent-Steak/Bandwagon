@@ -18,14 +18,24 @@ import java.util.List;
  */
 public class Login extends AppCompatActivity {
 
+    /**
+     * the integer which verifies sign in
+     */
     private static final int RC_SIGN_IN = 123;
 
+    /**
+     * creates an instance of the Login screen
+     * @param savedInstanceState the saved Login screen
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
 
+    /**
+     * Creates the sign in intent
+     */
     public void createSignInIntent() {
         // [START auth_fui_create_intent]
         // Choose authentication providers
@@ -42,6 +52,12 @@ public class Login extends AppCompatActivity {
         // [END auth_fui_create_intent]
     }
 
+    /**
+     * Determines whether or not a user signed in validly and starts the app
+     * @param requestCode the request of the user to sign in
+     * @param resultCode determines whether or not the sign in was valid
+     * @param data the user inputted sign in
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

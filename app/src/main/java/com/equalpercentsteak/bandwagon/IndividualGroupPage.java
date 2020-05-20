@@ -23,11 +23,30 @@ import java.util.ArrayList;
  */
 public class IndividualGroupPage extends MainActivity {
 
+    /**
+     * the name of the group to be displayed at the top of the screen
+     */
     private TextView groupName;
+
+    /**
+     * the reference to Firebase to obtain the group to display
+     */
     private DatabaseReference mGroups;
+
+    /**
+     * the ArrayList of Assignments belonging to a specific group
+     */
     private ArrayList<Assignment> list;
+
+    /**
+     * the Recycler View which displays the assignments specific to an individual group
+     */
     private RecyclerView rvGroupAssignments;
 
+    /**
+     * Creates an instance of the Individual Group Page
+     * @param savedInstanceState the saved Individual Group Page
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +84,10 @@ public class IndividualGroupPage extends MainActivity {
         });
     }
 
+    /**
+     * changes the view to the Group Members page
+     * @param v the button which changes the view
+     */
     public void performViewGroupMembers(View v) {
         Intent intent = new Intent(this,ClassMembers.class);
         intent.putExtra("group_name",getIntent().getStringExtra("name"));
