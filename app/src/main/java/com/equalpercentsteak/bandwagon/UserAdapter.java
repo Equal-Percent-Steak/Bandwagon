@@ -18,7 +18,7 @@ public class UserAdapter extends
         RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     /**
-     *
+     *Creates the viewholder with the viewgroup and viewtype
      * @param parent the parent ViewGroup
      * @param viewType the int viewType
      * @return returns the ViewHolder
@@ -62,6 +62,9 @@ public class UserAdapter extends
     }
 
 
+    /**
+     * This class is the individual view holder for each group
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
         /**
          * The TextView of each user

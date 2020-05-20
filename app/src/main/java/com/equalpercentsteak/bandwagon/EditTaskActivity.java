@@ -31,20 +31,63 @@ import java.util.Calendar;
  */
 public class EditTaskActivity extends MainActivity {
 
+    /**
+     * The Firebase database
+     */
     FirebaseFirestore db;
+    /**
+     * The tag of the class
+     */
     final String TAG = "CreateTask";
+    /**
+     * The DatePickerDialog that allows the user to select a due date
+     */
     private DatePickerDialog datePicker;
+    /**
+     * The TimePickerDialog that allows the user to select a due time
+     */
     private TimePickerDialog timePicker;
+    /**
+     * The editText that opens the datePickerDialog onClick and displays the due date
+     */
     private EditText dateButton;
+    /**
+     * The EditText that opens the timePickerDialog onClick and displays the due time
+     */
     private EditText timeButton;
+    /**
+     * The string of the due time of the assignment
+     */
     private String time;
+    /**
+     * The string of the due date of the assignment
+     */
     private String date;
+    /**
+     * The static array that holds the dueDate in the form yyyymmdd
+     */
     final String[] dateArr = new String[1];
+    /**
+     * The static array that holds the dueTime in the form hhmm
+     */
     final String[] timeArr = new String[1];
+    /**
+     * The TextView that picks from the list
+     */
     private AppCompatTextView tvPicker;
+    /**
+     * The list of groups a user can see
+     */
     private ArrayList<String> list;
+    /**
+     * The groups stored in Firebase
+     */
     private DatabaseReference mGroups;
 
+    /**
+     * Opens the activity edit task layout and sets up the time and date dialogs as well as the firebase reference for the groups
+     * @param savedInstanceState the Bundle that is passed to onCreate
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

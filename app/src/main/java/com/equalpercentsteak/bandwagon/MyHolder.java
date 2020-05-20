@@ -39,12 +39,12 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
      */
     public String mGroup;
     /**
-     * Context
+     * The Context
      */
     public Context c;
-    //TODO Add firebase description
+
     /**
-     *
+     * The DataBaseReference for the groups to know which assignments to display
      */
     public DatabaseReference groupFB;
     /**
@@ -108,11 +108,18 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
         itemView.setOnClickListener(this);
     }
 
+    /**
+     * Sets the onClick to the onAssignmentListener and passes the adapter position
+     * @param v the view
+     */
     @Override
     public void onClick(View v) {
         onAssignmentListener.onAssignmentClick((getAdapterPosition()));
     }
 
+    /**
+     * The interface that works with the onClick method
+     */
     public interface OnAssignmentListener{
         void onAssignmentClick(int position);
     }

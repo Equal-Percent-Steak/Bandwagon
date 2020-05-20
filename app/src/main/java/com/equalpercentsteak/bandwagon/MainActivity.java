@@ -30,21 +30,62 @@ import java.util.List;
  * The class for the Home page
  */
 public class MainActivity extends AppCompatActivity implements MyHolder.OnAssignmentListener {
+    /**
+     * The Tag of the activity
+     */
     private static final String TAG = "MainActivity";
-
+    /**
+     * The recyclerView of assignments
+     */
     RecyclerView mRecyclerView;
+    /**
+     * The adapter that holds the assignments
+     */
     MyAdapter myAdapter;
+    /**
+     * The Firebase Authorization
+     */
     private FirebaseAuth mFirebaseAuth;
+    /**
+     * The Firebase Authorization listener
+     */
     private FirebaseAuth.AuthStateListener mFirebaseAuthListener;
 //    private String mUsername;
+    /**
+     * The status of a user's sign in
+     */
     public static final int RC_SIGN_IN = 1;
+    /**
+     * The database reference to get the data from Firebase
+     */
     private DatabaseReference mDatabase;
+    /**
+     * The user of the app
+     */
     private static User user;
+    /**
+     * The ID of the user
+     */
     public static String keyId;
+    /**
+     * The groups that a user has access to
+     */
     private DatabaseReference mGroups;
+    /**
+     * The users in the arraylist
+     */
     private DatabaseReference mUsers;
+    /**
+     * An ArrayList of the names of the groups this user can see
+     */
     private ArrayList<String> namesOfAllowedGroups;
+    /**
+     * The list of assignments a user can see
+     */
     private ArrayList<Assignment> list;
+    /**
+     * The ArrayList of strings of the unique names of assignments the user can see
+     */
     private ArrayList<String> listOfUniqueNames;
 
 
@@ -52,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
     /**
      * This method is called when the activity is started.
      * It checks if the user is logged in and also lists all of the assignments the user has on one screen.
-     * @param savedInstanceState
+     * @param savedInstanceState the Bundle that is passed to onCreate
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +156,9 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         };
     }
 
+    /**
+     * Loads the groups that a user has access to
+     */
     public void loadGroups(){
         mUsers = FirebaseDatabase.getInstance().getReference().child("users").child(getUser().getId());
         mUsers.addValueEventListener(new ValueEventListener() {
@@ -135,6 +179,9 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         });
     }
 
+    /**
+     * Loads the adapter with the assignments that belong to classes the user has access to
+     */
     public void loadAdapter(){
         if(namesOfAllowedGroups != null){
             for(String groups: namesOfAllowedGroups){
@@ -204,6 +251,9 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
 //
 //    }
 
+    /**
+     * Resumes the app and the FirebaseAuthListener
+     */
     @Override
     protected void onResume() {
        super.onResume();
@@ -224,6 +274,10 @@ public class MainActivity extends AppCompatActivity implements MyHolder.OnAssign
         startActivity(intent);
     }
 
+    /**
+     * Signs a user out of the app
+     * @param item the item in the menu to click to sign out
+     */
     public void performEnterSignOut(MenuItem item){
 
         FirebaseAuth.getInstance().signOut();
